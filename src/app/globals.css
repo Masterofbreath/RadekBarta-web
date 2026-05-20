@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Brand Colors */
+  --color-primary: #97724f;
+  --color-primary-light: #c5a889;
+  --color-primary-dark: #7a5c3e;
+  --color-cream: #f6f6f6;
+  --color-dark: #000000;
+  --color-dark-soft: #111111;
+  --color-dark-muted: #1a1a1a;
+  --color-gray-warm: #6b6b6b;
+  --color-gray-light: #e8e5e2;
+
+  /* Typography */
+  --font-heading: var(--font-montserrat);
+  --font-body: var(--font-inter);
+
+  /* Spacing scale */
+  --section-padding-y: 7rem;
+  --section-padding-y-mobile: 4rem;
+}
+
+:root {
+  --background: #f6f6f6;
+  --foreground: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Desktop snap scroll — Apple-style full-section scrolling */
+@media (min-width: 1024px) {
+  .snap-container {
+    height: 100dvh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100dvh;
+  }
+}
+
+/* Smooth image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Typography utilities */
+.font-heading {
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Selection color */
+::selection {
+  background-color: #c5a889;
+  color: #000000;
+}
+
+/* Scrollbar — minimal webkit */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c5a889;
+  border-radius: 2px;
+}
+
+/* Focus outline */
+:focus-visible {
+  outline: 2px solid #97724f;
+  outline-offset: 2px;
+}
+
+/* Button reset */
+button {
+  cursor: pointer;
+}
+
+/* Input base */
+input, textarea, select {
+  font-family: inherit;
+}

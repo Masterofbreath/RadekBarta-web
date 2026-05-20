@@ -1,0 +1,75 @@
+# radekbarta-web — Cursor Rules
+# Projekt: Osobní web Radka Bárty
+# Aktualizováno: 2026-05-20
+
+## ⚠️ TENTO PROJEKT JE ZCELA SAMOSTATNÝ
+# Nevychází z dechbar-app ani jakubrozdychacesko-web.
+# Má vlastní design systém, vlastní pravidla, vlastní stack.
+
+---
+
+## Stack
+- Next.js 15 App Router (src/app/)
+- TypeScript
+- Tailwind CSS v4
+- Framer Motion (animace)
+- Resend (email API)
+- Ecomail (newsletter)
+
+## Design systém
+
+### Brand barvy
+- Primary: #97724f (zlatohnědá — pro accenty, CTA)
+- Primary light: #c5a889 (světlé zlato — hover stavy, bordery)
+- Background: #f6f6f6 (krémová bílá — hlavní pozadí)
+- Dark: #000000 (text, tmavé sekce)
+- White: #ffffff
+
+### Typografie
+- Headlines: Montserrat (700, 600)
+- Body: Inter (400, 500)
+- Accent/quote: Montserrat Italic
+
+### Design principy (Apple style)
+- Velké množství bílého prostoru — sekce dýchají
+- Minimální UI chrome — žádné zbytečné dekorace
+- Fotografie dominují — velké, celostránkové
+- Animace jsou jemné a účelné (fade up, scale in) — nikdy křiklavé
+- Typografie je hierarchická a čitelná
+- Desktop: scroll-snap-type sekce (jako apple.com)
+- Mobile: volný smooth scroll, touch-friendly, žádný snap
+
+### Komponenty
+- Preferuj jednoduchý čistý kód
+- Server Components kde to jde, Client Components jen pro interaktivitu
+- Framer Motion pouze na Client Components
+- Formuláře: controlled komponenty s validací
+
+## Stránky
+- / — Homepage
+- /investice — Landing page investice + kontaktní formulář
+- /kruh-tvurcu — Landing page Kruh tvůrců + lead capture
+- /api/contact — POST, odesílá email přes Resend
+- /api/newsletter — POST, přidává do Ecomail
+
+## Kontakty v kódu (jako konstanty, nikdy hardcoded)
+- Email pro formuláře: ahoj@radekbarta.cz
+- Radkův osobní email: radek.barta@goldengate.cz
+- Telefon: +420 739758734
+
+## Sociální sítě
+- Facebook: https://www.facebook.com/radek.bartaa
+- Instagram: https://www.instagram.com/radek_barta
+- LinkedIn: https://www.linkedin.com/in/radek-barta-155a3717b/
+- YouTube: https://www.youtube.com/@radek_barta
+- Principy růstu YT: https://www.youtube.com/@Principyrustu
+
+## Bezpečnost
+- API klíče VŽDY do .env.local — NIKDY do gitu
+- .env.example obsahuje jen placeholder hodnoty
+- .gitignore musí obsahovat .env.local
+
+## Komunikace
+- Komunikuj v češtině
+- Komentáře v kódu v angličtině
+- Vysvětluj PROČ, ne jen JAK
