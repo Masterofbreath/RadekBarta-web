@@ -155,17 +155,13 @@ const kruhTestimonials: TestimonialItem[] = [
 
 function GoldBarIcon() {
   return (
-    <svg width="26" height="22" viewBox="0 0 26 22" fill="none">
-      {/* Bottom face */}
-      <path d="M2 8 L24 8 L24 17 L2 17 Z" fill="#b08030" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+      {/* Front face */}
+      <path d="M3 10 L3 17 L18 17 L18 10 Z" />
       {/* Top face */}
-      <path d="M5 3 L21 3 L24 8 L2 8 Z" fill="#e8c060" />
-      {/* Right side face */}
-      <path d="M21 3 L24 8 L24 17 L21 12 Z" fill="#7a5a20" />
-      {/* Shine line on top */}
-      <path d="M7 5 L19 5" stroke="#f5d98a" strokeWidth="0.8" strokeLinecap="round" opacity="0.7" />
-      {/* Bottom edge shine */}
-      <path d="M3 15.5 L23 15.5" stroke="#c5922a" strokeWidth="0.5" strokeLinecap="round" opacity="0.4" />
+      <path d="M3 10 L6 7 L21 7 L18 10 Z" />
+      {/* Right face */}
+      <path d="M18 10 L21 7 L21 14 L18 17 Z" />
     </svg>
   );
 }
