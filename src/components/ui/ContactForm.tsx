@@ -117,7 +117,7 @@ export default function ContactForm({
 
       <div>
         <label htmlFor="phone" className="block text-xs font-semibold text-[#6b6b6b] mb-1.5 ml-1">
-          Telefon
+          Telefon *
         </label>
         <input
           id="phone"
@@ -126,6 +126,7 @@ export default function ContactForm({
           value={form.phone}
           onChange={handleChange}
           placeholder="+420 777 123 456"
+          required
           className={inputClass}
         />
       </div>

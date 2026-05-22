@@ -42,14 +42,13 @@ export default function NewsletterSection() {
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-white mb-4">
-              Zůstaňte v obraze
+              Radkův investiční a strategický newsletter
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="text-white/50 text-lg leading-relaxed mb-10">
-              Chcete jednou za čas dostat info o novém dílu podcastu, zajímavém
-              tématu nebo dalších novinkách? Nechte nám na sebe e-mail — žádný
-              spam, jen obsah, který stojí za to.
+              Chcete získat kvalitní informace ze světa investic a kapitálových
+              trhů, info o novém dílu podcastu a dalších novinkách?
             </p>
           </Reveal>
 

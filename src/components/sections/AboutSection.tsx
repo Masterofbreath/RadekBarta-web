@@ -59,7 +59,6 @@ export default function AboutSection() {
                   },
                 ].map((item) => (
                   <div key={item.label} className="flex gap-3">
-                    <span className="text-[#97724f] mt-1 shrink-0">·</span>
                     <p className="text-[#6b6b6b] text-base leading-relaxed">
                       <span className="font-semibold text-dark">{item.label}:</span>{" "}
                       {item.text}

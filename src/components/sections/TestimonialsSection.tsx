@@ -3,21 +3,21 @@ import Reveal from "@/components/ui/Reveal";
 const testimonials = [
   {
     quote:
-      "Spolupráce s Radkem mi otevřela oči. Konečně jsem pochopil, jak diverzifikovat portfolio tak, aby mi v každé situaci přinášelo klid.",
-    name: "— Připravujeme referenci",
-    role: "Klient, investiční konzultace",
+      "Já z celýho srdce upřímně děkuju.. Objevila jsem Vás zrovna ve chvíli, kdy jsem profesně i osobně přešlapovala na místě. Díky Vám jsem se dala na cestu seberozvoje a také si ucelila obrázek ohledně tvorby majetku a dlouhodobé vize. Věděla jsem toho sice už spoustu, ale až po poslechu Vašich podcastů mi to teprve vše docvaklo.",
+    name: "— Žena",
+    role: "Posluchačka podcastu Principy růstu",
   },
   {
     quote:
-      "Radkův podcast Magie života mě přiměl přemýšlet jinak o penězích i o životě. Každý díl přináší konkrétní hodnotu.",
-    name: "— Připravujeme referenci",
-    role: "Divák / posluchač podcastu",
+      "Přidávám tip na super-nadupaný podcast; konkrétně díl o principech bohatství a zdravých návycích. Došlo mi při poslechu opravdu spousta souvislostí. Díky @magiezivota 🙏",
+    name: "— Sdílení na sociálních sítích",
+    role: "Posluchač podcastu Principy růstu",
   },
   {
     quote:
-      "Kruh tvůrců je přesně to místo, kde se věci skutečně dějí. Správní lidé, správné energie, správné načasování.",
-    name: "— Připravujeme referenci",
-    role: "Účastník události Kruh tvůrců",
+      "Ahoj kluci, začal jsem nedávno poslouchat váš podcast a je to super! Moc se mi líbí vaše myšlenky a hodně věcí mám v plánu si díky vám zavést do života (poslouchal jsem díl o osobním růstu a ranních rituálech). Odvádíte moc dobrou práci, mě baví vás poslouchat!",
+    name: "— Muž",
+    role: "Posluchač podcastu Principy růstu",
   },
 ];
 

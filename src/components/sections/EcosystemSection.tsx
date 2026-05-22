@@ -65,19 +65,17 @@ const cards = [
 export default function EcosystemSection() {
   return (
     <section id="ekosystem" className="snap-section min-h-[100dvh] bg-[#f6f6f6] flex items-center">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-16 w-full">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-8 w-full">
         {/* Header */}
-        <div className="mb-12 lg:mb-16">
+        <div className="mb-8 lg:mb-10">
           <Reveal>
             <p className="text-[#97724f] text-sm font-heading font-semibold uppercase tracking-[0.2em] mb-4">
               Ekosystém
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-dark max-w-lg">
-              Moje projekty
-              <br />
-              a&nbsp;podnikatelské činnosti
+            <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-dark">
+              Moje projekty a podnikatelské aktivity
             </h2>
           </Reveal>
         </div>
@@ -98,7 +96,7 @@ export default function EcosystemSection() {
 function EcosystemCard({ card }: { card: (typeof cards)[number] }) {
   const Inner = (
     <div
-      className="group relative rounded-2xl lg:rounded-3xl p-8 lg:p-10 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-xl cursor-pointer h-full flex flex-col justify-between min-h-[260px]"
+      className="group relative rounded-2xl lg:rounded-3xl p-8 lg:p-10 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-xl cursor-pointer h-full flex flex-col justify-between min-h-[210px]"
       style={{ backgroundColor: card.bg }}
     >
       {/* Subtle gradient blob */}

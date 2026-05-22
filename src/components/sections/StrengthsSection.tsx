@@ -3,21 +3,21 @@ import Reveal from "@/components/ui/Reveal";
 const strengths = [
   {
     number: "01",
-    title: "Strategické myšlení",
+    title: "Dlouhodobá spolupráce",
     description:
-      "Vstřebávám a analyzuji složité informace, abych vám pomohl dělat lepší rozhodnutí — s jasnou hlavou a bez emocí.",
+      "Ty nejlepší věcí potřebují čas, tudíž i naše spolupráce - budeme dlouhodobě a pravidelně v kontaktu.",
   },
   {
     number: "02",
     title: "Dlouhodobá vize",
     description:
-      "Nehraju na rychlé výhry. Buduju vztahy a majetek, které přetrvají — a přetrvají i ve chvílích, kdy trhy klesají.",
+      "Nehraju na rychlé výhry. Buduju vztahy a bohatství, které přetrvají — i ve chvílích kdy ekonomika klesá — my rosteme.",
   },
   {
     number: "03",
     title: "Propojování příležitostí",
     description:
-      "Mým talentem je spojovat ty správné lidi, myšlenky a projekty k vzájemnému růstu. Tam, kde jiní vidí chaos, já vidím systém.",
+      "Spojuji ty správné lidi, myšlenky a projekty k vzájemnému růstu. Tvořím kruh tvůrců.",
   },
 ];
 
