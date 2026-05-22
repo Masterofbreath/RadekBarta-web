@@ -7,19 +7,46 @@ import Link from "next/link";
 export default function HeroSection() {
   return (
     <section className="snap-section relative min-h-[100dvh] bg-[#111111] flex items-center overflow-hidden">
-      {/* Background image */}
+      {/* Background image — anchored right so Radek's face stays on the right */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero.jpg"
+          src="/images/hero.png"
           alt="Radek Bárta"
           fill
           priority
-          className="object-cover object-center opacity-40"
+          className="object-cover object-right-center"
           sizes="100vw"
         />
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#111111] via-[#111111]/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-60" />
+
+        {/* Mobile extra dim — keeps text readable on narrow screens */}
+        <div className="absolute inset-0 bg-[#111111]/55 lg:hidden" />
+
+        {/* Desktop: smooth left→right gradient — left 35% pure dark, fades by 68% */}
+        <div
+          className="absolute inset-0 hidden lg:block"
+          style={{
+            background:
+              "linear-gradient(to right, #111111 35%, rgba(17,17,17,0.88) 48%, rgba(17,17,17,0.4) 58%, transparent 68%)",
+          }}
+        />
+
+        {/* Mobile: top-heavy gradient so text area stays clean */}
+        <div
+          className="absolute inset-0 lg:hidden"
+          style={{
+            background:
+              "linear-gradient(to bottom, #111111 0%, rgba(17,17,17,0.75) 45%, rgba(17,17,17,0.5) 100%)",
+          }}
+        />
+
+        {/* Bottom fade on all devices */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to top, #111111 0%, rgba(17,17,17,0.4) 18%, transparent 35%)",
+          }}
+        />
       </div>
 
       {/* Content */}
