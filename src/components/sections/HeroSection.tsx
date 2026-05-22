@@ -14,6 +14,7 @@ export default function HeroSection() {
           alt="Radek Bárta"
           fill
           priority
+          unoptimized
           className="object-cover object-right"
           sizes="100vw"
         />
