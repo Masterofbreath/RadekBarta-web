@@ -11,7 +11,7 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         {/* Mobile: cover + right crop | Desktop: contain = natural ratio, anchored right */}
         <Image
-          src="/images/hero.png"
+          src="/images/hero.jpg"
           alt="Radek Bárta"
           fill
           priority
