@@ -9,13 +9,12 @@ export default function HeroSection() {
     <section className="snap-section relative min-h-[100dvh] bg-[#111111] flex items-center overflow-hidden">
       {/* Background image — anchored right so Radek's face stays on the right */}
       <div className="absolute inset-0">
-        {/* Mobile: cover + right crop | Desktop: contain = natural ratio, anchored right */}
         <Image
           src="/images/hero.jpg"
           alt="Radek Bárta"
           fill
           priority
-          className="object-cover object-right lg:object-contain lg:object-right"
+          className="object-cover object-right"
           sizes="100vw"
         />
 
