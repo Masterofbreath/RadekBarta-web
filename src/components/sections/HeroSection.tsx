@@ -16,19 +16,19 @@ export default function HeroSection() {
           fill
           priority
           unoptimized
-          className="object-cover [object-position:78%_center] lg:[object-position:65%_center]"
+          className="object-cover [object-position:center_30%] lg:[object-position:70%_center]"
           sizes="100vw"
         />
 
         {/* Mobile: semi-dark overlay for text readability */}
-        <div className="absolute inset-0 bg-[#111111]/50 lg:hidden" />
+        <div className="absolute inset-0 bg-[#111111]/60 lg:hidden" />
 
-        {/* Desktop: gradient — solid left 20%, smooth fade by 52% */}
+        {/* Desktop: gradient — solid left 20%, smooth fade by 55% */}
         <div
           className="absolute inset-0 hidden lg:block"
           style={{
             background:
-              "linear-gradient(to right, #111111 20%, rgba(17,17,17,0.82) 35%, rgba(17,17,17,0.2) 50%, transparent 62%)",
+              "linear-gradient(to right, #111111 18%, rgba(17,17,17,0.85) 32%, rgba(17,17,17,0.3) 52%, transparent 68%)",
           }}
         />
 
