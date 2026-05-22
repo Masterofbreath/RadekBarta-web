@@ -43,13 +43,8 @@ export default function Navigation() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-12 h-16 lg:h-20 flex items-center justify-between">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="font-heading font-700 text-lg tracking-tight text-dark hover:text-[#97724f] transition-colors"
-          >
-            {SITE.name}
-          </Link>
+          {/* Logo placeholder — prázdné místo pro budoucí logo */}
+          <Link href="/" className="w-8 h-8 block" aria-label="Radek Bárta — domů" />
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-8">

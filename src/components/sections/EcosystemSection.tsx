@@ -7,10 +7,10 @@ const cards = [
   {
     id: "investice",
     label: "01",
-    title: "Architektura bohatství",
+    title: "Investiční zprostředkování",
     subtitle: "Investice",
     description:
-      "Strategické plánování a diverzifikace. Od fyzického zlata a stříbra přes kryptoměny a nemovitosti až po permanentní portfolia. Získejte klid a kontrolu nad svou budoucností.",
+      "Pomáhám klientům postavit robustní diverzifikovaná portfolia do jakékoliv doby. Od fyzického zlata a stříbra přes nemovitosti, kryptoměny až po permanentní portfolio. Získejte jednoduchý systém na růst vašeho bohatství.",
     cta: "Sjednat konzultaci",
     href: "/investice",
     external: false,
@@ -24,8 +24,8 @@ const cards = [
     title: "Kruh tvůrců",
     subtitle: "Komunita",
     description:
-      "Exkluzivní offline setkání a retreaty. Prostor pro vědomé tvůrce, sdílení know-how a budování pevných vztahů v inspirativním prostředí.",
-    cta: "Zjistit termíny",
+      "Prostor pro vědomé tvůrce, sdílení know-how a budování pevných vztahů v inspirativním prostředí. Online komunita a živé akce.",
+    cta: "Vstoupit do komunity",
     href: "/kruh-tvurcu",
     external: false,
     accent: "#c5a889",
@@ -36,7 +36,7 @@ const cards = [
     id: "principy",
     label: "03",
     title: "Principy růstu",
-    subtitle: "YouTube Projekt",
+    subtitle: "Podcastový projekt",
     description:
       "Autentický pohled do světa úspěšných. Ukazujeme inovátory, podnikatele a tvůrce v jejich přirozeném prostředí — zachycujeme jejich byznys i domov.",
     cta: "Připojit se k růstu",
@@ -50,7 +50,7 @@ const cards = [
     id: "youtube",
     label: "04",
     title: "Radek Bárta",
-    subtitle: "YouTube Channel",
+    subtitle: "Osobní YouTube channel",
     description:
       "Video tvorba o podnikání, technologiích, seberozvoji a investicích. Myšlenky a vhledy pro váš každodenní osobní i byznysový růst.",
     cta: "Přejít na YouTube",
@@ -77,7 +77,7 @@ export default function EcosystemSection() {
             <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-dark max-w-lg">
               Moje projekty
               <br />
-              a&nbsp;ekosystémy
+              a&nbsp;podnikatelské činnosti
             </h2>
           </Reveal>
         </div>

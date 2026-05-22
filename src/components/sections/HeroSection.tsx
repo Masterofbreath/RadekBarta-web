@@ -62,7 +62,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-[#c5a889] text-[10px] lg:text-sm font-heading font-semibold uppercase tracking-[0.2em] mb-4 lg:mb-6"
           >
-            Architekt bohatství · Tvůrce obsahu
+            Investiční stratég · Tvůrce inspirativního obsahu
           </motion.p>
 
           {/* H1 */}
@@ -91,8 +91,8 @@ export default function HeroSection() {
             </span>
             <span className="hidden lg:inline">
               Jmenuji se Radek Bárta. Jsem průvodce na cestě za finanční i
-              osobní svobodou — od architektu&shy;ry bohatství po tvorbu obsahu,
-              který inspiruje tisíce lidí.
+              osobní svobodou — od investičního zprostředkování po tvorbu komunit,
+              které inspirují.
             </span>
           </motion.p>
 

@@ -30,37 +30,51 @@ export default function AboutSection() {
             </Reveal>
             <Reveal delay={0.2}>
               <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-dark mb-6">
-                Propojuji neviditelné
+                Investiční stratég.
                 <br />
-                s hmatatelným.
+                Podcaster.
                 <br />
-                <span className="text-[#97724f]">Tvořím strategie,</span>
-                <br />
-                které přinášejí klid.
+                <span className="text-[#97724f]">Tvůrce komunity.</span>
               </h2>
             </Reveal>
             <Reveal delay={0.3}>
               <p className="text-[#6b6b6b] text-lg leading-relaxed mb-6">
-                Působím jako průvodce na pomezí dvou světů – tvrdých dat a
-                lidského vědomí. Vstřebávám a analyzuji složité informace,
-                abych je přetvořil do jasných, funkčních systémů a kroků.
+                Své podnikatelské aktivity dělím do tří hlavních oblastí:
               </p>
             </Reveal>
             <Reveal delay={0.4}>
-              <p className="text-[#6b6b6b] text-lg leading-relaxed mb-10">
-                Mým největším talentem je vidět hlubší souvislosti tam, kde
-                jiní vidí jen chaos — a přirozeně propojovat ty správné lidi,
-                myšlenky a příležitosti k vzájemnému růstu. Nehraji na rychlé
-                výhry, ale tvořím dlouhodobou hodnotu.
-              </p>
+              <div className="space-y-4 mb-10">
+                {[
+                  {
+                    label: "Investiční strategie",
+                    text: "Buduji s klienty investiční portfolia a dělám z nich investory. Vedu tým investičních poradců a spolupracuji s nejlepšími finančníky na trhu.",
+                  },
+                  {
+                    label: "Tvorba obsahu",
+                    text: "Skrze videa a podcasty zkoumám principy růstu, hojnosti a vědomé práce s myslí a tělem.",
+                  },
+                  {
+                    label: "Kruh tvůrců",
+                    text: "Vytvářím bezpečný prostor a komunitu pro inspirativní lidi, kteří chtějí růst společně.",
+                  },
+                ].map((item) => (
+                  <div key={item.label} className="flex gap-3">
+                    <span className="text-[#97724f] mt-1 shrink-0">·</span>
+                    <p className="text-[#6b6b6b] text-base leading-relaxed">
+                      <span className="font-semibold text-dark">{item.label}:</span>{" "}
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </Reveal>
 
             {/* Stats */}
             <Reveal delay={0.5}>
               <div className="grid grid-cols-2 gap-6 border-t border-[#e8e5e2] pt-8">
                 {[
-                  { value: "15+", label: "let v investicích" },
-                  { value: "500+", label: "spokojených klientů" },
+                  { value: "8+", label: "let v investicích" },
+                  { value: "500+", label: "klientů" },
                 ].map((stat) => (
                   <div key={stat.label}>
                     <p className="font-heading font-700 text-3xl text-[#97724f] mb-1">

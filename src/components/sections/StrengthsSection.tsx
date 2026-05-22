@@ -36,7 +36,7 @@ export default function StrengthsSection() {
             <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-white max-w-2xl">
               Na čem stavím
               <br />
-              <span className="text-[#c5a889]">naše partnerství</span>
+              <span className="text-[#c5a889]">spolupráci</span>
             </h2>
           </Reveal>
         </div>
