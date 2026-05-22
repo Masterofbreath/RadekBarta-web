@@ -9,49 +9,51 @@ export default function HeroSection() {
     <section className="snap-section relative min-h-[100dvh] bg-[#111111] flex items-center overflow-hidden">
       {/* Background image — anchored right so Radek's face stays on the right */}
       <div className="absolute inset-0">
+        {/* Mobile: face at ~65% from left | Desktop: anchored right */}
         <Image
           src="/images/hero.jpg"
           alt="Radek Bárta"
           fill
           priority
           unoptimized
-          className="object-cover object-right"
+          className="object-cover"
+          style={{ objectPosition: "65% center" }}
           sizes="100vw"
         />
 
-        {/* Mobile extra dim — keeps text readable on narrow screens */}
-        <div className="absolute inset-0 bg-[#111111]/55 lg:hidden" />
+        {/* Mobile: semi-dark overlay for text readability */}
+        <div className="absolute inset-0 bg-[#111111]/50 lg:hidden" />
 
-        {/* Desktop: smooth left→right gradient — left 35% pure dark, fades by 68% */}
+        {/* Desktop: gradient — solid left 20%, smooth fade by 52% */}
         <div
           className="absolute inset-0 hidden lg:block"
           style={{
             background:
-              "linear-gradient(to right, #111111 35%, rgba(17,17,17,0.88) 48%, rgba(17,17,17,0.4) 58%, transparent 68%)",
+              "linear-gradient(to right, #111111 20%, rgba(17,17,17,0.82) 35%, rgba(17,17,17,0.2) 50%, transparent 62%)",
           }}
         />
 
-        {/* Mobile: top-heavy gradient so text area stays clean */}
+        {/* Mobile: top gradient so text (top half) reads cleanly */}
         <div
           className="absolute inset-0 lg:hidden"
           style={{
             background:
-              "linear-gradient(to bottom, #111111 0%, rgba(17,17,17,0.75) 45%, rgba(17,17,17,0.5) 100%)",
+              "linear-gradient(to bottom, rgba(17,17,17,0.85) 0%, rgba(17,17,17,0.6) 40%, rgba(17,17,17,0.3) 100%)",
           }}
         />
 
-        {/* Bottom fade on all devices */}
+        {/* Bottom fade — all devices */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to top, #111111 0%, rgba(17,17,17,0.4) 18%, transparent 35%)",
+              "linear-gradient(to top, #111111 0%, rgba(17,17,17,0.35) 15%, transparent 30%)",
           }}
         />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pt-24 pb-24 lg:pb-32 lg:pt-28">
+      {/* Content — left-aligned, not centered */}
+      <div className="relative z-10 w-full px-6 lg:px-16 pt-24 pb-24 lg:pb-32 lg:pt-28">
         <div className="max-w-2xl">
           {/* Eyebrow */}
           <motion.p
