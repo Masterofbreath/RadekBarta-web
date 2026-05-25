@@ -16,7 +16,7 @@ export default function Footer() {
               {SITE.name}
             </p>
             <p className="text-sm text-white/50 leading-relaxed max-w-xs">
-              Architekt bohatství, tvůrce obsahu a průvodce na cestě za finanční i osobní svobodou.
+              Investiční stratég, tvůrce obsahu a průvodce na cestě za finanční i osobní svobodu.
             </p>
             {/* Social */}
             <div className="flex items-center gap-4 mt-6">

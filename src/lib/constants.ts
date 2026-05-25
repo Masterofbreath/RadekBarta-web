@@ -4,7 +4,7 @@ export const SITE = {
   description:
     "Architekt bohatství, tvůrce obsahu a průvodce na cestě za finanční i osobní svobodou.",
   url: "https://www.radekbarta.cz",
-  email: "ahoj@radekbarta.cz",
+  email: "radek@radekbarta.cz",
   emailPrivate: "radek.barta@goldengate.cz",
   phone: "+420 739 758 734",
   phoneRaw: "+420739758734",

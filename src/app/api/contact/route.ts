@@ -4,7 +4,7 @@ const ECOMAIL_API_KEY = process.env.ECOMAIL_API_KEY!;
 const ECOMAIL_API_URL = "https://api2.ecomail.cz/transactional/send-message";
 
 const RADEK_EMAIL = "radek.barta@goldengate.cz";
-const FROM_EMAIL = "ahoj@radekbarta.cz";
+const FROM_EMAIL = "radek@radekbarta.cz";
 const FROM_NAME = "Radek Bárta";
 
 async function sendEmail({
