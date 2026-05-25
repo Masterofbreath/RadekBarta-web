@@ -3,13 +3,13 @@ import Reveal from "@/components/ui/Reveal";
 const strengths = [
   {
     number: "01",
-    title: "Dlouhodobá spolupráce",
+    title: "Spolupráce",
     description:
       "Ty nejlepší věcí potřebují čas, tudíž i naše spolupráce - budeme dlouhodobě a pravidelně v kontaktu.",
   },
   {
     number: "02",
-    title: "Spolupráce",
+    title: "Dlouhodobá vize",
     description:
       "Nehraju na rychlé výhry. Buduju vztahy a bohatství, které přetrvají — i ve chvílích kdy ekonomika klesá — my rosteme.",
   },

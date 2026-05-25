@@ -153,17 +153,15 @@ const kruhTestimonials: TestimonialItem[] = [
   },
 ];
 
-function BitcoinIcon() {
+function GrowthChartIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M7 3h7a4 4 0 0 1 0 8H7z" />
-      <path d="M7 11h8a4 4 0 0 1 0 8H7z" />
-      <line x1="7" y1="3" x2="7" y2="21" />
-      <line x1="11" y1="3" x2="11" y2="21" />
-      <line x1="9" y1="1" x2="9" y2="4" />
-      <line x1="13" y1="1" x2="13" y2="4" />
-      <line x1="9" y1="20" x2="9" y2="23" />
-      <line x1="13" y1="20" x2="13" y2="23" />
+      {/* Rising line chart */}
+      <polyline points="3 17 8 11 13 14 21 5" />
+      {/* Arrow tip on the line */}
+      <polyline points="17 5 21 5 21 9" />
+      {/* Axis bottom */}
+      <line x1="3" y1="21" x2="21" y2="21" />
     </svg>
   );
 }
@@ -303,7 +301,7 @@ export default function TestimonialsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <RotatingCard
             items={investiceTestimonials}
-            icon={<BitcoinIcon />}
+            icon={<GrowthChartIcon />}
             label="Investice"
             delay={0}
           />

@@ -44,7 +44,7 @@ body {
 }
 
 /* Desktop snap scroll — applied to html so there's only ONE scrollbar.
-   Footer flows naturally after sections without being a snap point. */
+   Footer is a snap point too (without min-height constraint) so it's reachable. */
 @media (min-width: 1024px) {
   html {
     scroll-snap-type: y mandatory;
@@ -54,6 +54,12 @@ body {
     scroll-snap-align: start;
     scroll-snap-stop: always;
     min-height: 100dvh;
+  }
+
+  /* Footer is a snap destination — no min-height override, just snap alignment */
+  footer {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 }
 
