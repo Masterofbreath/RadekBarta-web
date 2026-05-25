@@ -107,72 +107,80 @@ const podcastTestimonials: TestimonialItem[] = [
 
 const kruhTestimonials: TestimonialItem[] = [
   {
-    quote: "Mám po dnešku pocit, že jsem dnešní den využil fakt naplno. Opravdu, že vlastně od rána až doteďka to přesně bylo to, co jsem potřeboval. Poslouchal jsem sebe, poslouchal jsem vnitřek a bylo to skvělý. Takže moc děkuju za tenhle parádní den.",
+    quote: "Mám pocit, že jsem ten čas využil opravdu naplno. Od rána až do noci to bylo přesně to, co jsem v danou chvíli potřeboval – zpomalit, poslouchat svůj vnitřní hlas a být stoprocentně přítomný. Byl to parádní čas, který jsem si s ostatními neskutečně užil.",
     name: "Účastník",
-    role: "Mužský kruh / retreat",
+    role: "Kruh tvůrců / retreat",
   },
   {
-    quote: "Vnímám, že se tady vytvořila dneska úplně super extra atmosféra, že jsem tady měl pár krásných konverzací a že je tady prostředí důvěry a bezpečí. Člověk se může opravdu s kýmkoliv bavit na jakékoliv téma — ať už soukromí, vztahy, byznys, podnikání.",
+    quote: "Chci poděkovat každému, kdo v kruhu byl. Vytvořila se tam neuvěřitelná atmosféra extra důvěry a bezpečí. Člověk mohl otevřít jakékoliv téma – od nejhlubšího soukromí a vztahů až po tvrdý byznys a podnikání – a věděl, že ho ostatní bez odsuzování slyší.",
     name: "Účastník",
-    role: "Mužský kruh / retreat",
+    role: "Kruh tvůrců / retreat",
   },
   {
-    quote: "Co mě hodně zaujalo, tak byla ranní rozcvička s Pozdravem slunci, co navázalo na velmi zajímavé téma vztahů. Na to navázala návštěva lesa. Bylo to hodně relaxační, až mě to překvapilo. Bylo příjemný pozorovat to spojení s tím lesem.",
+    quote: "Ranní rozcvička s pozdravem slunci skvěle otevřela hluboké téma osobních vztahů a toho, co v nich reálně potřebujeme. Následný odchod do lesa mě svou hlubokou, relaxační silou až překvapil. To vědomé spojení s přírodou mě totálně zasáhlo.",
     name: "Účastník",
-    role: "Mužský kruh / retreat",
+    role: "Kruh tvůrců / retreat",
   },
   {
-    quote: "Nikdy jsem nebyl zvyklej takhle s mužem sdílet takovýhle věci. Vůbec jsem se o tom nikdy nebavil s kamarádama nebo s rodinou. Jsem strašně rád, že teď se to tady s váma otvírá, že vlastně vím, že muži vůbec takhle mezi sebou komunikujou.",
+    quote: "Nikdy jsem nebyl zvyklý sdílet své vnitřní věci s jinými muži. S kamarády ani s rodinou jsem to neotevíral, bylo to pro mě tabu. Jsem neskutečně vděčný, že jsem vystoupil ze své běžné bubliny a zjistil, jak hluboce a otevřeně spolu muži dokážou komunikovat. Našel jsem lidi, kteří přemýšlí stejně jako já.",
     name: "Účastník",
-    role: "Mužský kruh / retreat",
+    role: "Kruh tvůrců / retreat",
   },
   {
-    quote: "Pro mě to byl dneska hodně dlouhej den, jedna z nejdelších sobot, co jsem v poslední době zažil. A je to i super uvědomění, že prostě člověk je pak vlastně i efektivnější a stihne toho víc.",
+    quote: "Byl to neuvěřitelně naplněný čas. Zažil jsem jeden z nejdelších a nejvíc obohacujících dnů za poslední roky. Odvážím si silné uvědomění, že když člověk na chvíli zastaví chaos a získá focus, je pak v běžném životě daleko efektivnější a zvládne víc.",
     name: "Účastník",
-    role: "Mužský kruh / retreat",
+    role: "Kruh tvůrců / retreat",
   },
   {
-    quote: "Mám pocit, že sme sa so všetkými z vás na určitej úrovni zblížili, a že to bolo hrozne rýchle a prirodzené. Tá spätná väzba, ktorá sa mi dostáva, prekonala moje očakávania. Ďakujem za to, vážim si to.",
-    name: "Účastník (kuchař akce)",
-    role: "Mužský kruh / retreat",
+    quote: "Bolo fascinujúce sledovať celú túto skupinu. S každým jedným z vás som pocítil rýchle a úplne prirodzené prepojenie. Mojím zámerom bolo, aby jedlo nebolo len obyčajným palivom, ale skutočným zážitkom pre zmysly a dušu. Spätná väzba, ktorú som dostal, totálne prekonala moje očakávania.",
+    name: "Účastník (kuchár akcie)",
+    role: "Kruh tvůrců / retreat",
   },
   {
-    quote: "Uvědomil jsem si, že vlastně nemám stanovený, co potřebuju. Potřebuju najít tu cestu zase k sobě, do toho středu, na čemž už pracuju. A myslím si, že aniž byste si to uvědomili, tak mi s tím docela pomáháte.",
+    quote: "Uvědomil jsem si, že vlastně nemám jasně definované, co v životě opravdu potřebuju. Našel jsem tu cestu zpátky k sobě, do svého středu – a síla celého kruhu mi v tom, aniž by si to kluci vůbec uvědomovali, obrovsky pomohla.",
     name: "Účastník",
-    role: "Mužský kruh / retreat",
+    role: "Kruh tvůrců / retreat",
   },
   {
-    quote: "Je to fakt úžasný pocit, takové té blaženosti, že jako muži si dokážem udělat prostor sami pro sebe. Tyhle akce chci rozhodně zažívat opakovaně, vracet se na místa do lesa, do přírody mimo to město. Každý, kdo bude mít chuť — rozhodně doporučuju.",
+    quote: "Sedím na louce, vstřebávám všechno, co jsme zažili, a normálně nenacházím slova. Je to čistá blaženost. To, že si dokážeme udělat čas sami na sebe, odjet z města hluboko do přírody a otevřeně sdílet své životy, je úžasné. Tuhle akci chci zažívat opakovaně.",
     name: "Účastník",
-    role: "Mužský kruh / retreat",
+    role: "Kruh tvůrců / retreat",
   },
   {
-    quote: "Jsem nadšenej z toho, že tady byl průvodce Josef, kterej nás vedl ať už fyzicky, tak i duševně. Moc mě to obohatilo. Vnímám, že i po stránce jídla, lidí, energie a tohohle krásnýho místa jsem nadšenej. Můžu to doporučit všem, kteří se chtějí podívat do sebe.",
+    quote: "Jsem nadšený z celého konceptu – od skvělých průvodců, přes špičkové jídlo a energii lidí až po magické místo v přírodě. Pro mě to byla ta nejkrásnější, nejvíce smysluplná dovolená. Doporučuji to každému, kdo se chce podívat do svého nitra, odpočinout si a ujasnit si, kým vlastně je.",
     name: "Účastník",
-    role: "Mužský kruh / retreat",
+    role: "Kruh tvůrců / retreat",
   },
 ];
 
-function GoldBarIcon() {
+function BitcoinIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
-      {/* Front face */}
-      <path d="M3 10 L3 17 L18 17 L18 10 Z" />
-      {/* Top face */}
-      <path d="M3 10 L6 7 L21 7 L18 10 Z" />
-      {/* Right face */}
-      <path d="M18 10 L21 7 L21 14 L18 17 Z" />
+      <path d="M7 3h7a4 4 0 0 1 0 8H7z" />
+      <path d="M7 11h8a4 4 0 0 1 0 8H7z" />
+      <line x1="7" y1="3" x2="7" y2="21" />
+      <line x1="11" y1="3" x2="11" y2="21" />
+      <line x1="9" y1="1" x2="9" y2="4" />
+      <line x1="13" y1="1" x2="13" y2="4" />
+      <line x1="9" y1="20" x2="9" y2="23" />
+      <line x1="13" y1="20" x2="13" y2="23" />
     </svg>
   );
 }
 
-function MicIcon() {
+function StudioMicIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" />
-      <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-      <line x1="12" y1="19" x2="12" y2="23" />
-      <line x1="8" y1="23" x2="16" y2="23" />
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round">
+      {/* Capsule body — wider, flatter, studio condenser style */}
+      <rect x="8" y="2" width="8" height="13" rx="4" />
+      {/* Horizontal lines suggesting mic grille */}
+      <line x1="8.5" y1="7" x2="15.5" y2="7" />
+      <line x1="8.5" y1="10" x2="15.5" y2="10" />
+      {/* Stand arm */}
+      <path d="M4 15c0 4.418 3.582 8 8 8" strokeDasharray="0" />
+      <path d="M20 15c0 4.418-3.582 8-8 8" />
+      {/* Base */}
+      <line x1="12" y1="23" x2="12" y2="23" strokeWidth={2} strokeLinecap="round" />
     </svg>
   );
 }
@@ -218,7 +226,7 @@ function RotatingCard({ items, icon, label, delay = 0 }: RotatingCardProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       goTo((current + 1) % items.length);
-    }, 6000);
+    }, 10000);
     return () => clearInterval(interval);
   }, [current, goTo, items.length]);
 
@@ -295,13 +303,13 @@ export default function TestimonialsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <RotatingCard
             items={investiceTestimonials}
-            icon={<GoldBarIcon />}
+            icon={<BitcoinIcon />}
             label="Investice"
             delay={0}
           />
           <RotatingCard
             items={podcastTestimonials}
-            icon={<MicIcon />}
+            icon={<StudioMicIcon />}
             label="Principy růstu"
             delay={0.12}
           />

@@ -8,7 +8,7 @@ import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
-    <div className="snap-container">
+    <>
       <HeroSection />
       <AboutSection />
       <EcosystemSection />
@@ -16,6 +16,6 @@ export default function Home() {
       <TestimonialsSection />
       <NewsletterSection />
       <ContactSection />
-    </div>
+    </>
   );
 }

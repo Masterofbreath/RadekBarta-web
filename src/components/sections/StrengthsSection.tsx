@@ -9,7 +9,7 @@ const strengths = [
   },
   {
     number: "02",
-    title: "Dlouhodobá vize",
+    title: "Spolupráce",
     description:
       "Nehraju na rychlé výhry. Buduju vztahy a bohatství, které přetrvají — i ve chvílích kdy ekonomika klesá — my rosteme.",
   },

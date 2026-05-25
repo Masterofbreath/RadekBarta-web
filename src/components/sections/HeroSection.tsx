@@ -118,27 +118,6 @@ export default function HeroSection() {
             </Link>
           </motion.div>
 
-          {/* Tags — pouze desktop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="hidden lg:flex flex-wrap gap-3 mt-10"
-          >
-            {[
-              "Architektura bohatství",
-              "YouTube Channel",
-              "Principy růstu",
-              "Kruh tvůrců",
-            ].map((tag) => (
-              <span
-                key={tag}
-                className="text-xs text-white/40 border border-white/10 rounded-full px-3 py-1 font-medium"
-              >
-                {tag}
-              </span>
-            ))}
-          </motion.div>
         </div>
       </div>
 

@@ -43,13 +43,11 @@ body {
   overflow-x: hidden;
 }
 
-/* Desktop snap scroll — Apple-style full-section scrolling */
+/* Desktop snap scroll — applied to html so there's only ONE scrollbar.
+   Footer flows naturally after sections without being a snap point. */
 @media (min-width: 1024px) {
-  .snap-container {
-    height: 100dvh;
-    overflow-y: scroll;
+  html {
     scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
   }
 
   .snap-section {
