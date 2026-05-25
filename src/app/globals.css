@@ -43,11 +43,11 @@ body {
   overflow-x: hidden;
 }
 
-/* Desktop snap scroll — applied to html so there's only ONE scrollbar.
-   Footer is a snap point too (without min-height constraint) so it's reachable. */
+/* Desktop snap scroll — proximity allows reaching the footer naturally without
+   forcing a snap on pages that have no snap-sections (legal pages etc.) */
 @media (min-width: 1024px) {
   html {
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
   }
 
   .snap-section {
@@ -56,10 +56,10 @@ body {
     min-height: 100dvh;
   }
 
-  /* Footer is a snap destination — no min-height override, just snap alignment */
+  /* Footer snaps softly when scrolled near it — no scroll-snap-stop so it
+     doesn't trap the user on pages without other snap points */
   footer {
     scroll-snap-align: start;
-    scroll-snap-stop: always;
   }
 }
 
