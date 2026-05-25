@@ -34,6 +34,15 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Reserve space for the fixed navigation (h-16 mobile / h-20 desktop)
+     so snap-scroll destinations always appear below the nav, not behind it */
+  scroll-padding-top: 4rem; /* 64px = h-16 */
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 5rem; /* 80px = h-20 */
+  }
 }
 
 body {
