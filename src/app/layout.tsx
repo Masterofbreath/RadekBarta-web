@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import BottomNav from "@/components/layout/BottomNav";
 import Footer from "@/components/layout/Footer";
+import SnapController from "@/components/layout/SnapController";
 import Script from "next/script";
 
 const montserrat = Montserrat({
@@ -86,9 +87,12 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased bg-cream text-dark">
         <Navigation />
-        <main>{children}</main>
+        <SnapController />
+        <div className="page-scroll-container">
+          <main>{children}</main>
+          <Footer />
+        </div>
         <BottomNav />
-        <Footer />
       </body>
     </html>
   );

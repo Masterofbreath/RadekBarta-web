@@ -43,23 +43,34 @@ body {
   overflow-x: hidden;
 }
 
-/* Desktop snap scroll
-   - proximity: legal pages not affected (no snap targets there)
-   - scroll-margin-top per section: each section's snap target is offset below
-     the fixed nav WITHOUT adding extra height to the section itself
-   - min-height calc(100dvh - 5rem): section fills exactly the visible area
-     below the nav so flex items-center centers in the real visible space
-   - footer: no snap-align, naturally reachable by scrolling after last section */
+/* Desktop snap scroll — single scrollbar via page-scroll-container div.
+   body overflow hidden prevents body from adding a second scrollbar.
+   scroll-padding-top accounts for the fixed nav (h-20 = 5rem on desktop).
+   Footer is inside the container so it's always reachable.
+   SnapController.tsx disables snap on non-homepage routes (legal pages etc.) */
 @media (min-width: 1024px) {
-  html {
-    scroll-snap-type: y proximity;
+  body {
+    overflow: hidden;
+  }
+
+  .page-scroll-container {
+    height: 100dvh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 5rem; /* nav height = h-20 */
+    scroll-behavior: smooth;
   }
 
   .snap-section {
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    scroll-margin-top: 5rem;       /* push snap target 80px below fixed nav */
-    min-height: calc(100dvh - 5rem); /* fill exactly the visible area below nav */
+    min-height: 100dvh;
+  }
+
+  /* Footer is the last snap destination — no scroll-snap-stop so legal pages
+     don't get force-jumped; SnapController disables snap there anyway */
+  .page-scroll-container > footer {
+    scroll-snap-align: start;
   }
 }
 
