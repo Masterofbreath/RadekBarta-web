@@ -34,15 +34,6 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Reserve space for the fixed navigation (h-16 mobile / h-20 desktop)
-     so snap-scroll destinations always appear below the nav, not behind it */
-  scroll-padding-top: 4rem; /* 64px = h-16 */
-}
-
-@media (min-width: 1024px) {
-  html {
-    scroll-padding-top: 5rem; /* 80px = h-20 */
-  }
 }
 
 body {
@@ -52,8 +43,13 @@ body {
   overflow-x: hidden;
 }
 
-/* Desktop snap scroll — proximity allows reaching the footer naturally without
-   forcing a snap on pages that have no snap-sections (legal pages etc.) */
+/* Desktop snap scroll
+   - proximity: legal pages not affected (no snap targets there)
+   - scroll-margin-top per section: each section's snap target is offset below
+     the fixed nav WITHOUT adding extra height to the section itself
+   - min-height calc(100dvh - 5rem): section fills exactly the visible area
+     below the nav so flex items-center centers in the real visible space
+   - footer: no snap-align, naturally reachable by scrolling after last section */
 @media (min-width: 1024px) {
   html {
     scroll-snap-type: y proximity;
@@ -62,13 +58,8 @@ body {
   .snap-section {
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    min-height: 100dvh;
-  }
-
-  /* Footer snaps softly when scrolled near it — no scroll-snap-stop so it
-     doesn't trap the user on pages without other snap points */
-  footer {
-    scroll-snap-align: start;
+    scroll-margin-top: 5rem;       /* push snap target 80px below fixed nav */
+    min-height: calc(100dvh - 5rem); /* fill exactly the visible area below nav */
   }
 }
 
