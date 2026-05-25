@@ -82,8 +82,8 @@ export default function OchranaOsobnichUdajuPage() {
                   Web využívá sledovací skript Ecomail (provozovatel: Ecomail.cz s.r.o.), který sbírá
                   anonymizovaná data o chování návštěvníků (zobrazené stránky, délka návštěvy) za
                   účelem zlepšování obsahu webu. Právním základem je náš <strong>oprávněný zájem</strong>{" "}
-                  (čl. 6 odst. 1 písm. f) GDPR). V budoucnu plánujeme nasazení Google Analytics a
-                  Meta Pixel — o jejich spuštění Vás budeme informovat aktualizací těchto zásad.
+                  (čl. 6 odst. 1 písm. f) GDPR). Web dále využívá nástroje Google Analytics
+                  a Meta Pixel pro měření návštěvnosti a efektivity obsahu.
                 </p>
               </div>
             </div>

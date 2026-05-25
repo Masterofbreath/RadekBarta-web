@@ -28,7 +28,6 @@ export default function ObchodniPodminkyPage() {
               <p className="font-heading font-600 text-dark">Radek Bárta</p>
               <p>Litovelská 118/12, Nová Ulice, 779 00 Olomouc</p>
               <p>IČO: 04345673 &nbsp;·&nbsp; DIČ: CZ9701113763</p>
-              <p>Plátce DPH dle § 6 zákona č. 235/2004 Sb.</p>
               <p>
                 E-mail:{" "}
                 <a href="mailto:radek@radekbarta.cz" className="text-[#97724f] hover:underline">
@@ -97,9 +96,8 @@ export default function ObchodniPodminkyPage() {
             <h2 className="font-heading font-700 text-xl text-dark mb-3">5. Ceny a platební podmínky</h2>
             <p>
               Ceny služeb jsou stanovovány individuálně a jsou vždy sděleny před uzavřením smlouvy.
-              Poskytovatel je plátcem DPH — ceny jsou uváděny bez DPH, k nimž je připočtena DPH
-              v zákonné výši. Platba probíhá dle dohody, zpravidla bankovním převodem na základě
-              vystaveného daňového dokladu se splatností 14 dní.
+              Platba probíhá dle dohody, zpravidla bankovním převodem na základě vystaveného
+              daňového dokladu se splatností 14 dní.
             </p>
           </section>
 
