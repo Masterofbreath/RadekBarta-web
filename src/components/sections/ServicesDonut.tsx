@@ -3,95 +3,111 @@
 import { useState } from "react";
 import Reveal from "@/components/ui/Reveal";
 
-/* ─── Data ─────────────────────────────────────────────────── */
+/* ─── Data (services[0..3] = pořadí karet v layoutu) ───────── */
 
 const services = [
   {
+    // karta 0 — vlevo nahoře
     title: "Fyzické drahé kovy",
     shortLabel: "Drahé kovy",
     color: "#97724f",
     items: [
       {
         name: "Fyzické zlato a stříbro",
-        desc: "Kotva vaší finanční jistoty v každé ekonomické situaci.",
+        desc: "Reálná kotva finanční jistoty — fyzické kovy si zachovají hodnotu bez ohledu na stav ekonomiky, inflaci či politická rozhodnutí.",
       },
       {
         name: "Ochrana hodnoty",
-        desc: "Aktiva, která odolávají inflaci a tržní nestabilitě.",
+        desc: "Tvrdá aktiva mimo bankovní systém, která odolávají inflaci, krizi i tržní nestabilitě — a vy je skutečně vlastníte.",
       },
     ],
   },
   {
+    // karta 1 — vlevo dole
     title: "Investiční nemovitosti",
     shortLabel: "Nemovitosti",
     color: "#2d2820",
     items: [
       {
         name: "Výběr nemovitostí",
-        desc: "S potenciálem zhodnocení a stabilního dlouhodobého výnosu.",
+        desc: "Cíleně vybíráme lokality a typy nemovitostí s potenciálem kapitálového zhodnocení i stabilního pasivního výnosu z nájmu.",
       },
       {
         name: "Financování",
-        desc: "Chytré využití hypoték a úvěrů pro budování trvalého majetku.",
+        desc: "Chytré využití hypoték a úvěrů jako páky pro systematické budování rostoucího nemovitostního portfolia.",
       },
     ],
   },
   {
+    // karta 2 — vpravo nahoře
     title: "Permanentní strategie",
     shortLabel: "Permanentní",
     color: "#bfa07a",
     items: [
       {
         name: "Strategie pro každé počasí",
-        desc: "Fond investuje do akcií, dluhopisů, zlata a peněžního trhu. Prověřená 40letá strategie Harryho Browna odolná vůči inflaci i recesi.",
+        desc: "Akcie, dluhopisy, zlato i peněžní trh v jednom. Brownova 40letá strategie odolná inflaci i recesi.",
       },
       {
         name: "Aktivně řízený",
-        desc: "Složení portfolia pravidelně přizpůsobujeme vývoji trhů. Nemusíte sledovat trhy sami — my se postaráme.",
+        desc: "Složení přizpůsobujeme vývoji trhů — nemusíte trhy sledovat sami. Pravidelný review a přizpůsobení vaší situaci.",
       },
     ],
   },
   {
+    // karta 3 — vpravo dole
     title: "Dragon strategie",
     shortLabel: "Dragon",
     color: "#6b5548",
     items: [
       {
         name: "Fond kvalifikovaných investorů",
-        desc: "Přístup ke strategiím světových hedge fondů. Kombinuje akcie, dluhopisy, zlato, Managed Futures a Long Volatility. Od 1 milionu Kč.",
+        desc: "Strategie světových hedge fondů — akcie, dluhopisy, zlato, Managed Futures a Long Volatility. Od 1 milionu Kč.",
       },
       {
         name: "Navržen pro nestabilní trhy",
-        desc: "Navržen pro různé tržní podmínky včetně krizí.",
+        desc: "Obstojí v různých podmínkách včetně krizí, recese i zvýšené volatility — navržen právě pro náročné období.",
       },
     ],
   },
 ];
 
+/*
+  Mapování segmentu grafu → indexu karty (service).
+
+  segPath(i) kreslí segmenty CW od vrcholu (0° = nahoru):
+    i=0: pravý horní (0°–90°)  → karta 2 (vpravo nahoře)
+    i=1: pravý dolní (90°–180°) → karta 3 (vpravo dole)
+    i=2: levý dolní  (180°–270°) → karta 1 (vlevo dole)
+    i=3: levý horní  (270°–360°) → karta 0 (vlevo nahoře)
+*/
+const SEG_TO_SERVICE = [2, 3, 1, 0] as const;
+// Inverse: serviceToSeg[serviceIdx] = segIdx
+const SERVICE_TO_SEG = [3, 2, 0, 1] as const;
+
 /* ─── SVG helpers ───────────────────────────────────────────── */
 
 const CX = 150, CY = 150, OR = 130, IR = 80;
 const GAP_DEG = 4;
-const SEG_DEG = 360 / services.length; // 90° each
+const SEG_DEG = 90; // 360 / 4
 
 function polar(cx: number, cy: number, r: number, deg: number) {
   const rad = ((deg - 90) * Math.PI) / 180;
   return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
 }
 
-function segPath(i: number): string {
-  const s = i * SEG_DEG + GAP_DEG / 2;
+function segPath(segIdx: number): string {
+  const s = segIdx * SEG_DEG + GAP_DEG / 2;
   const e = s + SEG_DEG - GAP_DEG;
   const os = polar(CX, CY, OR, s);
   const oe = polar(CX, CY, OR, e);
   const is_ = polar(CX, CY, IR, s);
   const ie = polar(CX, CY, IR, e);
-  const large = SEG_DEG - GAP_DEG > 180 ? 1 : 0;
   return [
     `M ${os.x.toFixed(2)} ${os.y.toFixed(2)}`,
-    `A ${OR} ${OR} 0 ${large} 1 ${oe.x.toFixed(2)} ${oe.y.toFixed(2)}`,
+    `A ${OR} ${OR} 0 0 1 ${oe.x.toFixed(2)} ${oe.y.toFixed(2)}`,
     `L ${ie.x.toFixed(2)} ${ie.y.toFixed(2)}`,
-    `A ${IR} ${IR} 0 ${large} 0 ${is_.x.toFixed(2)} ${is_.y.toFixed(2)}`,
+    `A ${IR} ${IR} 0 0 0 ${is_.x.toFixed(2)} ${is_.y.toFixed(2)}`,
     "Z",
   ].join(" ");
 }
@@ -123,10 +139,10 @@ function Card({
       {/* Top color bar */}
       <div
         className="absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl lg:rounded-t-3xl transition-opacity duration-300"
-        style={{ backgroundColor: service.color, opacity: isActive ? 1 : 0.35 }}
+        style={{ backgroundColor: service.color, opacity: isActive ? 1 : 0.3 }}
       />
 
-      {/* Title */}
+      {/* Title row */}
       <div className="flex items-center gap-2.5 mb-5 mt-1">
         <span
           className="w-2 h-2 rounded-full shrink-0 transition-transform duration-300"
@@ -146,12 +162,8 @@ function Card({
           <li key={i} className="flex gap-3 items-start">
             <span className="w-1.5 h-1.5 rounded-full bg-[#c5a889] mt-[6px] shrink-0" />
             <p className="text-[#555] text-sm leading-relaxed">
-              {item.name && (
-                <>
-                  <span className="font-semibold text-dark">{item.name}</span>
-                  {" — "}
-                </>
-              )}
+              <span className="font-semibold text-dark">{item.name}</span>
+              {" — "}
               {item.desc}
             </p>
           </li>
@@ -161,12 +173,94 @@ function Card({
   );
 }
 
-/* ─── Main component ────────────────────────────────────────── */
+/* ─── Donut chart ───────────────────────────────────────────── */
+
+function DonutChart({
+  active,
+  onSegEnter,
+  onSegLeave,
+}: {
+  active: number | null;
+  onSegEnter: (svcIdx: number) => void;
+  onSegLeave: () => void;
+}) {
+  const activeService = active !== null ? services[active] : null;
+
+  return (
+    <svg
+      viewBox="0 0 300 300"
+      className="w-full h-full"
+      style={{ overflow: "visible" }}
+      aria-label="Přehled čtyř oblastí investic"
+    >
+      {/* Segmenty */}
+      {([0, 1, 2, 3] as const).map((segIdx) => {
+        const svcIdx = SEG_TO_SERVICE[segIdx];
+        const svc = services[svcIdx];
+        const isActive = active === svcIdx;
+        return (
+          <path
+            key={segIdx}
+            d={segPath(segIdx)}
+            fill={svc.color}
+            style={{
+              opacity: active === null || isActive ? 1 : 0.28,
+              transform: isActive ? "scale(1.06)" : "scale(1)",
+              transformOrigin: `${CX}px ${CY}px`,
+              transition: "transform 0.22s ease, opacity 0.22s ease",
+              cursor: "pointer",
+            }}
+            onMouseEnter={() => onSegEnter(svcIdx)}
+            onMouseLeave={onSegLeave}
+          />
+        );
+      })}
+
+      {/* Donut hole */}
+      <circle cx={CX} cy={CY} r={IR - 4} fill="white" />
+
+      {/* Středový obsah */}
+      {activeService ? (
+        <>
+          <circle cx={CX} cy={CY - 20} r={6} fill={activeService.color} />
+          {activeService.shortLabel.includes(" ") ? (
+            <>
+              <text x={CX} y={CY - 2} textAnchor="middle" fontSize="12" fill="#1a1a1a"
+                fontWeight="700" fontFamily="system-ui,sans-serif">
+                {activeService.shortLabel.split(" ")[0]}
+              </text>
+              <text x={CX} y={CY + 14} textAnchor="middle" fontSize="12" fill="#1a1a1a"
+                fontWeight="700" fontFamily="system-ui,sans-serif">
+                {activeService.shortLabel.split(" ").slice(1).join(" ")}
+              </text>
+            </>
+          ) : (
+            <text x={CX} y={CY + 5} textAnchor="middle" fontSize="12" fill="#1a1a1a"
+              fontWeight="700" fontFamily="system-ui,sans-serif">
+              {activeService.shortLabel}
+            </text>
+          )}
+        </>
+      ) : (
+        <>
+          <text x={CX} y={CY - 5} textAnchor="middle" fontSize="9" fill="#b5b0aa"
+            fontFamily="system-ui,sans-serif" letterSpacing="0.12em">
+            4 OBLASTI
+          </text>
+          <text x={CX} y={CY + 11} textAnchor="middle" fontSize="9" fill="#b5b0aa"
+            fontFamily="system-ui,sans-serif" letterSpacing="0.06em">
+            INVESTIC
+          </text>
+        </>
+      )}
+    </svg>
+  );
+}
+
+/* ─── Main ──────────────────────────────────────────────────── */
 
 export default function ServicesDonut() {
   const [active, setActive] = useState<number | null>(null);
-
-  const activeService = active !== null ? services[active] : null;
 
   return (
     <section className="bg-white py-24 lg:py-32">
@@ -195,10 +289,10 @@ export default function ServicesDonut() {
           </Reveal>
         </div>
 
-        {/* ── Rozložení: [karta 0 + 1] | [donut] | [karta 2 + 3] ── */}
+        {/* ── Rozložení: [karta 0+1] | [donut] | [karta 2+3] ── */}
         <div className="flex flex-col lg:grid lg:grid-cols-[1fr_280px_1fr] gap-6 lg:gap-10 items-stretch lg:items-center">
 
-          {/* Levý sloupec — Fyzické drahé kovy + Investiční nemovitosti */}
+          {/* Levý sloupec: karta 0 (vlevo nahoře) + karta 1 (vlevo dole) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5">
             {[0, 1].map((idx) => (
               <Card
@@ -211,79 +305,18 @@ export default function ServicesDonut() {
             ))}
           </div>
 
-          {/* Střed — Donut chart */}
+          {/* Střed — donut */}
           <div className="flex justify-center items-center py-6 lg:py-0">
             <div className="w-full max-w-[260px] aspect-square">
-              <svg
-                viewBox="0 0 300 300"
-                className="w-full h-full"
-                style={{ overflow: "visible" }}
-                aria-label="Přehled oblastí investic"
-              >
-                {/* Segmenty */}
-                {services.map((svc, i) => (
-                  <path
-                    key={i}
-                    d={segPath(i)}
-                    fill={svc.color}
-                    style={{
-                      opacity: active === null || active === i ? 1 : 0.28,
-                      transform: active === i ? "scale(1.06)" : "scale(1)",
-                      transformOrigin: `${CX}px ${CY}px`,
-                      transition: "transform 0.22s ease, opacity 0.22s ease",
-                      cursor: "pointer",
-                    }}
-                    onMouseEnter={() => setActive(i)}
-                    onMouseLeave={() => setActive(null)}
-                  />
-                ))}
-
-                {/* Donut hole — bílý kruh */}
-                <circle cx={CX} cy={CY} r={IR - 4} fill="white" />
-
-                {/* Středový obsah */}
-                <g style={{ transition: "opacity 0.2s ease", opacity: 1 }}>
-                  {activeService ? (
-                    <>
-                      {/* Barevná tečka */}
-                      <circle cx={CX} cy={CY - 22} r={6} fill={activeService.color} />
-                      {/* Název */}
-                      {activeService.shortLabel.includes(" ") ? (
-                        <>
-                          <text x={CX} y={CY - 4} textAnchor="middle" fontSize="12" fill="#1a1a1a"
-                            fontWeight="700" fontFamily="system-ui,sans-serif" letterSpacing="0">
-                            {activeService.shortLabel.split(" ")[0]}
-                          </text>
-                          <text x={CX} y={CY + 12} textAnchor="middle" fontSize="12" fill="#1a1a1a"
-                            fontWeight="700" fontFamily="system-ui,sans-serif">
-                            {activeService.shortLabel.split(" ").slice(1).join(" ")}
-                          </text>
-                        </>
-                      ) : (
-                        <text x={CX} y={CY + 5} textAnchor="middle" fontSize="12" fill="#1a1a1a"
-                          fontWeight="700" fontFamily="system-ui,sans-serif">
-                          {activeService.shortLabel}
-                        </text>
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      <text x={CX} y={CY - 6} textAnchor="middle" fontSize="9" fill="#b0aba6"
-                        fontFamily="system-ui,sans-serif" letterSpacing="0.12em">
-                        4 OBLASTI
-                      </text>
-                      <text x={CX} y={CY + 10} textAnchor="middle" fontSize="9" fill="#b0aba6"
-                        fontFamily="system-ui,sans-serif" letterSpacing="0.06em">
-                        INVESTIC
-                      </text>
-                    </>
-                  )}
-                </g>
-              </svg>
+              <DonutChart
+                active={active}
+                onSegEnter={(svcIdx) => setActive(svcIdx)}
+                onSegLeave={() => setActive(null)}
+              />
             </div>
           </div>
 
-          {/* Pravý sloupec — Permanentní strategie + Dragon strategie */}
+          {/* Pravý sloupec: karta 2 (vpravo nahoře) + karta 3 (vpravo dole) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5">
             {[2, 3].map((idx) => (
               <Card
@@ -300,3 +333,6 @@ export default function ServicesDonut() {
     </section>
   );
 }
+
+// Suppress unused import warning — SERVICE_TO_SEG reserved for future connector lines
+void SERVICE_TO_SEG;
