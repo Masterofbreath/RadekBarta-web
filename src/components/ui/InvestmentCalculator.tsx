@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 
 const INFLATION = 0.032;
+const RENTA_HORIZON = 20; // let pro zobrazení "Zachováno jmění"
 
 function formatCZK(value: number): string {
   if (value >= 1_000_000) {
@@ -89,17 +90,22 @@ export default function InvestmentCalculator() {
   const [years, setYears] = useState(10);
   const [returnRate, setReturnRate] = useState(7);
 
-  /* ── Renta ── */
-  const [rentaRate, setRentaRate] = useState(5);
-  const [rentaMode, setRentaMode] = useState<"infinite" | "finite">("infinite");
+  /* ── Nekonečná renta ── */
+  const [withdrawalPct, setWithdrawalPct] = useState(5); // % výběru ročně z portfolia
+
+  /* ── Konečná renta ── */
+  const [finiteRentaRate, setFiniteRentaRate] = useState(5); // úroková sazba v PMT vzorci
   const [rentaYears, setRentaYears] = useState(20);
+
+  /* ── Přepínač režimu renty ── */
+  const [rentaMode, setRentaMode] = useState<"infinite" | "finite">("infinite");
 
   /* ── Inflace ── */
   const [withInflation, setWithInflation] = useState(false);
 
-  /* ══════════════════════════════
+  /* ══════════════════════════════════════════
      Výpočty — hlavní kalkulačka
-  ══════════════════════════════ */
+  ══════════════════════════════════════════ */
   const { yearlyData, totalInvested, finalValue } = useMemo(() => {
     const r = returnRate / 100 / 12;
     const data: { year: number; invested: number; value: number }[] = [];
@@ -114,45 +120,75 @@ export default function InvestmentCalculator() {
     return { yearlyData: data, totalInvested: last.invested, finalValue: last.value };
   }, [initial, monthly, years, returnRate]);
 
-  /* Přepočet na reálnou hodnotu (v cenách dneška) */
   const deflate = (nominal: number, yrs: number) =>
     withInflation ? nominal / Math.pow(1 + INFLATION, yrs) : nominal;
 
-  const dispFinalValue   = deflate(finalValue, years);
-  const dispInvested     = deflate(totalInvested, years);
-  const dispProfit       = dispFinalValue - dispInvested;
-  const dispProfitPct    = dispInvested > 0 ? Math.round((dispProfit / dispInvested) * 100) : 0;
+  const dispFinalValue = deflate(finalValue, years);
+  const dispInvested   = deflate(totalInvested, years);
+  const dispProfit     = dispFinalValue - dispInvested;
+  const dispProfitPct  = dispInvested > 0 ? Math.round((dispProfit / dispInvested) * 100) : 0;
 
-  /* ══════════════════════════════
-     Výpočty — renta
-  ══════════════════════════════ */
-  const monthlyRentaRate = rentaRate / 100 / 12;
+  /* ══════════════════════════════════════════
+     Výpočty — Nekonečná renta
+     Portfolio dále roste tempem returnRate.
+     Klient si vybírá withdrawalPct % ročně.
+  ══════════════════════════════════════════ */
+  const infiniteMonthly = (finalValue * withdrawalPct / 100) / 12;
+  const infiniteAnnual  = infiniteMonthly * 12;
 
-  // Nekonečná: vybíráš jen výnosy, jistina navždy zachována
-  const infiniteMonthly  = (finalValue * rentaRate / 100) / 12;
+  // Portfolio roste tempem returnRate a zároveň se z něj vybírá pevná měsíční částka
+  const infGrowthR  = returnRate / 100 / 12; // měsíční výnos z hlavní kalkulačky
+  const nHorizon    = RENTA_HORIZON * 12;
 
-  // Konečná: anuitní vzorec — portfolio se po rentaYears spotřebuje na 0
-  const n = rentaYears * 12;
-  const finiteMonthly =
-    monthlyRentaRate > 0
-      ? (finalValue * monthlyRentaRate) / (1 - Math.pow(1 + monthlyRentaRate, -n))
-      : finalValue / n;
+  const remainingAfterHorizon = infGrowthR > 0
+    ? finalValue * Math.pow(1 + infGrowthR, nHorizon)
+      - infiniteMonthly * (Math.pow(1 + infGrowthR, nHorizon) - 1) / infGrowthR
+    : finalValue - infiniteMonthly * nHorizon;
 
-  const monthlyRenta  = rentaMode === "infinite" ? infiniteMonthly : finiteMonthly;
-  const annualRenta   = monthlyRenta * 12;
-  const totalPaidOut  = rentaMode === "finite" ? monthlyRenta * n : null;
-  // Zbývající jmění: nekonečná = plné portfolio, konečná = 0
-  const remainingWealth = rentaMode === "infinite" ? finalValue : 0;
+  // Stav portfolia: roste / stabilní / klesá
+  const netAnnual = returnRate - withdrawalPct; // čistý roční přírůstek v %
+  const sustainStatus: "growing" | "stable" | "shrinking" =
+    netAnnual > 0.05 ? "growing" : netAnnual < -0.05 ? "shrinking" : "stable";
 
-  // Renta začíná za "years" let — reálná hodnota plateb je v budoucnosti
-  const dispMonthlyRenta  = deflate(monthlyRenta, years);
-  const dispAnnualRenta   = deflate(annualRenta, years);
-  const dispTotalPaidOut  = totalPaidOut ? deflate(totalPaidOut, years + rentaYears / 2) : null;
-  const dispRemaining     = deflate(remainingWealth, years);
+  // Za kolik let se portfolio vyčerpá (jen při klesání)
+  let yearsToDepletion: number | null = null;
+  if (sustainStatus === "shrinking") {
+    if (infGrowthR > 0) {
+      const denominator = infiniteMonthly - finalValue * infGrowthR;
+      if (denominator > 0) {
+        const n = Math.log(infiniteMonthly / denominator) / Math.log(1 + infGrowthR);
+        yearsToDepletion = Math.max(1, Math.round(n / 12));
+      }
+    } else {
+      yearsToDepletion = Math.max(1, Math.round(finalValue / infiniteMonthly / 12));
+    }
+  }
 
-  /* ══════════════════════════════
+  /* ══════════════════════════════════════════
+     Výpočty — Konečná renta (PMT vzorec, nezměněno)
+  ══════════════════════════════════════════ */
+  const finiteMonthlyRate = finiteRentaRate / 100 / 12;
+  const nFinite = rentaYears * 12;
+  const finiteMonthly = finiteMonthlyRate > 0
+    ? (finalValue * finiteMonthlyRate) / (1 - Math.pow(1 + finiteMonthlyRate, -nFinite))
+    : finalValue / nFinite;
+  const finiteAnnual   = finiteMonthly * 12;
+  const totalPaidOut   = finiteMonthly * nFinite;
+
+  /* ══════════════════════════════════════════
+     Společné hodnoty pro zobrazení
+  ══════════════════════════════════════════ */
+  const monthlyRenta = rentaMode === "infinite" ? infiniteMonthly : finiteMonthly;
+  const annualRenta  = rentaMode === "infinite" ? infiniteAnnual  : finiteAnnual;
+
+  const dispMonthlyRenta = deflate(monthlyRenta, years);
+  const dispAnnualRenta  = deflate(annualRenta, years);
+  const dispTotalPaidOut = rentaMode === "finite" ? deflate(totalPaidOut, years + rentaYears / 2) : null;
+  const dispRemaining    = deflate(Math.max(0, remainingAfterHorizon), years + RENTA_HORIZON);
+
+  /* ══════════════════════════════════════════
      SVG graf
-  ══════════════════════════════ */
+  ══════════════════════════════════════════ */
   const svgW = 600, svgH = 180;
   const pad  = { top: 16, right: 16, bottom: 24, left: 16 };
   const chartW = svgW - pad.left - pad.right;
@@ -186,7 +222,6 @@ export default function InvestmentCalculator() {
             </p>
           </div>
 
-          {/* Inflační toggle */}
           <button
             onClick={() => setWithInflation((v) => !v)}
             className={`flex items-center gap-2.5 px-4 py-2.5 rounded-full text-sm font-medium transition-all border shrink-0 ${
@@ -195,11 +230,7 @@ export default function InvestmentCalculator() {
                 : "bg-white text-[#6b6b6b] border-[#e8e5e2] hover:border-[#97724f] hover:text-dark"
             }`}
           >
-            <span
-              className={`w-2 h-2 rounded-full transition-colors ${
-                withInflation ? "bg-amber-400" : "bg-[#d0ccc8]"
-              }`}
-            />
+            <span className={`w-2 h-2 rounded-full transition-colors ${withInflation ? "bg-amber-400" : "bg-[#d0ccc8]"}`} />
             Reálná hodnota
             <span className="opacity-60 font-normal">(inflace 3,2 %)</span>
           </button>
@@ -207,7 +238,6 @@ export default function InvestmentCalculator() {
 
         {/* ── Hlavní kalkulačka ── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-          {/* Slidery */}
           <div className="space-y-7">
             <Slider label="Počáteční investice" value={initial} min={0} max={5_000_000} step={10_000}
               format={formatCZK} onChange={setInitial} />
@@ -219,7 +249,6 @@ export default function InvestmentCalculator() {
               format={(v) => `${v} %`} onChange={setReturnRate} />
           </div>
 
-          {/* Výsledky + graf */}
           <div className="space-y-6">
             <div className="grid grid-cols-3 gap-3">
               <div className="bg-white rounded-2xl p-5 border border-[#e8e5e2]">
@@ -234,9 +263,7 @@ export default function InvestmentCalculator() {
               </div>
               <div className="bg-white rounded-2xl p-5 border border-[#e8e5e2]">
                 <p className="text-[#6b6b6b] text-xs mb-2">Váš výdělek</p>
-                <p className="font-heading font-700 text-[#97724f] text-sm leading-snug">
-                  +{formatCZK(dispProfit)}
-                </p>
+                <p className="font-heading font-700 text-[#97724f] text-sm leading-snug">+{formatCZK(dispProfit)}</p>
                 <p className="text-[#c5a889] text-xs mt-0.5">+{dispProfitPct} %</p>
               </div>
             </div>
@@ -285,7 +312,7 @@ export default function InvestmentCalculator() {
         {/* ── Oddělovač ── */}
         <div className="border-t border-[#e0dbd6] my-20 lg:my-28" />
 
-        {/* ── Renta ── */}
+        {/* ── Záhlaví renty + přepínač ── */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 lg:mb-16">
           <div className="max-w-2xl">
             <p className="text-[#97724f] text-sm font-heading font-semibold uppercase tracking-[0.2em] mb-4">
@@ -299,10 +326,9 @@ export default function InvestmentCalculator() {
             <p className="text-[#6b6b6b] text-base leading-relaxed">
               Vychází z hodnoty portfolia po {yearsLabel(years)} ({formatCZK(dispFinalValue)}
               {withInflation ? " v dnešních Kč" : ""}).
+              Portfolio stále úročí tempem z kalkulačky výše.
             </p>
           </div>
-
-          {/* Typ renty */}
           <SegmentedControl
             options={[
               { label: "Nekonečná", value: "infinite" },
@@ -313,10 +339,12 @@ export default function InvestmentCalculator() {
           />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Vstupy renty */}
-          <div className="space-y-7">
-            {/* Propojení s kalkulačkou */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+
+          {/* ── Vstupy renty ── */}
+          <div className="space-y-6">
+
+            {/* Propojená hodnota portfolia */}
             <div className="bg-white rounded-2xl p-5 border border-[#e8e5e2] flex items-center justify-between gap-4">
               <div>
                 <p className="text-xs text-[#6b6b6b] uppercase tracking-wider font-semibold mb-1">
@@ -330,20 +358,109 @@ export default function InvestmentCalculator() {
               </span>
             </div>
 
-            <Slider
-              label="Výnos z portfolia"
-              hint="(p.a.)"
-              value={rentaRate}
-              min={1}
-              max={12}
-              step={0.5}
-              format={(v) => `${v} %`}
-              onChange={setRentaRate}
-            />
+            {rentaMode === "infinite" ? (
+              <>
+                {/* Pokračující výnos — read-only, propojeno s hlavní kalkulačkou */}
+                <div className="bg-white rounded-2xl p-5 border border-[#e8e5e2] flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs text-[#6b6b6b] uppercase tracking-wider font-semibold mb-1">
+                      Výnos portfolia (p.a.)
+                    </p>
+                    <p className="text-[#9b9b9b] text-xs">pokračující úročení z kalkulačky — portfolio stále roste</p>
+                  </div>
+                  <span className="font-heading font-700 text-dark text-lg shrink-0">{returnRate} %</span>
+                </div>
 
-            {/* Doba výplaty — jen pro konečnou rentu */}
-            {rentaMode === "finite" && (
-              <div className="space-y-2 animate-in fade-in duration-200">
+                {/* Míra výběru — slider */}
+                <div className="space-y-5">
+                  <Slider
+                    label="Míra výběru"
+                    hint="(% p.a. z hodnoty portfolia)"
+                    value={withdrawalPct}
+                    min={0.5}
+                    max={20}
+                    step={0.5}
+                    format={(v) => `${v} %`}
+                    onChange={setWithdrawalPct}
+                  />
+
+                  {/* Bidirectionální vstup — přesná Kč částka */}
+                  <div className="space-y-2">
+                    <div className="flex justify-between items-baseline gap-2">
+                      <span className="text-sm font-medium text-dark">nebo zadejte přesnou měsíční částku</span>
+                    </div>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        min={0}
+                        max={Math.round(finalValue / 12)}
+                        step={100}
+                        value={Math.round(infiniteMonthly)}
+                        onChange={(e) => {
+                          const val = Number(e.target.value);
+                          if (finalValue > 0) {
+                            const pct = (val * 12 / finalValue) * 100;
+                            setWithdrawalPct(Math.max(0.5, Math.min(20, Math.round(pct * 2) / 2)));
+                          }
+                        }}
+                        className="w-full bg-white border border-[#e8e5e2] rounded-xl px-4 py-3 pr-16 text-sm font-heading font-700 text-[#97724f] focus:outline-none focus:border-[#97724f] transition-colors"
+                      />
+                      <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-[#9b9b9b]">Kč/měs.</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Indikátor udržitelnosti */}
+                <div className={`rounded-2xl p-4 border text-sm ${
+                  sustainStatus === "growing"
+                    ? "bg-emerald-50 border-emerald-100 text-emerald-800"
+                    : sustainStatus === "stable"
+                    ? "bg-[#f6f6f6] border-[#e8e5e2] text-[#6b6b6b]"
+                    : "bg-amber-50 border-amber-100 text-amber-800"
+                }`}>
+                  {sustainStatus === "growing" && (
+                    <>
+                      <span className="font-semibold">Portfolio roste.</span>{" "}
+                      Vybíráš {withdrawalPct} %, portfolio vydělává {returnRate} % — čistý přírůstek{" "}
+                      <span className="font-semibold">+{(netAnnual).toFixed(1)} %/rok</span>.
+                      Za {RENTA_HORIZON} let bude portfolio hodnotnější.
+                    </>
+                  )}
+                  {sustainStatus === "stable" && (
+                    <>
+                      <span className="font-semibold">Portfolio je stabilní.</span>{" "}
+                      Vybíráš přesně tolik, kolik vydělává ({returnRate} %). Jistina zůstane nezměněna navždy.
+                    </>
+                  )}
+                  {sustainStatus === "shrinking" && (
+                    <>
+                      <span className="font-semibold">Portfolio se zmenšuje.</span>{" "}
+                      Vybíráš {withdrawalPct} %, ale portfolio vydělává jen {returnRate} %.{" "}
+                      {yearsToDepletion !== null && (
+                        <>Portfolio se vyčerpá přibližně za <span className="font-semibold">{yearsLabel(yearsToDepletion)}</span>.</>
+                      )}
+                    </>
+                  )}
+                </div>
+
+                <p className="text-[#9b9b9b] text-xs leading-relaxed">
+                  Výnos portfolia a míra výběru jsou záměrně odděleny. Portfolio nadále roste tempem z kalkulačky,
+                  ty si vybíráš zvolenou mírou výběru. Záporný rozdíl = portfolio se postupně spotřebuje.
+                </p>
+              </>
+            ) : (
+              <>
+                {/* Konečná renta — původní logika */}
+                <Slider
+                  label="Úroková sazba portfolia"
+                  hint="(p.a.) — výnos zbývajícího kapitálu"
+                  value={finiteRentaRate}
+                  min={0.5}
+                  max={12}
+                  step={0.5}
+                  format={(v) => `${v} %`}
+                  onChange={setFiniteRentaRate}
+                />
                 <Slider
                   label="Doba výplaty renty"
                   value={rentaYears}
@@ -353,17 +470,14 @@ export default function InvestmentCalculator() {
                   format={yearsLabel}
                   onChange={setRentaYears}
                 />
-              </div>
+                <p className="text-[#9b9b9b] text-xs leading-relaxed">
+                  Konečná renta: portfolio se spotřebuje za {yearsLabel(rentaYears)}. Měsíčně dostanete více, ale na konci nezůstane nic.
+                </p>
+              </>
             )}
-
-            <p className="text-[#9b9b9b] text-xs leading-relaxed">
-              {rentaMode === "infinite"
-                ? "Nekonečná renta: vybíráš jen výnosy, jistina zůstává nedotčena navždy. Výnos renty je záměrně oddělený od modelového výnosu investice — pro plánování doporučujeme 3–5 %."
-                : `Konečná renta: portfolio se spotřebuje za ${yearsLabel(rentaYears)}. Měsíčně dostaneš více, ale na konci nezůstane nic.`}
-            </p>
           </div>
 
-          {/* Výsledky renty */}
+          {/* ── Výsledky renty ── */}
           <div className="space-y-4">
             <div className="bg-[#97724f] rounded-3xl p-8 lg:p-10 text-center">
               <p className="text-white/70 text-sm mb-3">Měsíční renta</p>
@@ -372,12 +486,10 @@ export default function InvestmentCalculator() {
               </p>
               <p className="text-white/50 text-xs">
                 {rentaMode === "infinite"
-                  ? "každý měsíc, navždy"
+                  ? "každý měsíc"
                   : `každý měsíc po dobu ${yearsLabel(rentaYears)}`}
               </p>
-              {withInflation && (
-                <p className="text-white/40 text-[10px] mt-2">v dnešní kupní síle</p>
-              )}
+              {withInflation && <p className="text-white/40 text-[10px] mt-2">v dnešní kupní síle</p>}
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -387,10 +499,24 @@ export default function InvestmentCalculator() {
               </div>
 
               {rentaMode === "infinite" ? (
-                <div className="bg-white rounded-2xl p-6 border border-[#e8e5e2] text-center">
-                  <p className="text-[#6b6b6b] text-xs mb-2">Zachováno jmění</p>
-                  <p className="font-heading font-700 text-dark text-base">{formatCZK(dispRemaining)}</p>
-                  {withInflation && <p className="text-[#b0aba6] text-[10px] mt-0.5">v dnešních Kč</p>}
+                <div className={`rounded-2xl p-5 border text-center ${
+                  sustainStatus === "growing" ? "bg-emerald-50 border-emerald-100" :
+                  sustainStatus === "shrinking" && remainingAfterHorizon <= 0 ? "bg-amber-50 border-amber-100" :
+                  "bg-white border-[#e8e5e2]"
+                }`}>
+                  <p className="text-[#6b6b6b] text-xs mb-1">
+                    Jmění za {RENTA_HORIZON} let výplat
+                  </p>
+                  <p className={`font-heading font-700 text-base ${
+                    sustainStatus === "growing" ? "text-emerald-700" :
+                    sustainStatus === "shrinking" && remainingAfterHorizon <= 0 ? "text-amber-700" :
+                    "text-dark"
+                  }`}>
+                    {remainingAfterHorizon > 0 ? formatCZK(dispRemaining) : "Vyčerpáno"}
+                  </p>
+                  {withInflation && remainingAfterHorizon > 0 && (
+                    <p className="text-[#b0aba6] text-[10px] mt-0.5">v dnešních Kč</p>
+                  )}
                 </div>
               ) : (
                 <div className="bg-white rounded-2xl p-6 border border-[#e8e5e2] text-center">
@@ -418,7 +544,6 @@ export default function InvestmentCalculator() {
         </div>
       </div>
 
-      {/* Slider thumb styles */}
       <style>{`
         input[type="range"]::-webkit-slider-thumb {
           -webkit-appearance: none;
@@ -437,6 +562,11 @@ export default function InvestmentCalculator() {
           border: 3px solid white;
           box-shadow: 0 1px 4px rgba(0,0,0,0.15);
         }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+        }
+        input[type="number"] { -moz-appearance: textfield; }
       `}</style>
     </section>
   );
