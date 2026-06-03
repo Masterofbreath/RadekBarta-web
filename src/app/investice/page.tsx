@@ -81,7 +81,7 @@ const steps = [
   },
   {
     number: "03",
-    title: "Implementace",
+    title: "První investice",
     description:
       "Společně uvedeme plán do praxe. Jsem s vámi v každém kroku — od prvního nákupu po průběžný review.",
   },
@@ -212,32 +212,32 @@ export default function InvesticePage() {
 
             {/* Tři ikony stacked pod sebou */}
             <Reveal delay={0.3} direction="right">
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-[#111111]">
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
                 <div className="flex flex-col h-full">
                   <div className="relative flex-1">
                     <Image
                       src="/images/icon-analysis.png"
                       alt="Analýza investic"
                       fill
-                      className="object-contain p-6"
+                      className="object-contain p-4"
                       sizes="(max-width: 1024px) 80vw, 40vw"
                     />
                   </div>
-                  <div className="relative flex-1 border-t border-white/5">
+                  <div className="relative flex-1">
                     <Image
                       src="/images/icon-bank.png"
                       alt="Reálná aktiva"
                       fill
-                      className="object-contain p-6"
+                      className="object-contain p-4"
                       sizes="(max-width: 1024px) 80vw, 40vw"
                     />
                   </div>
-                  <div className="relative flex-1 border-t border-white/5">
+                  <div className="relative flex-1">
                     <Image
                       src="/images/icon-handshake.png"
                       alt="Partnerství"
                       fill
-                      className="object-contain p-6"
+                      className="object-contain p-4"
                       sizes="(max-width: 1024px) 80vw, 40vw"
                     />
                   </div>

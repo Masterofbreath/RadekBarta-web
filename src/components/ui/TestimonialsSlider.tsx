@@ -58,7 +58,7 @@ export default function TestimonialsSlider({ testimonials }: Props) {
   return (
     <div
       ref={containerRef}
-      className="flex gap-6 overflow-x-auto pb-6 px-6 lg:px-12 scroll-smooth"
+      className="flex gap-6 overflow-x-auto pb-6 px-6 lg:px-12"
       style={{ scrollbarWidth: "none" }}
     >
       {looped.map((t, i) => (
