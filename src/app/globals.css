@@ -113,6 +113,12 @@ img {
   outline-offset: 2px;
 }
 
+/* Testimonials auto-scroll — CSS animation for cross-browser support (incl. Safari) */
+@keyframes testimonials-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* Button reset */
 button {
   cursor: pointer;
