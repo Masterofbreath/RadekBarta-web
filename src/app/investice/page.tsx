@@ -38,7 +38,7 @@ const services = [
     ],
   },
   {
-    title: "Permanentní fond",
+    title: "Permanentní strategie",
     items: [
       {
         name: "Strategie pro každé počasí",
@@ -51,7 +51,7 @@ const services = [
     ],
   },
   {
-    title: "Dragon fond",
+    title: "Dragon strategie",
     items: [
       {
         name: "Fond kvalifikovaných investorů",
@@ -59,7 +59,7 @@ const services = [
       },
       {
         name: "Navržen pro nestabilní trhy",
-        desc: "Cílí na průměrný čistý roční výnos nad 10 %. Měsíční likvidita bez sankčních poplatků.",
+        desc: "Navržen pro různé tržní podmínky včetně krizí. Měsíční likvidita bez sankčních poplatků.",
       },
     ],
   },
