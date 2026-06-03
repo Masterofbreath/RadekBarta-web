@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import ContactForm from "@/components/ui/ContactForm";
 import InvesticeHero from "@/components/sections/InvesticeHero";
@@ -163,87 +162,58 @@ export default function InvesticePage() {
       <InvesticeHero />
 
       {/* Co nabízím */}
-      <section className="bg-[#f6f6f6] py-24 lg:py-32">
+      <section className="bg-white py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <Reveal>
-                <p className="text-[#97724f] text-sm font-heading font-semibold uppercase tracking-[0.2em] mb-4">
-                  Co nabízím
-                </p>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-dark mb-8">
-                  Komplexní přístup
-                  <br />
-                  k vašemu bohatství
-                </h2>
-              </Reveal>
-              <Reveal delay={0.2}>
-                <p className="text-[#6b6b6b] text-lg leading-relaxed mb-10">
-                  Pomáhám rodinám i podnikatelům najít klid v nejisté době —
-                  nabízím jedinečnou kombinaci investic, které jsou prověřeny
-                  časem.
-                </p>
-              </Reveal>
 
-              {/* 4 skupiny se sub-odrážkami */}
-              <div className="space-y-6">
-                {services.map((service, index) => (
-                  <Reveal key={service.title} delay={0.25 + index * 0.08}>
-                    <div className="border-l-2 border-[#c5a889]/40 pl-5">
-                      <h3 className="font-heading font-700 text-dark text-base lg:text-lg mb-2">
-                        {service.title}
-                      </h3>
-                      <ul className="space-y-1.5">
-                        {service.items.map((item) => (
-                          <li key={item.name} className="text-[#555] text-sm leading-relaxed">
-                            <span className="font-600 text-dark">{item.name}</span>
-                            {" — "}
-                            {item.desc}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-            </div>
-
-            {/* Tři ikony stacked pod sebou */}
-            <Reveal delay={0.3} direction="right">
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
-                <div className="flex flex-col h-full">
-                  <div className="relative flex-1">
-                    <Image
-                      src="/images/icon-analysis.png"
-                      alt="Analýza investic"
-                      fill
-                      className="object-contain p-4"
-                      sizes="(max-width: 1024px) 80vw, 40vw"
-                    />
-                  </div>
-                  <div className="relative flex-1">
-                    <Image
-                      src="/images/icon-bank.png"
-                      alt="Reálná aktiva"
-                      fill
-                      className="object-contain p-4"
-                      sizes="(max-width: 1024px) 80vw, 40vw"
-                    />
-                  </div>
-                  <div className="relative flex-1">
-                    <Image
-                      src="/images/icon-handshake.png"
-                      alt="Partnerství"
-                      fill
-                      className="object-contain p-4"
-                      sizes="(max-width: 1024px) 80vw, 40vw"
-                    />
-                  </div>
-                </div>
-              </div>
+          {/* Sekce header */}
+          <div className="max-w-2xl mb-16 lg:mb-20">
+            <Reveal>
+              <p className="text-[#97724f] text-sm font-heading font-semibold uppercase tracking-[0.2em] mb-4">
+                Co nabízím
+              </p>
             </Reveal>
+            <Reveal delay={0.1}>
+              <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-dark mb-6">
+                Komplexní přístup
+                <br />
+                k vašemu bohatství
+              </h2>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p className="text-[#6b6b6b] text-lg leading-relaxed">
+                Pomáhám rodinám i podnikatelům najít klid v nejisté době —
+                nabízím jedinečnou kombinaci investic, které jsou prověřeny
+                časem.
+              </p>
+            </Reveal>
+          </div>
+
+          {/* 4 karty v gridu 2×2 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
+            {services.map((service, index) => (
+              <Reveal key={service.title} delay={index * 0.1}>
+                <div className="bg-[#f6f6f6] rounded-2xl lg:rounded-3xl p-8 lg:p-10 border border-[#e8e5e2] hover:border-[#c5a889] transition-colors duration-300 h-full">
+                  <span className="font-heading font-800 text-5xl text-[#c5a889]/20 block mb-5 leading-none">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-heading font-700 text-dark text-lg lg:text-xl mb-5">
+                    {service.title}
+                  </h3>
+                  <ul className="space-y-3">
+                    {service.items.map((item) => (
+                      <li key={item.name} className="flex gap-3 items-start">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#c5a889] mt-[6px] shrink-0" />
+                        <p className="text-[#555] text-sm leading-relaxed">
+                          <span className="font-semibold text-dark">{item.name}</span>
+                          {" — "}
+                          {item.desc}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
