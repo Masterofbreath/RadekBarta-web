@@ -149,7 +149,7 @@ const investiceTestimonials = [
     name: "Mgr. Jana M. Ph.D.",
     role: "Klient",
     quote:
-      "O investovanie som sa začala zaujímať pred pár rokmi, prešla viacerými pádmi, „chybami", až som si povedala dosť. Začala som sa viac vzdelávať a narazila na Radka a projekt Principy růstu. Od prvej chvíle mi bolo všetko vysvetlené a zodpovedaná každá otázka. Prístup je veľmi ľudský, priateľský, a zároveň veľmi odborný a profesionálny. Diverzifikovali sme riziká, nastavili portfólio, dozvedela som sa mnoho o investovaní. Som nesmierne vďačná, že som na tento projekt narazila.",
+      'O investovanie som sa začala zaujímať pred pár rokmi, prešla viacerými pádmi, "chybami", až som si povedala dosť. Začala som sa viac vzdelávať a narazila na Radka a projekt Principy růstu. Od prvej chvíle mi bolo všetko vysvetlené a zodpovedaná každá otázka. Prístup je veľmi ľudský, priateľský, a zároveň veľmi odborný a profesionálny. Diverzifikovali sme riziká, nastavili portfólio, dozvedela som sa mnoho o investovaní. Som nesmierne vďačná, že som na tento projekt narazila.',
   },
   {
     name: "Adéla Třetinová",
