@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import ContactForm from "@/components/ui/ContactForm";
 import InvesticeHero from "@/components/sections/InvesticeHero";
@@ -14,57 +13,45 @@ export const metadata: Metadata = {
 const services = [
   {
     title: "Fyzické drahé kovy",
-    cardImage: "/images/card-coins.png",
     items: [
       {
-        name: "Analýza a strategie",
-        desc: "Poznám vaši situaci a navrhneme portfolio na míru.",
+        name: "Fyzické zlato a stříbro",
+        desc: "Kotva vaší finanční jistoty v každé ekonomické situaci.",
       },
       {
-        name: "Prezentace investiční strategie",
-        desc: "která chrání a zhodnocuje majetek za každého počasí.",
+        name: "Ochrana hodnoty",
+        desc: "Aktiva, která odolávají inflaci a tržní nestabilitě.",
       },
     ],
   },
   {
-    title: "Nemovitosti",
-    cardImage: "/images/card-building.png",
+    title: "Investiční nemovitosti",
     items: [
       {
-        name: "Drahé kovy",
-        desc: "Fyzické zlato a stříbro jako kotva vaší finanční jistoty.",
+        name: "Výběr nemovitostí",
+        desc: "S potenciálem zhodnocení a stabilního dlouhodobého výnosu.",
       },
       {
-        name: "Nemovitosti a financování",
-        desc: "Chytré využití úvěrů a hypoték pro budování dlouhodobého bohatství.",
+        name: "Financování",
+        desc: "Chytré využití hypoték a úvěrů pro budování trvalého majetku.",
       },
     ],
   },
   {
     title: "Permanentní fond",
-    cardImage: "/images/card-infinity.png",
     items: [
       {
-        name: "Permanentní fond",
+        name: "",
         desc: "Investiční systém prověřený desetiletími, který chrání a zhodnocuje váš majetek za jakéhokoliv ekonomického počasí.",
-      },
-      {
-        name: "Dragon fond",
-        desc: "Dynamické investiční řešení pro nové podmínky na globálním trhu. Dostupné pouze pro bonitní klientelu — investice od 1 milionu Kč.",
       },
     ],
   },
   {
     title: "Dragon fond",
-    cardImage: "/images/card-dragon.png",
     items: [
       {
-        name: "Průběžná podpora",
-        desc: "Váš život se mění, vaše strategie se mění s ním. Jsme v tom spolu.",
-      },
-      {
-        name: "Prověření profesionálové",
-        desc: "Spolupracuji výhradně s prověřenými profesionály, kteří disponují potřebnými licencemi a hlubokou odbornou znalostí trhu.",
+        name: "",
+        desc: "Dynamické investiční řešení pro nové podmínky na globálním trhu. Dostupné pouze pro bonitní klientelu — investice od 1 milionu Kč.",
       },
     ],
   },
@@ -202,30 +189,21 @@ export default function InvesticePage() {
                     {service.title}
                   </h3>
                   <ul className="space-y-3 relative z-10">
-                    {service.items.map((item) => (
-                      <li key={item.name} className="flex gap-3 items-start">
+                    {service.items.map((item, i) => (
+                      <li key={i} className="flex gap-3 items-start">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#c5a889] mt-[6px] shrink-0" />
                         <p className="text-[#555] text-sm leading-relaxed">
-                          <span className="font-semibold text-dark">{item.name}</span>
-                          {" — "}
+                          {item.name && (
+                            <>
+                              <span className="font-semibold text-dark">{item.name}</span>
+                              {" — "}
+                            </>
+                          )}
                           {item.desc}
                         </p>
                       </li>
                     ))}
                   </ul>
-
-                  {/* Dekorativní ilustrace — pravý dolní roh */}
-                  <div className="absolute bottom-0 right-0 w-36 h-36 pointer-events-none">
-                    <Image
-                      src={service.cardImage}
-                      alt=""
-                      fill
-                      className="object-contain object-right-bottom"
-                      sizes="144px"
-                      unoptimized
-                      style={{ mixBlendMode: "multiply" }}
-                    />
-                  </div>
                 </div>
               </Reveal>
             ))}
