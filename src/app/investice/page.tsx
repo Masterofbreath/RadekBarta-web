@@ -336,9 +336,6 @@ export default function InvesticePage() {
                     zda jsme na stejné vlně a jestli dává smysl spolupracovat
                     na budování vašeho majetku.
                   </p>
-                  <p className="text-[#97724f] text-sm font-medium">
-                    Obvykle vám zavolám do 48 hodin a navrhneme termín.
-                  </p>
                 </div>
               </Reveal>
             </div>
