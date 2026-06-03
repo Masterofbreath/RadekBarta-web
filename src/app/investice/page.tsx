@@ -4,6 +4,7 @@ import ContactForm from "@/components/ui/ContactForm";
 import InvesticeHero from "@/components/sections/InvesticeHero";
 import TestimonialsSlider from "@/components/ui/TestimonialsSlider";
 import InvestmentCalculator from "@/components/ui/InvestmentCalculator";
+import ServicesDonut from "@/components/sections/ServicesDonut";
 
 export const metadata: Metadata = {
   title: "Investice · Tvorba bohatství — Radek Bárta",
@@ -11,60 +12,6 @@ export const metadata: Metadata = {
     "Permanentní portfolio s neochvějnými základy. Od akcií, nemovitostí až po zlato. Investiční systém prověřen 40+ lety. Sjednejte bezplatnou konzultaci s Radkem Bártou.",
 };
 
-const services = [
-  {
-    title: "Fyzické drahé kovy",
-    items: [
-      {
-        name: "Fyzické zlato a stříbro",
-        desc: "Kotva vaší finanční jistoty v každé ekonomické situaci.",
-      },
-      {
-        name: "Ochrana hodnoty",
-        desc: "Aktiva, která odolávají inflaci a tržní nestabilitě.",
-      },
-    ],
-  },
-  {
-    title: "Investiční nemovitosti",
-    items: [
-      {
-        name: "Výběr nemovitostí",
-        desc: "S potenciálem zhodnocení a stabilního dlouhodobého výnosu.",
-      },
-      {
-        name: "Financování",
-        desc: "Chytré využití hypoték a úvěrů pro budování trvalého majetku.",
-      },
-    ],
-  },
-  {
-    title: "Permanentní strategie",
-    items: [
-      {
-        name: "Strategie pro každé počasí",
-        desc: "Fond investuje do akcií, dluhopisů, zlata a peněžního trhu. Prověřená 40letá strategie Harryho Browna odolná vůči inflaci i recesi.",
-      },
-      {
-        name: "Aktivně řízený",
-        desc: "Složení portfolia pravidelně přizpůsobujeme vývoji trhů. Nemusíte sledovat trhy sami — my se postaráme.",
-      },
-    ],
-  },
-  {
-    title: "Dragon strategie",
-    items: [
-      {
-        name: "Fond kvalifikovaných investorů",
-        desc: "Přístup ke strategiím světových hedge fondů. Kombinuje akcie, dluhopisy, zlato, Managed Futures a Long Volatility. Od 1 milionu Kč.",
-      },
-      {
-        name: "Navržen pro nestabilní trhy",
-        desc: "Navržen pro různé tržní podmínky včetně krizí.",
-      },
-    ],
-  },
-];
 
 const steps = [
   {
@@ -162,63 +109,8 @@ export default function InvesticePage() {
       {/* Hero — stejný layout jako homepage */}
       <InvesticeHero />
 
-      {/* Co nabízím */}
-      <section className="bg-white py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-
-          {/* Sekce header */}
-          <div className="max-w-2xl mb-16 lg:mb-20">
-            <Reveal>
-              <p className="text-[#97724f] text-sm font-heading font-semibold uppercase tracking-[0.2em] mb-4">
-                Co nabízím
-              </p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-dark mb-6">
-                Komplexní přístup
-                <br />
-                k vašemu bohatství
-              </h2>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <p className="text-[#6b6b6b] text-lg leading-relaxed">
-                Pomáhám rodinám i podnikatelům najít klid v nejisté době —
-                nabízím jedinečnou kombinaci investic, které jsou prověřeny
-                časem.
-              </p>
-            </Reveal>
-          </div>
-
-          {/* 4 karty v gridu 2×2 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
-            {services.map((service, index) => (
-              <Reveal key={service.title} delay={index * 0.1}>
-                <div className="relative bg-[#f6f6f6] rounded-2xl lg:rounded-3xl p-8 lg:p-10 border border-[#e8e5e2] hover:border-[#c5a889] transition-colors duration-300 h-full overflow-hidden">
-                  <h3 className="font-heading font-700 text-dark text-lg lg:text-xl mb-5 relative z-10">
-                    {service.title}
-                  </h3>
-                  <ul className="space-y-3 relative z-10">
-                    {service.items.map((item, i) => (
-                      <li key={i} className="flex gap-3 items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#c5a889] mt-[6px] shrink-0" />
-                        <p className="text-[#555] text-sm leading-relaxed">
-                          {item.name && (
-                            <>
-                              <span className="font-semibold text-dark">{item.name}</span>
-                              {" — "}
-                            </>
-                          )}
-                          {item.desc}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Co nabízím — donut chart s kartami */}
+      <ServicesDonut />
 
       {/* Kalkulačka */}
       <InvestmentCalculator />
