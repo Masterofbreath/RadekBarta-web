@@ -88,10 +88,9 @@ export default function InvesticeHero() {
               Klid a kontrola nad svým majetkem — v každé situaci.
             </span>
             <span className="hidden lg:inline">
-              Trhy budou vždy kolísat. Naše strategie s tím počítá. Vybudujeme
-              pro vás permanentní portfolio na pevných základech – od akcií po
-              zlato. Objevte investiční systém prověřený 40 lety, který chrání
-              a zhodnocuje majetek za jakéhokoliv počasí. Pro váš absolutní klid.
+              Trhy budou vždy kolísat — naše strategie s tím počítá.
+              Permanentní portfolio od akcií po zlato, prověřené 40 lety.
+              Pro váš absolutní klid v každé situaci.
             </span>
           </motion.p>
 

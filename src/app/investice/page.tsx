@@ -210,16 +210,38 @@ export default function InvesticePage() {
               </div>
             </div>
 
-            {/* Obrázek — 3D ikony investic */}
+            {/* Tři ikony stacked pod sebou */}
             <Reveal delay={0.3} direction="right">
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-white flex items-center justify-center">
-                <Image
-                  src="/images/investice-icons.png"
-                  alt="Investiční přístup — Radek Bárta"
-                  fill
-                  className="object-contain p-8"
-                  sizes="(max-width: 1024px) 80vw, 40vw"
-                />
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-[#111111]">
+                <div className="flex flex-col h-full">
+                  <div className="relative flex-1">
+                    <Image
+                      src="/images/icon-analysis.png"
+                      alt="Analýza investic"
+                      fill
+                      className="object-contain p-6"
+                      sizes="(max-width: 1024px) 80vw, 40vw"
+                    />
+                  </div>
+                  <div className="relative flex-1 border-t border-white/5">
+                    <Image
+                      src="/images/icon-bank.png"
+                      alt="Reálná aktiva"
+                      fill
+                      className="object-contain p-6"
+                      sizes="(max-width: 1024px) 80vw, 40vw"
+                    />
+                  </div>
+                  <div className="relative flex-1 border-t border-white/5">
+                    <Image
+                      src="/images/icon-handshake.png"
+                      alt="Partnerství"
+                      fill
+                      className="object-contain p-6"
+                      sizes="(max-width: 1024px) 80vw, 40vw"
+                    />
+                  </div>
+                </div>
               </div>
             </Reveal>
           </div>

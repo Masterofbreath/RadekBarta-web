@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { usePathname } from "next/navigation";
 
 /**
@@ -11,26 +11,19 @@ import { usePathname } from "next/navigation";
 export default function SnapController() {
   const pathname = usePathname();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const container = document.querySelector(
       ".page-scroll-container"
     ) as HTMLElement | null;
     if (!container) return;
 
-    const apply = () => {
-      container.scrollTop = 0;
-      if (pathname === "/") {
-        container.style.scrollSnapType = "";
-      } else {
-        container.style.scrollSnapType = "none";
-      }
-    };
-
-    // Immediate reset
-    apply();
-    // Second pass after browser scroll-restoration may fire (typically <50 ms)
-    const id = setTimeout(apply, 80);
-    return () => clearTimeout(id);
+    // Disable snap FIRST so no snap-jump can occur, then reset scroll
+    if (pathname === "/") {
+      container.style.scrollSnapType = "";
+    } else {
+      container.style.scrollSnapType = "none";
+    }
+    container.scrollTop = 0;
   }, [pathname]);
 
   return null;
