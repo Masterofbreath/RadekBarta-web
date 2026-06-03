@@ -13,7 +13,8 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    title: "Potkáme se osobně nebo online",
+    title: "Fyzické drahé kovy",
+    cardImage: "/images/card-coins.png",
     items: [
       {
         name: "Analýza a strategie",
@@ -26,7 +27,8 @@ const services = [
     ],
   },
   {
-    title: "Reálná aktiva",
+    title: "Nemovitosti",
+    cardImage: "/images/card-building.png",
     items: [
       {
         name: "Drahé kovy",
@@ -39,7 +41,8 @@ const services = [
     ],
   },
   {
-    title: "Investiční fondy",
+    title: "Permanentní fond",
+    cardImage: "/images/card-infinity.png",
     items: [
       {
         name: "Permanentní fond",
@@ -53,6 +56,7 @@ const services = [
   },
   {
     title: "Dragon fond",
+    cardImage: "/images/card-dragon.png",
     items: [
       {
         name: "Průběžná podpora",
@@ -210,66 +214,18 @@ export default function InvesticePage() {
                     ))}
                   </ul>
 
-                  {/* Obrázek — jen pro Reálná aktiva kartu */}
-                  {index === 1 && (
-                    <div className="absolute bottom-0 right-0 w-40 h-40 pointer-events-none">
-                      <Image
-                        src="/images/icon-realna-aktiva.png"
-                        alt=""
-                        fill
-                        className="object-contain object-right-bottom"
-                        sizes="160px"
-                        unoptimized
-                      />
-                    </div>
-                  )}
-
-                  {/* Drak — jen pro Dragon fond kartu */}
-                  {index === 3 && (
-                    <svg
-                      viewBox="0 0 140 100"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="absolute bottom-3 right-3 opacity-[0.13] pointer-events-none"
-                      width="140"
-                      height="100"
-                      aria-hidden
-                    >
-                      {/* Tělo */}
-                      <path d="M12,78 C28,60 50,52 72,54 C94,56 112,64 128,54" stroke="#97724f" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                      {/* Krk a hlava */}
-                      <path d="M128,54 C135,48 138,38 133,30 C128,22 118,25 116,34 C114,42 120,50 128,54" stroke="#97724f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      {/* Čumák */}
-                      <path d="M133,30 C138,26 140,20 136,17" stroke="#97724f" strokeWidth="2" strokeLinecap="round"/>
-                      <path d="M137,21 C139,19 138,17" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
-                      {/* Oko */}
-                      <circle cx="129" cy="29" r="2.5" fill="#97724f" opacity="0.5"/>
-                      {/* Roh */}
-                      <path d="M126,24 C124,16 126,9" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
-                      <path d="M123,26 C120,19 121,13" stroke="#97724f" strokeWidth="1" strokeLinecap="round" opacity="0.6"/>
-                      {/* Křídlo — obrys */}
-                      <path d="M78,54 C68,32 46,16 24,20 C38,25 58,40 72,52" stroke="#97724f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M78,54 C72,28 54,10 30,6 C46,14 64,34 78,54" stroke="#97724f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      {/* Žilky křídla */}
-                      <path d="M72,52 C64,32 52,19 38,16" stroke="#97724f" strokeWidth="1" strokeLinecap="round" opacity="0.5"/>
-                      <path d="M72,52 C66,34 57,22 46,18" stroke="#97724f" strokeWidth="1" strokeLinecap="round" opacity="0.5"/>
-                      {/* Chvost */}
-                      <path d="M12,78 C6,87 7,95 14,94 C21,93 22,84 16,79" stroke="#97724f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      {/* Přední noha */}
-                      <path d="M100,58 C98,70 95,78" stroke="#97724f" strokeWidth="2" strokeLinecap="round"/>
-                      <path d="M95,78 C92,82 89,80" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
-                      <path d="M95,78 C95,82 99,81" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
-                      <path d="M95,78 C97,83 100,82" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
-                      {/* Zadní noha */}
-                      <path d="M82,55 C80,67 77,75" stroke="#97724f" strokeWidth="2" strokeLinecap="round"/>
-                      <path d="M77,75 C74,79 71,77" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
-                      <path d="M77,75 C77,79 81,78" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
-                      {/* Hřeben na zádech */}
-                      <path d="M112,56 C114,48 115,50" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
-                      <path d="M100,58 C102,50 103,52" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
-                      <path d="M88,56 C90,48 91,50" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
-                    </svg>
-                  )}
+                  {/* Dekorativní ilustrace — pravý dolní roh */}
+                  <div className="absolute bottom-0 right-0 w-36 h-36 pointer-events-none">
+                    <Image
+                      src={service.cardImage}
+                      alt=""
+                      fill
+                      className="object-contain object-right-bottom"
+                      sizes="144px"
+                      unoptimized
+                      style={{ mixBlendMode: "multiply" }}
+                    />
+                  </div>
                 </div>
               </Reveal>
             ))}
