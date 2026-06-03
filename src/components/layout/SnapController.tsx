@@ -17,6 +17,9 @@ export default function SnapController() {
     ) as HTMLElement | null;
     if (!container) return;
 
+    // Reset scroll on every navigation — prevents landing on a sub-page mid-scroll
+    container.scrollTop = 0;
+
     if (pathname === "/") {
       container.style.scrollSnapType = "";
     } else {

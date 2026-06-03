@@ -2,22 +2,71 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import ContactForm from "@/components/ui/ContactForm";
-import { CheckIcon } from "@/components/ui/Icons";
+import InvesticeHero from "@/components/sections/InvesticeHero";
 
 export const metadata: Metadata = {
-  title: "Investice & Architektura bohatství — Radek Bárta",
+  title: "Investice · Tvorba bohatství — Radek Bárta",
   description:
-    "Strategické plánování a diverzifikace portfolia. Od fyzického zlata a stříbra přes kryptoměny a nemovitosti až po permanentní portfolia. Sjednejte konzultaci.",
+    "Permanentní portfolio s neochvějnými základy. Od akcií, nemovitostí až po zlato. Investiční systém prověřen 40+ lety. Sjednejte bezplatnou konzultaci s Radkem Bártou.",
 };
 
-const benefits = [
-  "Osobní konzultace a analýza vaší situace",
-  "Návrh diverzifikovaného portfolia na míru",
-  "Investice do fyzického zlata a stříbra",
-  "Kryptoměny a digitální aktiva s rozmyslem",
-  "Nemovitosti jako pilíř dlouhodobého bohatství",
-  "Permanentní portfolio pro klid v každé situaci",
-  "Průběžná podpora a přizpůsobování strategie",
+const services = [
+  {
+    number: "01",
+    title: "Potkáme se osobně nebo online",
+    items: [
+      {
+        name: "Analýza a strategie",
+        desc: "Poznám vaši situaci a navrhneme portfolio na míru.",
+      },
+      {
+        name: "Prezentace investiční strategie",
+        desc: "která chrání a zhodnocuje majetek za každého počasí.",
+      },
+    ],
+  },
+  {
+    number: "02",
+    title: "Reálná aktiva",
+    items: [
+      {
+        name: "Drahé kovy",
+        desc: "Fyzické zlato a stříbro jako kotva vaší finanční jistoty.",
+      },
+      {
+        name: "Nemovitosti a financování",
+        desc: "Chytré využití úvěrů a hypoték pro budování dlouhodobého bohatství.",
+      },
+    ],
+  },
+  {
+    number: "03",
+    title: "Investiční fondy",
+    items: [
+      {
+        name: "Permanentní fond",
+        desc: "Investiční systém prověřený desetiletími, který chrání a zhodnocuje váš majetek za jakéhokoliv ekonomického počasí.",
+      },
+      {
+        name: "Dragon fond",
+        desc: "Dynamické investiční řešení pro nové podmínky na globálním trhu. Dostupné pouze pro bonitní klientelu — investice od 1 milionu Kč.",
+      },
+    ],
+  },
+  {
+    number: "04",
+    title: "Partnerství",
+    items: [
+      {
+        name: "Průběžná podpora",
+        desc: "Váš život se mění, vaše strategie se mění s ním. Jsme v tom spolu.",
+      },
+      {
+        name: "Prověření profesionálové",
+        desc: "Spolupracuji výhradně s prověřenými profesionály, kteří disponují potřebnými licencemi a hlubokou odbornou znalostí trhu.",
+      },
+    ],
+  },
 ];
 
 const steps = [
@@ -25,7 +74,7 @@ const steps = [
     number: "01",
     title: "Úvodní konzultace",
     description:
-      "Bezplatný 30minutový hovor, kde zjistíme vaši situaci, cíle a co vás přivádí k investování.",
+      "Bezplatný hovor, kde zjistíme vaši situaci, cíle a co vás přivádí k investování.",
   },
   {
     number: "02",
@@ -47,54 +96,74 @@ const steps = [
   },
 ];
 
+const investiceTestimonials = [
+  {
+    name: "Gabriela Valentová",
+    role: "Klient, obchodní partner",
+    quote:
+      "S Radkem Bártou spolupracuji v oblasti financí a musím říct, že mi úplně změnil pohled na peníze, spoření i investování. Díky jeho radám jsem se naučila lépe pracovat se svými financemi, začala pravidelně spořit a zároveň své peníze i chytře zhodnocovat. Nejvíc si vážím toho, že mi pomohl nastavit cestu k tomu, abych si jednou mohla splnit svůj sen o vlastním bydlení. Radek je člověk, který své práci opravdu rozumí, vše vysvětlí lidsky, s klidem a bez zbytečného tlaku. Má obrovský přehled a zároveň lidský přístup, který je dnes opravdu vzácný. Doporučuji ho všemi deseti.",
+  },
+  {
+    name: "Karel Zálešák",
+    role: "Klient",
+    quote:
+      "S Radkem jsem se seznámil před pár lety na jednom speciálním pobytu zaměřeném na osobnostní rozvoj. Domluvili jsme se, že mně pomůže s nastavením finančního portfolia a investováním a byla to skvělá volba. Radkův přístup je profesionální a příkladný, schůzky s ním mají vysokou úroveň. Líbí se mně na něm jeho celkový přístup k životu, jak v profesní tak osobní oblasti a jeho neustálá snaha se zdokonalovat ve všech sférách lidského bytí. Spolupráci s tímto moudrým, mladým mužem s radostí doporučuji.",
+  },
+  {
+    name: "Michal Kršňák",
+    role: "Obchodní partner",
+    quote:
+      "K Radkovi jsem se dostal přes jeho vzdělávací obsah na sociálních sítích, kterým inspiruje a pomáhá lidem udělat první kroky k finanční gramotnosti i osobnímu růstu. Netrvalo dlouho a z klienta jsem se stal spolupracovníkem. Doporučuji.",
+  },
+  {
+    name: "Pavel Krasl",
+    role: "Klient",
+    quote:
+      "Zasvetil me do sveta financi, penez, investic, udrzitele hodnot, inflace apod. Vse od zacatku az do konce, jak co spolu souvisi a jak co funguje. Za tech 5 let nam stribro vzrostlo o 130% a zlato o 100%. O tom vsem uz Vam muze povedet Radek :)",
+  },
+  {
+    name: "Petr Janků",
+    role: "Klient",
+    quote:
+      "Spolupráci s Radkem mohu doporučit — milý, vlídný a vstřícný. Na každý dotaz odpoví do několika hodin, vše pečlivě vysvětlí a doporučí, jak nejlépe postupovat. Díky jeho spolupráci s GG jsem se dostal k investování do zlata a stříbra, po kterém jsem toužil mít v portfoliu.",
+  },
+  {
+    name: "Tomáš Tiurin",
+    role: "Klient",
+    quote:
+      "S Radkem jsem se poprvé setkal ještě dříve, než jsme spolu začali oficiálně spolupracovat – skrze podcast Magie života. Postupně jsme spolu začali budovat moje investiční portfolio a později jsme navázali spolupráci i s jeho kolegou v oblasti investic do nemovitostí. Oceňuji jejich profesionální a zároveň velmi individuální přístup, který se jen tak nevidí. Pokud hledáte spolehlivého, lidského a zároveň odborně silného finančního poradce, Radka můžu jedině doporučit.",
+  },
+  {
+    name: "Jiří Kříž",
+    role: "Klient",
+    quote:
+      "Radek je člověk, kterého finance a vše s tím spojené evidentně baví, a proto s ním rád obchoduji. Doporučuji jeho služby s klidným svědomím.",
+  },
+  {
+    name: "Barbora Mňuková",
+    role: "Klient",
+    quote:
+      "Jsem ráda, že jsem měla možnost získat bližší informace k tomu, jak nakládat se svými penězi a využít tak možnosti spolupráce. Svět investování pro mne byl cizím a díky dobře podaným informacím jsem se začala lépe orientovat i v této oblasti. Velmi mi vyhovuje lidský a individuální přístup s možnostmi osobní i on-line komunikace. Vřele doporučuji, pokud Vás tato oblast zajímá.",
+  },
+  {
+    name: "Mgr. Jana M. Ph.D.",
+    role: "Klient",
+    quote:
+      "O investovanie som sa začala zaujímať pred pár rokmi, prešla viacerými pádmi, „chybami", až som si povedala dosť. Začala som sa viac vzdelávať a narazila na Radka a projekt Principy růstu. Od prvej chvíle mi bolo všetko vysvetlené a zodpovedaná každá otázka. Prístup je veľmi ľudský, priateľský, a zároveň veľmi odborný a profesionálny. Diverzifikovali sme riziká, nastavili portfólio, dozvedela som sa mnoho o investovaní. Som nesmierne vďačná, že som na tento projekt narazila.",
+  },
+  {
+    name: "Adéla Třetinová",
+    role: "Klient",
+    quote:
+      "Jsem ráda, že jsem se rozhodla investovat a umět tak suprově spravovat své finance. Bylo mi všechno dobře vysvětleno a i já, která investování vůbec nerozuměla, tak jsem všechno pochopila, plus mě to začalo dost bavit! Je to super pocit, když vím, že mám zajištěnou budoucnost. A ještě lepší je to, když se mám na koho obrátit a vždy dostanu rady, tipy, vhledy a taky podporu.",
+  },
+];
+
 export default function InvesticePage() {
   return (
-    <div className="pt-16 lg:pt-20">
-      {/* Hero */}
-      <section className="relative min-h-[70vh] lg:min-h-[80vh] bg-[#111111] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/investice-hero.jpg"
-            alt="Architektura bohatství"
-            fill
-            priority
-            className="object-cover object-center opacity-30"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#111111] via-[#111111]/80 to-transparent" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20">
-          <Reveal>
-            <p className="text-[#c5a889] text-sm font-heading font-semibold uppercase tracking-[0.2em] mb-5">
-              Investice · Architektura bohatství
-            </p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <h1 className="font-heading font-800 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white leading-[1.05] tracking-tight mb-6 max-w-2xl">
-              Budování
-              <br />
-              a ochrana
-              <br />
-              <span className="text-[#c5a889]">vašeho majetku</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={0.3}>
-            <p className="text-white/60 text-lg lg:text-xl leading-relaxed max-w-lg mb-10">
-              Strategické plánování a diverzifikace. Od fyzického zlata a stříbra
-              přes kryptoměny a nemovitosti až po permanentní portfolia. Získejte
-              klid a kontrolu nad svou budoucností.
-            </p>
-          </Reveal>
-          <Reveal delay={0.4}>
-            <a
-              href="#konzultace"
-              className="inline-flex items-center px-8 py-4 bg-[#97724f] text-white font-heading font-semibold rounded-full hover:bg-[#7a5c3e] transition-all duration-300 hover:scale-[1.02] text-sm"
-            >
-              Sjednat bezplatnou konzultaci
-            </a>
-          </Reveal>
-        </div>
-      </section>
+    <div>
+      {/* Hero — stejný layout jako homepage */}
+      <InvesticeHero />
 
       {/* Co nabízím */}
       <section className="bg-[#f6f6f6] py-24 lg:py-32">
@@ -115,32 +184,44 @@ export default function InvesticePage() {
               </Reveal>
               <Reveal delay={0.2}>
                 <p className="text-[#6b6b6b] text-lg leading-relaxed mb-10">
-                  Nehraji na rychlé výhry. Buduji s vámi dlouhodobou strategii,
-                  která odolá volatilitě trhů a přinese klid — ne pouze výnosy.
+                  Pomáhám rodinám i podnikatelům najít klid v nejisté době —
+                  nabízím jedinečnou kombinaci investic, které jsou prověřeny
+                  časem.
                 </p>
               </Reveal>
-              <div className="space-y-3">
-                {benefits.map((benefit, index) => (
-                  <Reveal key={benefit} delay={0.25 + index * 0.06}>
-                    <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-[#97724f]/10 flex items-center justify-center shrink-0">
-                        <CheckIcon className="w-3.5 h-3.5 text-[#97724f]" />
-                      </div>
-                      <span className="text-[#444] text-sm">{benefit}</span>
+
+              {/* 4 skupiny se sub-odrážkami */}
+              <div className="space-y-6">
+                {services.map((service, index) => (
+                  <Reveal key={service.number} delay={0.25 + index * 0.08}>
+                    <div className="border-l-2 border-[#c5a889]/40 pl-5">
+                      <p className="font-heading font-700 text-dark text-sm mb-2">
+                        <span className="text-[#97724f] mr-2">{service.number} /</span>
+                        {service.title}
+                      </p>
+                      <ul className="space-y-1.5">
+                        {service.items.map((item) => (
+                          <li key={item.name} className="text-[#555] text-sm leading-relaxed">
+                            <span className="font-600 text-dark">{item.name}</span>
+                            {" — "}
+                            {item.desc}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </Reveal>
                 ))}
               </div>
             </div>
 
-            {/* Image placeholder */}
+            {/* Obrázek — 3D ikony investic */}
             <Reveal delay={0.3} direction="right">
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-[#e8e5e2]">
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-[#111111] flex items-center justify-center">
                 <Image
-                  src="/images/investice-about.jpg"
-                  alt="Radek Bárta — architektura bohatství"
+                  src="/images/investice-icons.png"
+                  alt="Investiční přístup — Radek Bárta"
                   fill
-                  className="object-cover"
+                  className="object-contain p-8"
                   sizes="(max-width: 1024px) 80vw, 40vw"
                 />
               </div>
@@ -149,7 +230,7 @@ export default function InvesticePage() {
         </div>
       </section>
 
-      {/* Jak to funguje */}
+      {/* Průběh: Jak naše spolupráce funguje */}
       <section className="bg-[#111111] py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="mb-16 lg:mb-20">
@@ -161,6 +242,7 @@ export default function InvesticePage() {
             <Reveal delay={0.1}>
               <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-white max-w-lg">
                 Jak naše spolupráce
+                <br />
                 funguje
               </h2>
             </Reveal>
@@ -186,8 +268,60 @@ export default function InvesticePage() {
         </div>
       </section>
 
+      {/* Reference — horizontální slider */}
+      <section className="bg-[#f6f6f6] py-24 lg:py-32 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 mb-12">
+          <Reveal>
+            <p className="text-[#97724f] text-sm font-heading font-semibold uppercase tracking-[0.2em] mb-4">
+              Reference
+            </p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-dark max-w-lg">
+              Co říkají klienti
+              <br />
+              o naší spolupráci
+            </h2>
+          </Reveal>
+        </div>
+
+        {/* Horizontální scrollovatelný slider */}
+        <div
+          className="flex gap-6 overflow-x-auto pb-6 px-6 lg:px-12 snap-x snap-mandatory scroll-smooth"
+          style={{ scrollbarWidth: "thin", scrollbarColor: "#c5a889 transparent" }}
+        >
+          {investiceTestimonials.map((t, i) => (
+            <div
+              key={i}
+              className="snap-start shrink-0 w-[300px] sm:w-[340px] lg:w-[380px]"
+            >
+              <div className="bg-white rounded-2xl lg:rounded-3xl p-8 border border-[#e8e5e2] hover:border-[#c5a889] transition-colors duration-300 h-full flex flex-col">
+                {/* Quote mark */}
+                <span
+                  className="font-heading font-700 text-5xl leading-none mb-4 block"
+                  style={{ color: "#c5a889" }}
+                >
+                  "
+                </span>
+                {/* Quote text */}
+                <p className="text-[#1a1a1a] text-sm leading-relaxed flex-1 mb-6 line-clamp-6">
+                  {t.quote}
+                </p>
+                {/* Name + role */}
+                <div className="border-t border-[#e8e5e2] pt-4">
+                  <p className="font-heading font-700 text-dark text-sm">{t.name}</p>
+                  <p className="text-[#97724f] text-xs mt-0.5">{t.role}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+          {/* Right padding sentinel */}
+          <div className="shrink-0 w-6 lg:w-12" aria-hidden />
+        </div>
+      </section>
+
       {/* Kontaktní formulář */}
-      <section id="konzultace" className="bg-[#f6f6f6] py-24 lg:py-32">
+      <section id="konzultace" className="bg-white py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
@@ -198,20 +332,31 @@ export default function InvesticePage() {
               </Reveal>
               <Reveal delay={0.1}>
                 <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-dark mb-6">
-                  Začněme
+                  Rád vás provedu
                   <br />
-                  <span className="text-[#97724f]">první hovor</span>
+                  celým procesem,
+                  <br />
+                  <span className="text-[#97724f]">můžeme začít?</span>
                 </h2>
               </Reveal>
               <Reveal delay={0.2}>
-                <p className="text-[#6b6b6b] text-lg leading-relaxed max-w-md">
-                  Bezplatná 30minutová konzultace. Nezávazně si povíme, kde jste,
-                  kam chcete a jestli dává smysl pokračovat společně.
-                </p>
+                <div className="space-y-3">
+                  <p className="font-heading font-700 text-dark text-base">
+                    Bezplatná hodinová konzultace
+                  </p>
+                  <p className="text-[#6b6b6b] text-lg leading-relaxed max-w-md">
+                    Projdeme vaši aktuální situaci, vaše cíle a vizi. Zjistíme,
+                    zda jsme na stejné vlně a jestli dává smysl spolupracovat
+                    na budování vašeho majetku.
+                  </p>
+                  <p className="text-[#97724f] text-sm font-medium">
+                    Obvykle vám zavolám do 48 hodin a navrhneme termín.
+                  </p>
+                </div>
               </Reveal>
             </div>
             <Reveal delay={0.2} direction="right">
-              <div className="bg-white rounded-2xl lg:rounded-3xl p-8 lg:p-10 border border-[#e8e5e2]">
+              <div className="bg-[#f6f6f6] rounded-2xl lg:rounded-3xl p-8 lg:p-10 border border-[#e8e5e2]">
                 <ContactForm
                   type="contact"
                   title="Sjednat konzultaci"
