@@ -3,6 +3,7 @@ import Image from "next/image";
 import Reveal from "@/components/ui/Reveal";
 import ContactForm from "@/components/ui/ContactForm";
 import InvesticeHero from "@/components/sections/InvesticeHero";
+import TestimonialsSlider from "@/components/ui/TestimonialsSlider";
 
 export const metadata: Metadata = {
   title: "Investice · Tvorba bohatství — Radek Bárta",
@@ -12,7 +13,6 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    number: "01",
     title: "Potkáme se osobně nebo online",
     items: [
       {
@@ -26,7 +26,6 @@ const services = [
     ],
   },
   {
-    number: "02",
     title: "Reálná aktiva",
     items: [
       {
@@ -40,7 +39,6 @@ const services = [
     ],
   },
   {
-    number: "03",
     title: "Investiční fondy",
     items: [
       {
@@ -54,7 +52,6 @@ const services = [
     ],
   },
   {
-    number: "04",
     title: "Partnerství",
     items: [
       {
@@ -193,12 +190,11 @@ export default function InvesticePage() {
               {/* 4 skupiny se sub-odrážkami */}
               <div className="space-y-6">
                 {services.map((service, index) => (
-                  <Reveal key={service.number} delay={0.25 + index * 0.08}>
+                  <Reveal key={service.title} delay={0.25 + index * 0.08}>
                     <div className="border-l-2 border-[#c5a889]/40 pl-5">
-                      <p className="font-heading font-700 text-dark text-sm mb-2">
-                        <span className="text-[#97724f] mr-2">{service.number} /</span>
+                      <h3 className="font-heading font-700 text-dark text-base lg:text-lg mb-2">
                         {service.title}
-                      </p>
+                      </h3>
                       <ul className="space-y-1.5">
                         {service.items.map((item) => (
                           <li key={item.name} className="text-[#555] text-sm leading-relaxed">
@@ -216,7 +212,7 @@ export default function InvesticePage() {
 
             {/* Obrázek — 3D ikony investic */}
             <Reveal delay={0.3} direction="right">
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-[#111111] flex items-center justify-center">
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-white flex items-center justify-center">
                 <Image
                   src="/images/investice-icons.png"
                   alt="Investiční přístup — Radek Bárta"
@@ -285,39 +281,8 @@ export default function InvesticePage() {
           </Reveal>
         </div>
 
-        {/* Horizontální scrollovatelný slider */}
-        <div
-          className="flex gap-6 overflow-x-auto pb-6 px-6 lg:px-12 snap-x snap-mandatory scroll-smooth"
-          style={{ scrollbarWidth: "thin", scrollbarColor: "#c5a889 transparent" }}
-        >
-          {investiceTestimonials.map((t, i) => (
-            <div
-              key={i}
-              className="snap-start shrink-0 w-[300px] sm:w-[340px] lg:w-[380px]"
-            >
-              <div className="bg-white rounded-2xl lg:rounded-3xl p-8 border border-[#e8e5e2] hover:border-[#c5a889] transition-colors duration-300 h-full flex flex-col">
-                {/* Quote mark */}
-                <span
-                  className="font-heading font-700 text-5xl leading-none mb-4 block"
-                  style={{ color: "#c5a889" }}
-                >
-                  "
-                </span>
-                {/* Quote text */}
-                <p className="text-[#1a1a1a] text-sm leading-relaxed flex-1 mb-6 line-clamp-6">
-                  {t.quote}
-                </p>
-                {/* Name + role */}
-                <div className="border-t border-[#e8e5e2] pt-4">
-                  <p className="font-heading font-700 text-dark text-sm">{t.name}</p>
-                  <p className="text-[#97724f] text-xs mt-0.5">{t.role}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-          {/* Right padding sentinel */}
-          <div className="shrink-0 w-6 lg:w-12" aria-hidden />
-        </div>
+        {/* Horizontální auto-scrollovatelný slider */}
+        <TestimonialsSlider testimonials={investiceTestimonials} />
       </section>
 
       {/* Kontaktní formulář */}
