@@ -59,7 +59,7 @@ const services = [
       },
       {
         name: "Navržen pro nestabilní trhy",
-        desc: "Navržen pro různé tržní podmínky včetně krizí. Měsíční likvidita bez sankčních poplatků.",
+        desc: "Navržen pro různé tržní podmínky včetně krizí.",
       },
     ],
   },
