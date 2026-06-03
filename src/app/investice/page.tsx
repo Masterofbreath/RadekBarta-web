@@ -51,7 +51,7 @@ const services = [
     ],
   },
   {
-    title: "Partnerství",
+    title: "Dragon fond",
     items: [
       {
         name: "Průběžná podpora",
@@ -192,11 +192,11 @@ export default function InvesticePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
             {services.map((service, index) => (
               <Reveal key={service.title} delay={index * 0.1}>
-                <div className="bg-[#f6f6f6] rounded-2xl lg:rounded-3xl p-8 lg:p-10 border border-[#e8e5e2] hover:border-[#c5a889] transition-colors duration-300 h-full">
-                  <h3 className="font-heading font-700 text-dark text-lg lg:text-xl mb-5">
+                <div className="relative bg-[#f6f6f6] rounded-2xl lg:rounded-3xl p-8 lg:p-10 border border-[#e8e5e2] hover:border-[#c5a889] transition-colors duration-300 h-full overflow-hidden">
+                  <h3 className="font-heading font-700 text-dark text-lg lg:text-xl mb-5 relative z-10">
                     {service.title}
                   </h3>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3 relative z-10">
                     {service.items.map((item) => (
                       <li key={item.name} className="flex gap-3 items-start">
                         <span className="w-1.5 h-1.5 rounded-full bg-[#c5a889] mt-[6px] shrink-0" />
@@ -208,6 +208,53 @@ export default function InvesticePage() {
                       </li>
                     ))}
                   </ul>
+
+                  {/* Drak — jen pro Dragon fond kartu */}
+                  {index === 3 && (
+                    <svg
+                      viewBox="0 0 140 100"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="absolute bottom-3 right-3 opacity-[0.13] pointer-events-none"
+                      width="140"
+                      height="100"
+                      aria-hidden
+                    >
+                      {/* Tělo */}
+                      <path d="M12,78 C28,60 50,52 72,54 C94,56 112,64 128,54" stroke="#97724f" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                      {/* Krk a hlava */}
+                      <path d="M128,54 C135,48 138,38 133,30 C128,22 118,25 116,34 C114,42 120,50 128,54" stroke="#97724f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      {/* Čumák */}
+                      <path d="M133,30 C138,26 140,20 136,17" stroke="#97724f" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M137,21 C139,19 138,17" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
+                      {/* Oko */}
+                      <circle cx="129" cy="29" r="2.5" fill="#97724f" opacity="0.5"/>
+                      {/* Roh */}
+                      <path d="M126,24 C124,16 126,9" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
+                      <path d="M123,26 C120,19 121,13" stroke="#97724f" strokeWidth="1" strokeLinecap="round" opacity="0.6"/>
+                      {/* Křídlo — obrys */}
+                      <path d="M78,54 C68,32 46,16 24,20 C38,25 58,40 72,52" stroke="#97724f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M78,54 C72,28 54,10 30,6 C46,14 64,34 78,54" stroke="#97724f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      {/* Žilky křídla */}
+                      <path d="M72,52 C64,32 52,19 38,16" stroke="#97724f" strokeWidth="1" strokeLinecap="round" opacity="0.5"/>
+                      <path d="M72,52 C66,34 57,22 46,18" stroke="#97724f" strokeWidth="1" strokeLinecap="round" opacity="0.5"/>
+                      {/* Chvost */}
+                      <path d="M12,78 C6,87 7,95 14,94 C21,93 22,84 16,79" stroke="#97724f" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      {/* Přední noha */}
+                      <path d="M100,58 C98,70 95,78" stroke="#97724f" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M95,78 C92,82 89,80" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
+                      <path d="M95,78 C95,82 99,81" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
+                      <path d="M95,78 C97,83 100,82" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
+                      {/* Zadní noha */}
+                      <path d="M82,55 C80,67 77,75" stroke="#97724f" strokeWidth="2" strokeLinecap="round"/>
+                      <path d="M77,75 C74,79 71,77" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
+                      <path d="M77,75 C77,79 81,78" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
+                      {/* Hřeben na zádech */}
+                      <path d="M112,56 C114,48 115,50" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
+                      <path d="M100,58 C102,50 103,52" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
+                      <path d="M88,56 C90,48 91,50" stroke="#97724f" strokeWidth="1.5" strokeLinecap="round"/>
+                    </svg>
+                  )}
                 </div>
               </Reveal>
             ))}
