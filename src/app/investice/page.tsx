@@ -193,9 +193,6 @@ export default function InvesticePage() {
             {services.map((service, index) => (
               <Reveal key={service.title} delay={index * 0.1}>
                 <div className="bg-[#f6f6f6] rounded-2xl lg:rounded-3xl p-8 lg:p-10 border border-[#e8e5e2] hover:border-[#c5a889] transition-colors duration-300 h-full">
-                  <span className="font-heading font-800 text-5xl text-[#c5a889]/20 block mb-5 leading-none">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
                   <h3 className="font-heading font-700 text-dark text-lg lg:text-xl mb-5">
                     {service.title}
                   </h3>
