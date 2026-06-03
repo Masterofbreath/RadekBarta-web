@@ -3,6 +3,7 @@ import Reveal from "@/components/ui/Reveal";
 import ContactForm from "@/components/ui/ContactForm";
 import InvesticeHero from "@/components/sections/InvesticeHero";
 import TestimonialsSlider from "@/components/ui/TestimonialsSlider";
+import InvestmentCalculator from "@/components/ui/InvestmentCalculator";
 
 export const metadata: Metadata = {
   title: "Investice · Tvorba bohatství — Radek Bárta",
@@ -218,6 +219,9 @@ export default function InvesticePage() {
           </div>
         </div>
       </section>
+
+      {/* Kalkulačka */}
+      <InvestmentCalculator />
 
       {/* Průběh: Jak naše spolupráce funguje */}
       <section className="bg-[#111111] py-24 lg:py-32">
