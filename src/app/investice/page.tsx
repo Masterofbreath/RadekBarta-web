@@ -212,13 +212,14 @@ export default function InvesticePage() {
 
                   {/* Obrázek — jen pro Reálná aktiva kartu */}
                   {index === 1 && (
-                    <div className="absolute bottom-0 right-0 w-36 h-36 opacity-20 pointer-events-none">
+                    <div className="absolute bottom-0 right-0 w-40 h-40 pointer-events-none">
                       <Image
                         src="/images/icon-realna-aktiva.png"
                         alt=""
                         fill
-                        className="object-contain object-bottom-right"
-                        sizes="144px"
+                        className="object-contain object-right-bottom"
+                        sizes="160px"
+                        unoptimized
                       />
                     </div>
                   )}
