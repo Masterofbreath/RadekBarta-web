@@ -9,12 +9,12 @@ export default function InvesticeHero() {
       {/* Background image — same positioning as homepage */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero.jpg"
-          alt="Radek Bárta"
+          src="/images/investice-bg.png"
+          alt="Radek Bárta — investice a architektura bohatství"
           fill
           priority
           unoptimized
-          className="object-cover [object-position:center_30%] lg:[object-position:70%_center]"
+          className="object-cover [object-position:75%_center]"
           sizes="100vw"
         />
 

@@ -17,14 +17,20 @@ export default function SnapController() {
     ) as HTMLElement | null;
     if (!container) return;
 
-    // Reset scroll on every navigation — prevents landing on a sub-page mid-scroll
-    container.scrollTop = 0;
+    const apply = () => {
+      container.scrollTop = 0;
+      if (pathname === "/") {
+        container.style.scrollSnapType = "";
+      } else {
+        container.style.scrollSnapType = "none";
+      }
+    };
 
-    if (pathname === "/") {
-      container.style.scrollSnapType = "";
-    } else {
-      container.style.scrollSnapType = "none";
-    }
+    // Immediate reset
+    apply();
+    // Second pass after browser scroll-restoration may fire (typically <50 ms)
+    const id = setTimeout(apply, 80);
+    return () => clearTimeout(id);
   }, [pathname]);
 
   return null;

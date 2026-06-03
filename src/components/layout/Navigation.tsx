@@ -63,6 +63,7 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  scroll={false}
                   className={`text-sm font-medium transition-colors ${
                     pathname === link.href
                       ? "text-[#97724f]"
@@ -79,6 +80,7 @@ export default function Navigation() {
           <div className="flex items-center gap-4">
             <Link
               href="/investice"
+              scroll={false}
               className="hidden lg:inline-flex items-center px-5 py-2.5 bg-[#97724f] text-white text-sm font-semibold font-heading rounded-full hover:bg-[#7a5c3e] transition-all duration-300 hover:scale-[1.02]"
             >
               Sjednat konzultaci
@@ -132,6 +134,7 @@ export default function Navigation() {
                   >
                     <Link
                       href={link.href}
+                      scroll={false}
                       className="block text-3xl font-heading font-600 text-dark hover:text-[#97724f] py-3 border-b border-[#e8e5e2] transition-colors"
                     >
                       {link.label}
@@ -149,6 +152,7 @@ export default function Navigation() {
             >
               <Link
                 href="/investice"
+                scroll={false}
                 className="w-full flex items-center justify-center px-6 py-4 bg-[#97724f] text-white text-lg font-semibold font-heading rounded-2xl hover:bg-[#7a5c3e] transition-colors"
               >
                 Sjednat konzultaci
