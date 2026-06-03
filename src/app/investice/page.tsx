@@ -41,8 +41,12 @@ const services = [
     title: "Permanentní fond",
     items: [
       {
-        name: "",
-        desc: "Investiční systém prověřený desetiletími, který chrání a zhodnocuje váš majetek za jakéhokoliv ekonomického počasí.",
+        name: "Strategie pro každé počasí",
+        desc: "Fond investuje do akcií, dluhopisů, zlata a peněžního trhu. Prověřená 40letá strategie Harryho Browna odolná vůči inflaci i recesi.",
+      },
+      {
+        name: "Aktivně řízený",
+        desc: "Složení portfolia pravidelně přizpůsobujeme vývoji trhů. Nemusíte sledovat trhy sami — my se postaráme.",
       },
     ],
   },
@@ -50,8 +54,12 @@ const services = [
     title: "Dragon fond",
     items: [
       {
-        name: "",
-        desc: "Dynamické investiční řešení pro nové podmínky na globálním trhu. Dostupné pouze pro bonitní klientelu — investice od 1 milionu Kč.",
+        name: "Fond kvalifikovaných investorů",
+        desc: "Přístup ke strategiím světových hedge fondů. Kombinuje akcie, dluhopisy, zlato, Managed Futures a Long Volatility. Od 1 milionu Kč.",
+      },
+      {
+        name: "Navržen pro nestabilní trhy",
+        desc: "Cílí na průměrný čistý roční výnos nad 10 %. Měsíční likvidita bez sankčních poplatků.",
       },
     ],
   },
