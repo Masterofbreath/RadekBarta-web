@@ -6,9 +6,8 @@ import { ArrowRightIcon } from "@/components/ui/Icons";
 const cards = [
   {
     id: "investice",
-    label: "01",
-    title: "Investiční zprostředkování",
     subtitle: "Investice",
+    title: "Investiční zprostředkování",
     description:
       "Pomáhám klientům postavit robustní diverzifikovaná portfolia do jakékoliv doby. Od fyzického zlata a stříbra přes nemovitosti, kryptoměny až po permanentní portfolio. Získejte jednoduchý systém na růst vašeho bohatství.",
     cta: "Sjednat konzultaci",
@@ -19,38 +18,9 @@ const cards = [
     textColor: "text-white",
   },
   {
-    id: "kruh",
-    label: "02",
-    title: "Kruh tvůrců",
-    subtitle: "Komunita",
-    description:
-      "Prostor pro vědomé tvůrce, sdílení know-how a budování pevných vztahů v inspirativním prostředí. Online komunita a živé akce.",
-    cta: "Vstoupit do komunity",
-    href: "/kruh-tvurcu",
-    external: false,
-    accent: "#c5a889",
-    bg: "#1c1510",
-    textColor: "text-white",
-  },
-  {
-    id: "principy",
-    label: "03",
-    title: "Principy růstu",
-    subtitle: "Podcastový projekt",
-    description:
-      "Autentický pohled do světa úspěšných. Ukazujeme inovátory, podnikatele a tvůrce v jejich přirozeném prostředí — zachycujeme jejich byznys i domov.",
-    cta: "Připojit se k růstu",
-    href: SOCIAL.principyRustu,
-    external: true,
-    accent: "#97724f",
-    bg: "#f6f6f6",
-    textColor: "text-dark",
-  },
-  {
     id: "youtube",
-    label: "04",
-    title: "Radek Bárta",
     subtitle: "Osobní YouTube channel",
+    title: "Radek Bárta",
     description:
       "Video tvorba o podnikání, technologiích, seberozvoji a investicích. Myšlenky a vhledy pro váš každodenní osobní i byznysový růst.",
     cta: "Přejít na YouTube",
@@ -96,7 +66,7 @@ export default function EcosystemSection() {
 function EcosystemCard({ card }: { card: (typeof cards)[number] }) {
   const Inner = (
     <div
-      className="group relative rounded-2xl lg:rounded-3xl p-8 lg:p-10 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-xl cursor-pointer h-full flex flex-col justify-between min-h-[210px]"
+      className="group relative rounded-2xl lg:rounded-3xl p-10 lg:p-12 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-xl cursor-pointer h-full flex flex-col justify-between min-h-[300px]"
       style={{ backgroundColor: card.bg }}
     >
       {/* Subtle gradient blob */}
@@ -111,7 +81,7 @@ function EcosystemCard({ card }: { card: (typeof cards)[number] }) {
           <span
             className={`text-xs font-heading font-600 uppercase tracking-widest opacity-40 ${card.textColor}`}
           >
-            {card.label} · {card.subtitle}
+            {card.subtitle}
           </span>
           <h3 className={`font-heading font-700 text-2xl lg:text-3xl mt-2 leading-tight ${card.textColor}`}>
             {card.title}

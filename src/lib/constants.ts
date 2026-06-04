@@ -22,16 +22,13 @@ export const SOCIAL = {
 export const NAV_LINKS = [
   { label: "Domů", href: "/" },
   { label: "Investice", href: "/investice" },
-  { label: "Kruh tvůrců", href: "/kruh-tvurcu" },
   { label: "YouTube", href: SOCIAL.youtube, external: true },
-  { label: "Principy růstu", href: SOCIAL.principyRustu, external: true },
   { label: "Kontakt", href: "/#kontakt" },
 ] as const;
 
 export const BOTTOM_NAV = [
   { label: "Domů", href: "/", icon: "home" },
   { label: "Investice", href: "/investice", icon: "chart" },
-  { label: "Kruh", href: "/kruh-tvurcu", icon: "users" },
-  { label: "Podcasty", href: "https://open.spotify.com/show/magie-zivota", icon: "mic", external: true },
+  { label: "YouTube", href: SOCIAL.youtube, icon: "play", external: true },
   { label: "Kontakt", href: "/#kontakt", icon: "mail" },
 ] as const;
