@@ -36,9 +36,11 @@ interface SliderProps {
   step: number;
   format: (v: number) => string;
   onChange: (v: number) => void;
+  editable?: boolean; // kliknutí na hodnotu otevře inline input — umožní zadat číslo nad max slideru
 }
 
-function Slider({ label, hint, value, min, max, step, format, onChange }: SliderProps) {
+function Slider({ label, hint, value, min, max, step, format, onChange, editable }: SliderProps) {
+  const [draft, setDraft] = useState<string | null>(null);
   // Clamp visually — slider bar stays in range even when state holds out-of-range values
   const clampedVal = Math.min(max, Math.max(min, value));
   const pct = ((clampedVal - min) / (max - min)) * 100;
@@ -49,7 +51,37 @@ function Slider({ label, hint, value, min, max, step, format, onChange }: Slider
           {label}
           {hint && <span className="text-[#9b9b9b] font-normal text-xs ml-1">{hint}</span>}
         </span>
-        <span className="text-sm font-heading font-700 text-[#97724f] shrink-0">{format(value)}</span>
+        {editable ? (
+          draft !== null ? (
+            <input
+              type="number"
+              autoFocus
+              min={0}
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+              onBlur={() => {
+                const parsed = parseInt(draft, 10);
+                if (!isNaN(parsed) && parsed >= 0) onChange(parsed);
+                setDraft(null);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") (e.target as HTMLInputElement).blur();
+                if (e.key === "Escape") setDraft(null);
+              }}
+              className="text-sm font-heading font-700 text-[#97724f] shrink-0 text-right border-b border-[#97724f] bg-transparent outline-none w-32"
+            />
+          ) : (
+            <button
+              onClick={() => setDraft(String(value))}
+              title="Klikněte pro zadání vlastní hodnoty"
+              className="text-sm font-heading font-700 text-[#97724f] shrink-0 hover:underline cursor-text"
+            >
+              {format(value)}
+            </button>
+          )
+        ) : (
+          <span className="text-sm font-heading font-700 text-[#97724f] shrink-0">{format(value)}</span>
+        )}
       </div>
       <input
         type="range"
@@ -251,9 +283,9 @@ export default function InvestmentCalculator() {
         {/* ── Hlavní kalkulačka ── */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div className="space-y-7">
-            <Slider label="Počáteční investice" value={initial} min={0} max={5_000_000} step={10_000}
-              format={formatCZK} onChange={setInitial} />
-            <Slider label="Měsíční příspěvek" value={monthly} min={0} max={100_000} step={500}
+            <Slider label="Počáteční investice" value={initial} min={0} max={10_000_000} step={10_000}
+              format={formatCZK} onChange={setInitial} editable />
+            <Slider label="Měsíční příspěvek" value={monthly} min={0} max={200_000} step={500}
               format={formatCZK} onChange={setMonthly} />
             <Slider label="Investiční horizont" value={years} min={1} max={30} step={1}
               format={yearsLabel} onChange={setYears} />
