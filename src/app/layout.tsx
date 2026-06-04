@@ -22,9 +22,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Radek Bárta — Architekt bohatství, tvůrce obsahu",
+  title: "Radek Bárta — Průvodce na cestě za finanční i osobní svobodou",
   description:
-    "Radek Bárta — průvodce na pomezí investic a vědomého růstu. Architektura bohatství, podcast Magie života, YouTube a komunita tvůrců.",
+    "Radek Bárta — průvodce na cestě za finanční i osobní svobodou. Investice, podcast Magie života, YouTube a vědomý růst.",
   keywords: [
     "Radek Bárta",
     "investice",
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Radek Bárta" }],
   openGraph: {
-    title: "Radek Bárta — Architekt bohatství, tvůrce obsahu",
+    title: "Radek Bárta — Průvodce na cestě za finanční i osobní svobodou",
     description:
-      "Průvodce na cestě za finanční i osobní svobodou. Investice, podcast, YouTube a komunita vědomých tvůrců.",
+      "Průvodce na cestě za finanční i osobní svobodou. Investice, podcast Magie života, YouTube a vědomý růst.",
     url: "https://www.radekbarta.cz",
     siteName: "Radek Bárta",
     locale: "cs_CZ",
