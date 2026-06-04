@@ -19,6 +19,14 @@ function yearsLabel(v: number) {
   return `${v} ${v === 1 ? "rok" : v < 5 ? "roky" : "let"}`;
 }
 
+function depletionLabel(months: number): string {
+  if (months < 12) {
+    return `${months} ${months === 1 ? "měsíc" : months < 5 ? "měsíce" : "měsíců"}`;
+  }
+  const y = Math.round(months / 12);
+  return yearsLabel(y);
+}
+
 interface SliderProps {
   label: string;
   hint?: string;
@@ -31,7 +39,9 @@ interface SliderProps {
 }
 
 function Slider({ label, hint, value, min, max, step, format, onChange }: SliderProps) {
-  const pct = ((value - min) / (max - min)) * 100;
+  // Clamp visually — slider bar stays in range even when state holds out-of-range values
+  const clampedVal = Math.min(max, Math.max(min, value));
+  const pct = ((clampedVal - min) / (max - min)) * 100;
   return (
     <div className="space-y-2">
       <div className="flex justify-between items-baseline gap-2">
@@ -46,7 +56,7 @@ function Slider({ label, hint, value, min, max, step, format, onChange }: Slider
         min={min}
         max={max}
         step={step}
-        value={value}
+        value={clampedVal}
         onChange={(e) => onChange(Number(e.target.value))}
         className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
         style={{ background: `linear-gradient(to right, #97724f ${pct}%, #e8e5e2 ${pct}%)` }}
@@ -91,7 +101,8 @@ export default function InvestmentCalculator() {
   const [returnRate, setReturnRate] = useState(7);
 
   /* ── Nekonečná renta ── */
-  const [withdrawalPct, setWithdrawalPct] = useState(5); // % výběru ročně z portfolia
+  const [withdrawalPct, setWithdrawalPct] = useState(5); // % výběru ročně z portfolia — může být mimo rozsah slideru
+  const [kczDraft, setKczDraft] = useState<string | null>(null); // dočasný stav při editaci Kč inputu
 
   /* ── Konečná renta ── */
   const [finiteRentaRate, setFiniteRentaRate] = useState(5); // úroková sazba v PMT vzorci
@@ -150,17 +161,18 @@ export default function InvestmentCalculator() {
   const sustainStatus: "growing" | "stable" | "shrinking" =
     netAnnual > 0.05 ? "growing" : netAnnual < -0.05 ? "shrinking" : "stable";
 
-  // Za kolik let se portfolio vyčerpá (jen při klesání)
-  let yearsToDepletion: number | null = null;
-  if (sustainStatus === "shrinking") {
+  // Za kolik měsíců se portfolio vyčerpá (jen při klesání)
+  // Vzorec: B(n) = P×(1+r)^n − m×((1+r)^n−1)/r = 0  →  n = log(m/(m−P×r)) / log(1+r)
+  let monthsToDepletion: number | null = null;
+  if (sustainStatus === "shrinking" && infiniteMonthly > 0) {
     if (infGrowthR > 0) {
       const denominator = infiniteMonthly - finalValue * infGrowthR;
       if (denominator > 0) {
         const n = Math.log(infiniteMonthly / denominator) / Math.log(1 + infGrowthR);
-        yearsToDepletion = Math.max(1, Math.round(n / 12));
+        monthsToDepletion = Math.max(1, Math.round(n));
       }
     } else {
-      yearsToDepletion = Math.max(1, Math.round(finalValue / infiniteMonthly / 12));
+      monthsToDepletion = Math.max(1, Math.round(finalValue / infiniteMonthly));
     }
   }
 
@@ -380,11 +392,11 @@ export default function InvestmentCalculator() {
                     min={0.5}
                     max={20}
                     step={0.5}
-                    format={(v) => `${v} %`}
+                    format={(v) => `${+v.toFixed(1)} %`}
                     onChange={setWithdrawalPct}
                   />
 
-                  {/* Bidirectionální vstup — přesná Kč částka */}
+                  {/* Bidirectionální vstup — přesná Kč částka, bez limitu */}
                   <div className="space-y-2">
                     <div className="flex justify-between items-baseline gap-2">
                       <span className="text-sm font-medium text-dark">nebo zadejte přesnou měsíční částku</span>
@@ -393,15 +405,21 @@ export default function InvestmentCalculator() {
                       <input
                         type="number"
                         min={0}
-                        max={Math.round(finalValue / 12)}
                         step={100}
-                        value={Math.round(infiniteMonthly)}
-                        onChange={(e) => {
-                          const val = Number(e.target.value);
-                          if (finalValue > 0) {
+                        value={kczDraft !== null ? kczDraft : String(Math.max(0, Math.round(infiniteMonthly)))}
+                        onFocus={() => setKczDraft(String(Math.max(0, Math.round(infiniteMonthly))))}
+                        onChange={(e) => setKczDraft(e.target.value)}
+                        onBlur={() => {
+                          const val = kczDraft !== null ? parseInt(kczDraft, 10) : NaN;
+                          if (!isNaN(val) && val >= 0 && finalValue > 0) {
+                            // Bez clampu — dovolíme libovolnou částku, indikátor ukáže kontext
                             const pct = (val * 12 / finalValue) * 100;
-                            setWithdrawalPct(Math.max(0.5, Math.min(20, Math.round(pct * 2) / 2)));
+                            setWithdrawalPct(Math.max(0, +pct.toFixed(2)));
+                          } else {
+                            // Prázdné / neplatné → zachovej 1 Kč jako minimum
+                            setWithdrawalPct(finalValue > 0 ? Math.max(0, +((1 * 12 / finalValue) * 100).toFixed(2)) : 0);
                           }
+                          setKczDraft(null);
                         }}
                         className="w-full bg-white border border-[#e8e5e2] rounded-xl px-4 py-3 pr-16 text-sm font-heading font-700 text-[#97724f] focus:outline-none focus:border-[#97724f] transition-colors"
                       />
@@ -421,8 +439,8 @@ export default function InvestmentCalculator() {
                   {sustainStatus === "growing" && (
                     <>
                       <span className="font-semibold">Portfolio roste.</span>{" "}
-                      Vybíráte {withdrawalPct} %, portfolio vydělává {returnRate} % — čistý přírůstek{" "}
-                      <span className="font-semibold whitespace-nowrap">+{(netAnnual).toFixed(1)}&nbsp;%/rok</span>.
+                      Vybíráte {+withdrawalPct.toFixed(1)} %, portfolio vydělává {returnRate} % — čistý přírůstek{" "}
+                      <span className="font-semibold whitespace-nowrap">+{netAnnual.toFixed(1)}&nbsp;%/rok</span>.
                       Za {RENTA_HORIZON} let bude portfolio hodnotnější.
                     </>
                   )}
@@ -435,9 +453,10 @@ export default function InvestmentCalculator() {
                   {sustainStatus === "shrinking" && (
                     <>
                       <span className="font-semibold">Portfolio se zmenšuje.</span>{" "}
-                      Vybíráte {withdrawalPct} %, ale portfolio vydělává jen {returnRate} %.{" "}
-                      {yearsToDepletion !== null && (
-                        <>Portfolio se vyčerpá přibližně za <span className="font-semibold">{yearsLabel(yearsToDepletion)}</span>.</>
+                      Vybíráte {+withdrawalPct.toFixed(1)} %, ale portfolio vydělává jen {returnRate} %.{" "}
+                      {monthsToDepletion !== null && (
+                        <>Portfolio se vyčerpá přibližně za{" "}
+                        <span className="font-semibold">{depletionLabel(monthsToDepletion)}</span>.</>
                       )}
                     </>
                   )}
