@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 const ECOMAIL_API_KEY = process.env.ECOMAIL_API_KEY!;
 const ECOMAIL_API_URL = "https://api2.ecomail.cz/transactional/send-message";
 
-const RADEK_EMAIL = "radek.barta@goldengate.cz";
+const RADEK_EMAIL = "radek@radekbarta.cz";
 const FROM_EMAIL = "radek@radekbarta.cz";
 const FROM_NAME = "Radek Bárta";
 
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
 
     const subject =
       type === "lead"
-        ? `Nový zájemce o Kruh tvůrců: ${name}`
+        ? `Nový zájemce: ${name}`
         : `Nová zpráva z webu: ${name}`;
 
     // Notify Radek
