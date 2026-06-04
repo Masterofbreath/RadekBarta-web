@@ -287,8 +287,8 @@ export default function InvestmentCalculator() {
               format={formatCZK} onChange={setInitial} editable />
             <Slider label="Měsíční příspěvek" value={monthly} min={0} max={200_000} step={500}
               format={formatCZK} onChange={setMonthly} />
-            <Slider label="Investiční horizont" value={years} min={1} max={30} step={1}
-              format={yearsLabel} onChange={setYears} />
+            <Slider label="Investiční horizont" value={years} min={1} max={40} step={1}
+              format={yearsLabel} onChange={setYears} editable />
             <Slider label="Modelový výnos" hint="(p.a.)" value={returnRate} min={1} max={15} step={0.5}
               format={(v) => `${v} %`} onChange={setReturnRate} />
           </div>
