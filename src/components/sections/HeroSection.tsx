@@ -109,13 +109,13 @@ export default function HeroSection() {
             >
               Objevte moje projekty
             </a>
-            <Link
-              href="/investice"
+            <a
+              href="/investice#konzultace"
               className="inline-flex items-center gap-2 text-white/65 hover:text-white font-medium text-xs lg:text-sm transition-colors group"
             >
               Sjednat konzultaci
               <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-            </Link>
+            </a>
           </motion.div>
 
         </div>

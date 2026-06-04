@@ -149,13 +149,12 @@ export default function Navigation() {
               transition={{ delay: 0.4 }}
               className="mt-auto"
             >
-              <Link
-                href="/investice"
-                scroll={false}
+              <a
+                href="/investice#konzultace"
                 className="w-full flex items-center justify-center px-6 py-4 bg-[#97724f] text-white text-lg font-semibold font-heading rounded-2xl hover:bg-[#7a5c3e] transition-colors"
               >
                 Sjednat konzultaci
-              </Link>
+              </a>
             </motion.div>
           </motion.div>
         )}
