@@ -12,7 +12,6 @@ interface Props {
   testimonials: Testimonial[];
 }
 
-const CLAMP_LINES = 6;
 // Aproximace: průměrně ~60 znaků na řádek × 6 řádků
 const CLAMP_CHAR_THRESHOLD = 280;
 
@@ -65,36 +64,36 @@ export default function TestimonialsSlider({ testimonials }: Props) {
           {looped.map((t, i) => {
             const isTruncated = t.quote.length > CLAMP_CHAR_THRESHOLD;
             return (
-              <div
-                key={i}
-                className="shrink-0 w-[300px] sm:w-[340px] lg:w-[380px]"
-                aria-hidden={i >= testimonials.length}
+          <div
+            key={i}
+            className="shrink-0 w-[300px] sm:w-[340px] lg:w-[380px] h-[360px]"
+            aria-hidden={i >= testimonials.length}
+          >
+            <div
+              onClick={() => setExpanded(t)}
+              className="group bg-white rounded-2xl lg:rounded-3xl p-8 border border-[#e8e5e2] hover:border-[#c5a889] transition-colors duration-300 h-full flex flex-col cursor-pointer overflow-hidden"
+            >
+              <span
+                className="font-heading font-700 text-5xl leading-none mb-3 block shrink-0"
+                style={{ color: "#c5a889" }}
               >
-                <div
-                  onClick={() => setExpanded(t)}
-                  className="group bg-white rounded-2xl lg:rounded-3xl p-8 border border-[#e8e5e2] hover:border-[#c5a889] transition-colors duration-300 h-full flex flex-col cursor-pointer"
-                >
-                  <span
-                    className="font-heading font-700 text-5xl leading-none mb-4 block"
-                    style={{ color: "#c5a889" }}
-                  >
-                    "
-                  </span>
-                  <p className={`text-[#1a1a1a] text-sm leading-relaxed flex-1 mb-4 line-clamp-${CLAMP_LINES}`}>
-                    {t.quote}
-                  </p>
-                  {/* Hint "číst více" — zobrazí se jen u dlouhých referencí */}
-                  {isTruncated && (
-                    <p className="text-[#c5a889] text-xs font-medium mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      Číst celou referenci →
-                    </p>
-                  )}
-                  <div className="border-t border-[#e8e5e2] pt-4">
-                    <p className="font-heading font-700 text-dark text-sm">{t.name}</p>
-                    <p className="text-[#97724f] text-xs mt-0.5">{t.role}</p>
-                  </div>
-                </div>
+                "
+              </span>
+              <p className="text-[#1a1a1a] text-sm leading-relaxed flex-1 mb-3 line-clamp-6 overflow-hidden">
+                {t.quote}
+              </p>
+              {/* Hint "číst více" — zobrazí se jen u dlouhých referencí */}
+              {isTruncated && (
+                <p className="text-[#c5a889] text-xs font-medium mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200 shrink-0">
+                  Číst celou referenci →
+                </p>
+              )}
+              <div className="border-t border-[#e8e5e2] pt-4 shrink-0">
+                <p className="font-heading font-700 text-dark text-sm">{t.name}</p>
+                <p className="text-[#97724f] text-xs mt-0.5">{t.role}</p>
               </div>
+            </div>
+          </div>
             );
           })}
         </div>

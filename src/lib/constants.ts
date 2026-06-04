@@ -23,12 +23,12 @@ export const NAV_LINKS = [
   { label: "Domů", href: "/" },
   { label: "Investice", href: "/investice" },
   { label: "YouTube", href: SOCIAL.youtube, external: true },
-  { label: "Kontakt", href: "/#kontakt" },
+  { label: "Kontakt", href: "/investice#konzultace" },
 ] as const;
 
 export const BOTTOM_NAV = [
   { label: "Domů", href: "/", icon: "home" },
   { label: "Investice", href: "/investice", icon: "chart" },
   { label: "YouTube", href: SOCIAL.youtube, icon: "youtube", external: true },
-  { label: "Kontakt", href: "/#kontakt", icon: "mail" },
+  { label: "Kontakt", href: "/investice#konzultace", icon: "mail" },
 ] as const;
