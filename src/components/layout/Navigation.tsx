@@ -78,13 +78,12 @@ export default function Navigation() {
 
           {/* CTA + hamburger */}
           <div className="flex items-center gap-4">
-            <Link
-              href="/investice"
-              scroll={false}
+            <a
+              href="/investice#konzultace"
               className="hidden lg:inline-flex items-center px-5 py-2.5 bg-[#97724f] text-white text-sm font-semibold font-heading rounded-full hover:bg-[#7a5c3e] transition-all duration-300 hover:scale-[1.02]"
             >
               Sjednat konzultaci
-            </Link>
+            </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#e8e5e2] transition-colors"

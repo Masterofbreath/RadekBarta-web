@@ -62,7 +62,7 @@ const services = [
     items: [
       {
         name: "Fond kvalifikovaných investorů",
-        desc: "Strategie světových hedge fondů — akcie, dluhopisy, zlato, Managed Futures a Long Volatility. Od 1 milionu Kč.",
+        desc: "Strategie světových hedge fondů: akcie, dluhopisy, zlato, Managed Futures a Long Volatility. Vstup od 1\u00a0mil.\u00a0Kč.",
       },
       {
         name: "Navržen pro nestabilní trhy",

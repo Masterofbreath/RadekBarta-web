@@ -310,7 +310,7 @@ export default function InvestmentCalculator() {
         </div>
 
         {/* ── Oddělovač ── */}
-        <div className="border-t border-[#e0dbd6] my-20 lg:my-28" />
+        <div className="border-t border-[#e0dbd6] my-10 lg:my-14" />
 
         {/* ── Záhlaví renty + přepínač ── */}
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 lg:mb-16">
@@ -421,21 +421,21 @@ export default function InvestmentCalculator() {
                   {sustainStatus === "growing" && (
                     <>
                       <span className="font-semibold">Portfolio roste.</span>{" "}
-                      Vybíráš {withdrawalPct} %, portfolio vydělává {returnRate} % — čistý přírůstek{" "}
-                      <span className="font-semibold">+{(netAnnual).toFixed(1)} %/rok</span>.
+                      Vybíráte {withdrawalPct} %, portfolio vydělává {returnRate} % — čistý přírůstek{" "}
+                      <span className="font-semibold whitespace-nowrap">+{(netAnnual).toFixed(1)}&nbsp;%/rok</span>.
                       Za {RENTA_HORIZON} let bude portfolio hodnotnější.
                     </>
                   )}
                   {sustainStatus === "stable" && (
                     <>
                       <span className="font-semibold">Portfolio je stabilní.</span>{" "}
-                      Vybíráš přesně tolik, kolik vydělává ({returnRate} %). Jistina zůstane nezměněna navždy.
+                      Vybíráte přesně tolik, kolik vydělává ({returnRate} %). Jistina zůstane nezměněna navždy.
                     </>
                   )}
                   {sustainStatus === "shrinking" && (
                     <>
                       <span className="font-semibold">Portfolio se zmenšuje.</span>{" "}
-                      Vybíráš {withdrawalPct} %, ale portfolio vydělává jen {returnRate} %.{" "}
+                      Vybíráte {withdrawalPct} %, ale portfolio vydělává jen {returnRate} %.{" "}
                       {yearsToDepletion !== null && (
                         <>Portfolio se vyčerpá přibližně za <span className="font-semibold">{yearsLabel(yearsToDepletion)}</span>.</>
                       )}
@@ -445,7 +445,7 @@ export default function InvestmentCalculator() {
 
                 <p className="text-[#9b9b9b] text-xs leading-relaxed">
                   Výnos portfolia a míra výběru jsou záměrně odděleny. Portfolio nadále roste tempem z kalkulačky,
-                  ty si vybíráš zvolenou mírou výběru. Záporný rozdíl = portfolio se postupně spotřebuje.
+                  vy si vybíráte zvolenou mírou výběru. Záporný rozdíl = portfolio se postupně spotřebuje.
                 </p>
               </>
             ) : (
