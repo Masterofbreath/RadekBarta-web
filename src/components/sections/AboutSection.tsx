@@ -53,10 +53,6 @@ export default function AboutSection() {
                     label: "Tvorba obsahu",
                     text: "Skrze videa a podcasty zkoumám principy růstu, hojnosti a vědomé práce s myslí a tělem.",
                   },
-                  {
-                    label: "Kruh tvůrců",
-                    text: "Vytvářím bezpečný prostor a komunitu pro inspirativní lidi, kteří chtějí růst společně.",
-                  },
                 ].map((item) => (
                   <div key={item.label} className="flex gap-3">
                     <p className="text-[#6b6b6b] text-base leading-relaxed">

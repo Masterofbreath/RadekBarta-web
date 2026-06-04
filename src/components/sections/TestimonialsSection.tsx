@@ -314,7 +314,7 @@ export default function TestimonialsSection() {
           <RotatingCard
             items={kruhTestimonials}
             icon={<CommunityCircleIcon />}
-            label="Kruh tvůrců"
+            label="Události"
             delay={0.24}
           />
         </div>
