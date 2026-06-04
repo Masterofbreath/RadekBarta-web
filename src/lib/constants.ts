@@ -29,6 +29,6 @@ export const NAV_LINKS = [
 export const BOTTOM_NAV = [
   { label: "Domů", href: "/", icon: "home" },
   { label: "Investice", href: "/investice", icon: "chart" },
-  { label: "YouTube", href: SOCIAL.youtube, icon: "play", external: true },
+  { label: "YouTube", href: SOCIAL.youtube, icon: "youtube", external: true },
   { label: "Kontakt", href: "/#kontakt", icon: "mail" },
 ] as const;

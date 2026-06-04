@@ -2,15 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { HomeIcon, ChartIcon, UsersIcon, MicIcon, MailIcon } from "@/components/ui/Icons";
+import { HomeIcon, ChartIcon, MicIcon, MailIcon, YoutubeIcon } from "@/components/ui/Icons";
 import { BOTTOM_NAV } from "@/lib/constants";
 
 const icons = {
   home: HomeIcon,
   chart: ChartIcon,
-  users: UsersIcon,
   mic: MicIcon,
   mail: MailIcon,
+  youtube: YoutubeIcon,
 } as const;
 
 export default function BottomNav() {
