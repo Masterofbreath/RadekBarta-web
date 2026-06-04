@@ -71,37 +71,37 @@ const podcastTestimonials: TestimonialItem[] = [
   {
     quote: "Před pár dny jsem narazil na Vaše podcasty! Chci Vám ze srdce úplně nejvíc poděkovat ❤️ Neskutečně mě inspirujete a obohacujete Vašimi podcasty — vědomě se připravuju na změnu, co se týče přístupu k mým financím a celkovému směřování. Jste nejlepší 🙌📈",
     name: "Muž",
-    role: "Posluchač podcastu Principy růstu",
+    role: "Podcast",
   },
   {
     quote: "Objevila jsem Vás zrovna ve chvíli, kdy jsem profesně i osobně přešlapovala na místě. Díky Vám jsem se dala na cestu seberozvoje a také si ucelila obrázek ohledně tvorby majetku a dlouhodobé vize. Věděla jsem toho sice už spoustu, ale až po poslechu Vašich podcastů mi to teprve vše docvaklo. Velký DÍK!!! ❤️",
     name: "Žena",
-    role: "Posluchačka podcastu Principy růstu",
+    role: "Podcast",
   },
   {
     quote: "Děláte absolutně skvělý podcast!!! Jsem opravdu rád, že jsem na něj před pár dny náhodou narazil. Vaše názory a myšlenky se mnou rezonují a snad se vším se ztotožňuji! Suprr práce 👍👍",
     name: "Muž",
-    role: "Posluchač podcastu Principy růstu",
+    role: "Podcast",
   },
   {
     quote: "Přidávám tip na super-nadupaný podcast; konkrétně díl o principech bohatství a zdravých návycích. Došlo mi při poslechu opravdu spousta souvislostí. Díky @magiezivota 🙏",
     name: "Sdílení na sociálních sítích",
-    role: "Posluchač podcastu Principy růstu",
+    role: "Podcast",
   },
   {
     quote: "Začal jsem vás nedávno poslouchat a pomohli jste mi s pár životními změnami. Moc vám za to chci poděkovat, dobře se vás poslouchá. Ještě jednou moc děkuji a v případě, že někdy budete v Praze, tak si s vámi velice rád zajdu na kávu. 😀",
     name: "Muž",
-    role: "Posluchač podcastu Principy růstu",
+    role: "Podcast",
   },
   {
     quote: "Začal jsem nedávno poslouchat váš podcast a je to super! Moc se mi líbí vaše myšlenky a hodně věcí mám v plánu si díky vám zavést do života. Odvádíte moc dobrou práci, mě baví vás poslouchat!",
     name: "Muž",
-    role: "Posluchač podcastu Principy růstu",
+    role: "Podcast",
   },
   {
     quote: "Děkuji za Vaše super Podcasty!!!! Pouštím si je při procházkách s kočárkem 🫶🌷.",
     name: "Žena",
-    role: "Posluchačka podcastu Principy růstu",
+    role: "Podcast",
   },
 ];
 
@@ -308,7 +308,7 @@ export default function TestimonialsSection() {
           <RotatingCard
             items={podcastTestimonials}
             icon={<StudioMicIcon />}
-            label="Principy růstu"
+            label="Podcast"
             delay={0.12}
           />
           <RotatingCard

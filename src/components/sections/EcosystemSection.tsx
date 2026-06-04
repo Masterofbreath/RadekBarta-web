@@ -22,7 +22,7 @@ const cards = [
     subtitle: "Osobní YouTube channel",
     title: "Radek Bárta",
     description:
-      "Video tvorba o podnikání, technologiích, seberozvoji a investicích. Myšlenky a vhledy pro váš každodenní osobní i byznysový růst.",
+      "Video tvorba o podnikání, technologiích, seberozvoji a investicích. Praktické myšlenky a vhledy pro váš každodenní osobní i byznysový růst — přímo od Radka Bárty.",
     cta: "Přejít na YouTube",
     href: SOCIAL.youtube,
     external: true,
