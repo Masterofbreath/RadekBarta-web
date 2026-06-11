@@ -35,7 +35,8 @@ async function sendEmail({
 
   if (!response.ok) {
     const err = await response.text();
-    throw new Error(`Ecomail transactional error: ${err}`);
+    console.error(`Ecomail API ${response.status}: ${err}`);
+    throw new Error(`Ecomail transactional error ${response.status}: ${err}`);
   }
 
   return response.json();
