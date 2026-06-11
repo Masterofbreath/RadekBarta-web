@@ -46,7 +46,7 @@ export default function ContactForm({
       setForm({ name: "", email: "", phone: "", message: "" });
     } catch {
       setStatus("error");
-      setErrorMsg("Něco se pokazilo. Zkuste to prosím znovu nebo napište přímo na ahoj@radekbarta.cz");
+      setErrorMsg("Něco se pokazilo. Zkuste to prosím znovu nebo napište přímo na radek@radekbarta.cz");
     }
   }
 
