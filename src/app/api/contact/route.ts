@@ -11,10 +11,12 @@ async function sendEmail({
   to,
   subject,
   html,
+  text,
 }: {
   to: { email: string; name?: string }[];
   subject: string;
   html: string;
+  text?: string;
 }) {
   const response = await fetch(ECOMAIL_API_URL, {
     method: "POST",
@@ -29,6 +31,7 @@ async function sendEmail({
         to,
         subject,
         html,
+        text: text ?? html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim(),
       },
     }),
   });
