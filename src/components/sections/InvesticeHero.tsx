@@ -101,7 +101,7 @@ export default function InvesticeHero() {
             transition={{ duration: 0.7, delay: 0.6 }}
           >
             <a
-              href="#konzultace"
+              href="#kontakt"
               className="inline-flex items-center px-6 py-3 lg:px-8 lg:py-4 bg-[#97724f] text-white font-heading font-semibold rounded-full hover:bg-[#7a5c3e] transition-all duration-300 hover:scale-[1.02] text-xs lg:text-sm"
             >
               Sjednat bezplatnou konzultaci

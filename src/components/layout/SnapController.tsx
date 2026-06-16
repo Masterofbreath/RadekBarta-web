@@ -5,8 +5,9 @@ import { usePathname } from "next/navigation";
 
 /**
  * Disables scroll-snap on the page-scroll-container for every route
- * except the homepage. This prevents legal pages, landing pages, etc.
- * from auto-jumping to the footer (which is the only snap point there).
+ * except the homepage. Respects hash anchors — if the URL contains a
+ * hash (e.g. /investice#kontakt), does NOT reset scroll to top but
+ * instead scrolls the target element into view after navigation.
  */
 export default function SnapController() {
   const pathname = usePathname();
@@ -17,13 +18,25 @@ export default function SnapController() {
     ) as HTMLElement | null;
     if (!container) return;
 
-    // Disable snap FIRST so no snap-jump can occur, then reset scroll
     if (pathname === "/") {
       container.style.scrollSnapType = "";
     } else {
       container.style.scrollSnapType = "none";
     }
-    container.scrollTop = 0;
+
+    const hash = window.location.hash;
+
+    if (hash) {
+      // Let the browser render the page first, then scroll to anchor
+      requestAnimationFrame(() => {
+        const target = document.querySelector(hash) as HTMLElement | null;
+        if (target) {
+          target.scrollIntoView({ behavior: "instant" });
+        }
+      });
+    } else {
+      container.scrollTop = 0;
+    }
   }, [pathname]);
 
   return null;
