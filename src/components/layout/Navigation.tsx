@@ -78,12 +78,13 @@ export default function Navigation() {
 
           {/* CTA + hamburger */}
           <div className="flex items-center gap-4">
-            <a
+            <Link
               href="/investice#kontakt"
+              scroll={false}
               className="hidden lg:inline-flex items-center px-5 py-2.5 bg-[#97724f] text-white text-sm font-semibold font-heading rounded-full hover:bg-[#7a5c3e] transition-all duration-300 hover:scale-[1.02]"
             >
               Sjednat konzultaci
-            </a>
+            </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#e8e5e2] transition-colors"
@@ -149,12 +150,13 @@ export default function Navigation() {
               transition={{ delay: 0.4 }}
               className="mt-auto"
             >
-              <a
+              <Link
                 href="/investice#kontakt"
+                scroll={false}
                 className="w-full flex items-center justify-center px-6 py-4 bg-[#97724f] text-white text-lg font-semibold font-heading rounded-2xl hover:bg-[#7a5c3e] transition-colors"
               >
                 Sjednat konzultaci
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
         )}

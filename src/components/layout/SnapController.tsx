@@ -4,43 +4,63 @@ import { useLayoutEffect, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 /**
- * Scrolls to a hash target inside the .page-scroll-container.
- * Necessary because body has overflow:hidden on desktop — native browser
- * hash navigation scrolls the document, not the custom scroll container.
- * Exported so other components (e.g. InvesticeHero) can reuse it.
+ * Scrolls to a hash element inside .page-scroll-container.
+ *
+ * WHY custom scroll: body has overflow:hidden on desktop, so native browser
+ * hash navigation scrolls <html>/<body> (which can't scroll), not the actual
+ * scrollable container. We must scroll the container directly.
+ *
+ * Uses instant positioning (no smooth animation) to avoid CSS snap/smooth
+ * timing conflicts. Smooth behaviour is restored immediately after.
  */
-export function scrollToHash(hash: string, behavior: ScrollBehavior = "smooth") {
+export function scrollToHash(hash: string): boolean {
   const container = document.querySelector(
     ".page-scroll-container"
   ) as HTMLElement | null;
   const target = document.querySelector(hash) as HTMLElement | null;
-  if (!target) return;
 
-  const navHeight = 80; // fixed nav height (h-20 = 5rem)
+  if (!container || !target) return false;
 
-  if (container) {
-    const containerRect = container.getBoundingClientRect();
-    const targetRect = target.getBoundingClientRect();
-    const newScrollTop =
-      container.scrollTop + targetRect.top - containerRect.top - navHeight;
-    container.scrollTo({ top: newScrollTop, behavior });
-  } else {
-    target.scrollIntoView({ behavior });
-  }
+  // Explicitly disable snap and smooth before setting position
+  container.style.scrollSnapType = "none";
+  container.style.scrollBehavior = "auto";
+
+  const navHeight = 80;
+  const containerRect = container.getBoundingClientRect();
+  const targetRect = target.getBoundingClientRect();
+  const newScrollTop =
+    container.scrollTop + targetRect.top - containerRect.top - navHeight;
+
+  container.scrollTop = newScrollTop;
+
+  // Restore smooth scroll (not snap — that's managed by SnapController)
+  requestAnimationFrame(() => {
+    container.style.scrollBehavior = "";
+  });
+
+  return true;
 }
 
-/**
- * Controls scroll-snap on the .page-scroll-container:
- * - Enabled on homepage ("/")
- * - Disabled on all other routes
- *
- * Also handles hash anchor scrolling, which native browser can't do
- * because body has overflow:hidden on desktop.
- */
+/** Retries scrollToHash until the element is found (max ~800ms) */
+function scrollToHashWithRetry(hash: string) {
+  const delays = [0, 150, 350, 600, 900];
+  const timers: ReturnType<typeof setTimeout>[] = [];
+
+  delays.forEach((delay) => {
+    timers.push(
+      setTimeout(() => {
+        scrollToHash(hash);
+      }, delay)
+    );
+  });
+
+  return () => timers.forEach(clearTimeout);
+}
+
 export default function SnapController() {
   const pathname = usePathname();
 
-  // Sync: disable/enable snap + reset scroll before paint
+  // Sync (before paint): enable/disable snap, reset scroll
   useLayoutEffect(() => {
     const container = document.querySelector(
       ".page-scroll-container"
@@ -53,25 +73,27 @@ export default function SnapController() {
       container.style.scrollSnapType = "none";
     }
 
-    // Reset scroll to top on every route change (hash scroll handled below)
+    // Always reset scroll to top on route change — hash scroll in useEffect below
+    container.style.scrollBehavior = "auto";
     container.scrollTop = 0;
+    // Re-enable smooth after instant reset
+    requestAnimationFrame(() => {
+      container.style.scrollBehavior = "";
+    });
   }, [pathname]);
 
-  // After render: scroll to hash if present (cross-page navigation)
+  // Async: if URL has hash, scroll to the target after route renders
   useEffect(() => {
     const hash = window.location.hash;
     if (!hash) return;
-
-    // Wait for the incoming page's components to mount
-    const timer = setTimeout(() => scrollToHash(hash), 300);
-    return () => clearTimeout(timer);
+    return scrollToHashWithRetry(hash);
   }, [pathname]);
 
-  // Same-page hash changes (e.g. clicking <a href="#kontakt"> on investice page)
+  // Same-page hash clicks (e.g. <a href="#kontakt"> when already on /investice)
   useEffect(() => {
     function onHashChange() {
       const hash = window.location.hash;
-      if (hash) scrollToHash(hash);
+      if (hash) scrollToHashWithRetry(hash);
     }
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);

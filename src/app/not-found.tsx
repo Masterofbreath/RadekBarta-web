@@ -30,6 +30,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/investice#kontakt"
+            scroll={false}
             className="inline-flex items-center justify-center px-6 py-3 bg-white/10 text-white font-heading font-semibold rounded-full hover:bg-white/15 transition-colors text-sm"
           >
             Kontakt

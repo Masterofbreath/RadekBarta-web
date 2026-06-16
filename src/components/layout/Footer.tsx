@@ -80,6 +80,7 @@ export default function Footer() {
                   <Link
                     key={link.href}
                     href={link.href}
+                    scroll={false}
                     className="text-sm text-white/60 hover:text-white transition-colors"
                   >
                     {link.label}
