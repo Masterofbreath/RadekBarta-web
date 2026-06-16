@@ -42,7 +42,7 @@ export default function AboutSection() {
                 {[
                   {
                     label: "Investiční zprostředkování",
-                    text: "Jako vázaný zástupce Golden Gate CZ pomáhám klientům orientovat se ve světě investic — od fyzických drahých kovů přes investiční fondy až po nemovitosti.",
+                    text: "Jako vázaný zástupce Golden Gate finanční služby, a.s. pomáhám klientům orientovat se ve světě investic — od fyzických drahých kovů přes investiční fondy až po nemovitosti.",
                   },
                   {
                     label: "Tvorba edukativního obsahu",

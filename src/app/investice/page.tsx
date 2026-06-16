@@ -9,7 +9,7 @@ import ServicesDonut from "@/components/sections/ServicesDonut";
 export const metadata: Metadata = {
   title: "Investice · Tvorba bohatství",
   description:
-    "Fyzické zlato a stříbro, permanentní portfolio, investiční nemovitosti. Radek Bárta — vázaný zástupce Golden Gate CZ — vám pomůže najít správný nástroj. Bezplatná konzultace.",
+    "Fyzické zlato a stříbro, permanentní portfolio, investiční nemovitosti. Radek Bárta — vázaný zástupce Golden Gate finanční služby, a.s. — vám pomůže najít správný nástroj. Bezplatná konzultace.",
   openGraph: {
     title: "Investice & Tvorba bohatství — Radek Bárta",
     description:

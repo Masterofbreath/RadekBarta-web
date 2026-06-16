@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "Principy růstu",
     "finanční svoboda",
     "investiční zprostředkovatel",
-    "Golden Gate CZ",
+    "Golden Gate finanční služby",
     "drahé kovy investice",
   ],
   authors: [{ name: "Radek Bárta", url: "https://www.radekbarta.cz" }],
@@ -114,7 +114,7 @@ export default function RootLayout({
                 image: "https://www.radekbarta.cz/images/hero.jpg",
                 jobTitle: "Investor, Podcaster, Podnikatel",
                 description:
-                  "Radek Bárta je český investor a podcaster. Jako vázaný zástupce Golden Gate CZ pomáhá rodinám a podnikatelům budovat diverzifikovaná investiční portfolia — od fyzických drahých kovů po permanentní strategie.",
+                  "Radek Bárta je český investor a podcaster. Jako vázaný zástupce Golden Gate finanční služby, a.s. pomáhá rodinám a podnikatelům budovat diverzifikovaná investiční portfolia — od fyzických drahých kovů po permanentní strategie.",
                 email: "radek@radekbarta.cz",
                 telephone: "+420739758734",
                 sameAs: [
