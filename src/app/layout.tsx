@@ -22,34 +22,73 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Radek Bárta — Průvodce na cestě za finanční i osobní svobodou",
+  title: {
+    default: "Radek Bárta — Investor, Podcaster, Průvodce za finanční svobodou",
+    template: "%s — Radek Bárta",
+  },
   description:
-    "Radek Bárta — průvodce na cestě za finanční i osobní svobodou. Investice, podcast Magie života, YouTube a vědomý růst.",
+    "Radek Bárta — investor, podcaster a průvodce na cestě za finanční i osobní svobodou. Investice do zlata, stříbra, permanentního portfolia a nemovitostí. Podcast Magie života (160+ epizod).",
   keywords: [
     "Radek Bárta",
     "investice",
-    "architektura bohatství",
-    "Magie života",
+    "fyzické zlato",
+    "fyzické stříbro",
+    "permanentní portfolio",
+    "investiční nemovitosti",
+    "Magie života podcast",
     "Principy růstu",
     "finanční svoboda",
-    "zlato stříbro investice",
+    "investiční zprostředkovatel",
+    "Golden Gate CZ",
+    "drahé kovy investice",
   ],
-  authors: [{ name: "Radek Bárta" }],
+  authors: [{ name: "Radek Bárta", url: "https://www.radekbarta.cz" }],
+  creator: "Radek Bárta",
   openGraph: {
-    title: "Radek Bárta — Průvodce na cestě za finanční i osobní svobodou",
+    title: "Radek Bárta — Investor, Podcaster, Průvodce za finanční svobodou",
     description:
-      "Průvodce na cestě za finanční i osobní svobodou. Investice, podcast Magie života, YouTube a vědomý růst.",
+      "Pomáhám rodinám a podnikatelům budovat diverzifikovaná portfolia — fyzické drahé kovy, permanentní strategie, nemovitosti. 9+ let praxe, 500+ klientů.",
     url: "https://www.radekbarta.cz",
     siteName: "Radek Bárta",
     locale: "cs_CZ",
     type: "website",
+    images: [
+      {
+        url: "https://www.radekbarta.cz/images/hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Radek Bárta — Investor, Podcaster, Podnikatel",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Radek Bárta — Investor & Podcaster",
+    description:
+      "Průvodce na cestě za finanční i osobní svobodou. Investice, podcast Magie života a vědomý růst.",
+    images: ["https://www.radekbarta.cz/images/hero.jpg"],
+  },
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   alternates: {
     canonical: "https://www.radekbarta.cz",
+  },
+  verification: {
+    // google: "váš-google-verification-code", // přidat po ověření GSC
   },
 };
 
@@ -64,6 +103,55 @@ export default function RootLayout({
       className={`${montserrat.variable} ${inter.variable}`}
     >
       <head>
+        {/* JSON-LD — Person + WebSite structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: "Radek Bárta",
+                url: "https://www.radekbarta.cz",
+                image: "https://www.radekbarta.cz/images/hero.jpg",
+                jobTitle: "Investor, Podcaster, Podnikatel",
+                description:
+                  "Radek Bárta je český investor a podcaster. Jako vázaný zástupce Golden Gate CZ pomáhá rodinám a podnikatelům budovat diverzifikovaná investiční portfolia — od fyzických drahých kovů po permanentní strategie.",
+                email: "radek@radekbarta.cz",
+                telephone: "+420739758734",
+                sameAs: [
+                  "https://www.facebook.com/radek.bartaa",
+                  "https://www.instagram.com/radek_barta",
+                  "https://www.linkedin.com/in/radek-barta-155a3717b/",
+                  "https://www.youtube.com/@radek_barta",
+                  "https://www.youtube.com/@Principyrustu",
+                ],
+                knowsAbout: [
+                  "Investice",
+                  "Fyzické drahé kovy",
+                  "Zlato a stříbro",
+                  "Permanentní portfolio",
+                  "Investiční nemovitosti",
+                  "Finanční svoboda",
+                  "Osobní rozvoj",
+                ],
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "Radek Bárta",
+                url: "https://www.radekbarta.cz",
+                description:
+                  "Průvodce na cestě za finanční i osobní svobodou. Investice, podcast Magie života a vědomý růst.",
+                inLanguage: "cs",
+                author: {
+                  "@type": "Person",
+                  name: "Radek Bárta",
+                },
+              },
+            ]),
+          }}
+        />
         {/* Ecomail tracking */}
         <Script
           id="ecomail-tracker"
