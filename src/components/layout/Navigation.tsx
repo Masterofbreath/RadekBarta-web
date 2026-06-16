@@ -79,7 +79,7 @@ export default function Navigation() {
           {/* CTA + hamburger */}
           <div className="flex items-center gap-4">
             <a
-              href="/investice#konzultace"
+              href="/investice#kontakt"
               className="hidden lg:inline-flex items-center px-5 py-2.5 bg-[#97724f] text-white text-sm font-semibold font-heading rounded-full hover:bg-[#7a5c3e] transition-all duration-300 hover:scale-[1.02]"
             >
               Sjednat konzultaci
@@ -150,7 +150,7 @@ export default function Navigation() {
               className="mt-auto"
             >
               <a
-                href="/investice#konzultace"
+                href="/investice#kontakt"
                 className="w-full flex items-center justify-center px-6 py-4 bg-[#97724f] text-white text-lg font-semibold font-heading rounded-2xl hover:bg-[#7a5c3e] transition-colors"
               >
                 Sjednat konzultaci

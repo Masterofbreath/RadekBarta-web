@@ -108,7 +108,7 @@ export default function HeroSection() {
               Objevte moje projekty
             </a>
             <a
-              href="/investice#konzultace"
+              href="/investice#kontakt"
               className="inline-flex items-center gap-2 text-white/65 hover:text-white font-medium text-xs lg:text-sm transition-colors group"
             >
               Sjednat konzultaci
