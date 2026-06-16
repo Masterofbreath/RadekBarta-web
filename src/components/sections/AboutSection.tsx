@@ -42,11 +42,15 @@ export default function AboutSection() {
                 {[
                   {
                     label: "Investiční zprostředkování",
-                    text: "Jako vázaný zástupce Golden Gate CZ pomáhám klientům budovat diverzifikovaná portfolia — od fyzických drahých kovů přes investiční fondy až po nemovitosti. Spolupracuji s nejlepšími finančníky na trhu.",
+                    text: "Jako vázaný zástupce Golden Gate CZ pomáhám klientům orientovat se ve světě investic — od fyzických drahých kovů přes investiční fondy až po nemovitosti.",
                   },
                   {
                     label: "Tvorba edukativního obsahu",
                     text: "Sdílím myšlenky a principy růstu — inspirace o investicích, seberozvoji, podnikání a technologiích.",
+                  },
+                  {
+                    label: "Vedení týmu",
+                    text: "Vedu tým poradců Golden Gate, kterým zajišťuji zázemí, podporu a odborný rozvoj.",
                   },
                 ].map((item) => (
                   <div key={item.label} className="flex gap-3">
