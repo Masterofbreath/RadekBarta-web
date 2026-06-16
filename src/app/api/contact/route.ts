@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const ECOMAIL_API_KEY = process.env.ECOMAIL_API_KEY!;
-const ECOMAIL_API_URL = "https://api2.ecomailapp.cz/transactional/send-message";
+const ECOMAIL_BASE_URL = "https://api2.ecomailapp.cz";
+const ECOMAIL_API_URL = `${ECOMAIL_BASE_URL}/transactional/send-message`;
+const ALL_CONTACTS_LIST_ID = 1;
 
 const RADEK_EMAIL = "radek@radekbarta.cz";
 const FROM_EMAIL = "radek@radekbarta.cz";
@@ -43,6 +45,36 @@ async function sendEmail({
   }
 
   return response.json();
+}
+
+async function subscribeToList(
+  email: string,
+  name: string,
+  listId: number
+) {
+  const response = await fetch(
+    `${ECOMAIL_BASE_URL}/lists/${listId}/subscribe`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        key: ECOMAIL_API_KEY,
+      },
+      body: JSON.stringify({
+        subscriber_data: {
+          email,
+          name,
+        },
+        resubscribe: false,
+        trigger_autoresponders: false,
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    const err = await response.text();
+    console.error(`Ecomail subscribe API ${response.status}: ${err}`);
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -120,6 +152,11 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+
+    // Add contact to Ecomail "Všechny kontakty" list (ID=1) — non-blocking
+    subscribeToList(email, name, ALL_CONTACTS_LIST_ID).catch((err) =>
+      console.error("Ecomail list subscribe failed:", err)
+    );
 
     return NextResponse.json({ success: true });
   } catch (error) {

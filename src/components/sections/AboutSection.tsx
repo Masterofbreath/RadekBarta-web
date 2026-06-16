@@ -34,13 +34,8 @@ export default function AboutSection() {
                 <br />
                 Podcaster.
                 <br />
-                <span className="text-[#97724f]">Tvůrce komunity.</span>
+                <span className="text-[#97724f]">Podnikatel.</span>
               </h2>
-            </Reveal>
-            <Reveal delay={0.3}>
-              <p className="text-[#6b6b6b] text-lg leading-relaxed mb-6">
-                Své podnikatelské aktivity dělím do tří hlavních oblastí:
-              </p>
             </Reveal>
             <Reveal delay={0.4}>
               <div className="space-y-4 mb-10">
@@ -50,8 +45,8 @@ export default function AboutSection() {
                     text: "Jako vázaný zástupce Golden Gate CZ pomáhám klientům budovat diverzifikovaná portfolia — od fyzických drahých kovů přes investiční fondy až po nemovitosti. Spolupracuji s nejlepšími finančníky na trhu.",
                   },
                   {
-                    label: "Tvorba obsahu",
-                    text: "Skrze videa a podcasty zkoumám principy růstu, hojnosti a vědomé práce s myslí a tělem.",
+                    label: "Tvorba edukativního obsahu",
+                    text: "Sdílím myšlenky a principy růstu — inspirace o investicích, seberozvoji, podnikání a technologiích.",
                   },
                 ].map((item) => (
                   <div key={item.label} className="flex gap-3">
@@ -66,9 +61,10 @@ export default function AboutSection() {
 
             {/* Stats */}
             <Reveal delay={0.5}>
-              <div className="grid grid-cols-2 gap-6 border-t border-[#e8e5e2] pt-8">
+              <div className="grid grid-cols-3 gap-6 border-t border-[#e8e5e2] pt-8">
                 {[
-                  { value: "8+", label: "let v investicích" },
+                  { value: "9+", label: "let v investicích" },
+                  { value: "160+", label: "epizod podcastu" },
                   { value: "500+", label: "klientů" },
                 ].map((stat) => (
                   <div key={stat.label}>

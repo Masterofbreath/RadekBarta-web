@@ -24,7 +24,7 @@ const steps = [
     number: "02",
     title: "Investiční profil",
     description:
-      "Prostřednictvím investičního dotazníku společně zmapujeme vaši finanční situaci, cíle a ochotu podstupovat riziko — a já vám představím konkrétní nástroje, které by mohly odpovídat vašemu profilu.",
+      "Vyplníme investiční dotazník a zmapujeme vaši situaci, cíle a ochotu podstupovat riziko. Představím konkrétní nástroje odpovídající vašemu profilu.",
   },
   {
     number: "03",

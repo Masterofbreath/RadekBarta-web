@@ -5,19 +5,19 @@ const strengths = [
     number: "01",
     title: "Spolupráce",
     description:
-      "Ty nejlepší věcí potřebují čas, tudíž i naše spolupráce - budeme dlouhodobě a pravidelně v kontaktu.",
+      "Ty nejlepší věci potřebují čas, tudíž i naše spolupráce — budeme dlouhodobě a pravidelně v kontaktu.",
   },
   {
     number: "02",
     title: "Dlouhodobá vize",
     description:
-      "Nehraju na rychlé výhry. Buduju vztahy a bohatství, které přetrvají — i ve chvílích kdy ekonomika klesá — my rosteme.",
+      "Nehraju na rychlé výhry. Buduju vztahy a bohatství, které přetrvají.",
   },
   {
     number: "03",
     title: "Propojování příležitostí",
     description:
-      "Spojuji ty správné lidi, myšlenky a projekty k vzájemnému růstu. Tvořím kruh tvůrců.",
+      "Spojuji ty správné lidi, myšlenky a projekty k vzájemnému růstu.",
   },
 ];
 

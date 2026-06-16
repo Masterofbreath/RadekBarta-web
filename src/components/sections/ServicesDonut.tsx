@@ -14,11 +14,11 @@ const services = [
     items: [
       {
         name: "Fyzické zlato a stříbro",
-        desc: "Reálná kotva finanční jistoty — fyzické kovy si zachovají hodnotu bez ohledu na stav ekonomiky, inflaci či politická rozhodnutí.",
+        desc: "Historická kotva finanční jistoty — drahé kovy dlouhodobě slouží jako uchovatel hodnoty a pomáhají chránit majetek před dopady inflace či ekonomických krizí.",
       },
       {
         name: "Ochrana hodnoty",
-        desc: "Tvrdá aktiva mimo bankovní systém, která odolávají inflaci, krizi i tržní nestabilitě — a vy je skutečně vlastníte.",
+        desc: "Tvrdá aktiva mimo bankovní systém, která vykazují vysokou odolnost vůči tržní nestabilitě — a vy je skutečně vlastníte.",
       },
     ],
   },
@@ -29,12 +29,12 @@ const services = [
     color: "#2d2820",
     items: [
       {
-        name: "Výběr nemovitostí",
-        desc: "Cíleně vybíráme lokality a typy nemovitostí s potenciálem kapitálového zhodnocení i stabilního pasivního výnosu z nájmu.",
+        name: "Financování",
+        desc: "Ve spolupráci s mými licencovanými partnery pro vás zajistíme chytré využití hypoték a úvěrů jako páky pro systematické budování rostoucího nemovitostního portfolia.",
       },
       {
-        name: "Financování",
-        desc: "Chytré využití hypoték a úvěrů jako páky pro systematické budování rostoucího nemovitostního portfolia.",
+        name: "Páka kapitálu",
+        desc: "Správně nastavený úvěr může být silným nástrojem pro zhodnocení majetku — pomůžeme vám ho využít rozumně a bezpečně.",
       },
     ],
   },
@@ -46,27 +46,27 @@ const services = [
     items: [
       {
         name: "Strategie pro každé počasí",
-        desc: "Akcie, dluhopisy, zlato i peněžní trh v jednom. Brownova 40letá strategie odolná inflaci i recesi.",
+        desc: "Akcie, dluhopisy, zlato i peněžní trh v jednom. Prověřená strategie navržená tak, aby chránila kupní sílu majetku v dobách inflace i recese.",
       },
       {
-        name: "Aktivně řízený",
-        desc: "Složení přizpůsobujeme vývoji trhů — nemusíte trhy sledovat sami. Pravidelný review a přizpůsobení vaší situaci.",
+        name: "40 let ověřené praxe",
+        desc: "Koncept Harryho Browna z roku 1982 prošel desetiletími různých ekonomických cyklů — a obstál v každém z nich.",
       },
     ],
   },
   {
     // karta 3 — vpravo dole
-    title: "Dragon strategie",
-    shortLabel: "Dragon",
+    title: "Průvodce na vaší straně",
+    shortLabel: "Průvodce",
     color: "#6b5548",
     items: [
       {
-        name: "Fond kvalifikovaných investorů",
-        desc: "Přístup k tomuto nástroji předchází ověření investičního profilu a splnění zákonných podmínek pro kvalifikovaného investora dle ZPKT. Vstup od 1\u00a0mil.\u00a0Kč.",
+        name: "Osobní přístup",
+        desc: "Ke každému klientovi přistupuji individuálně. Nesjednáváte sami — jsem s vámi od první konzultace po průběžný přehled o vašich investicích.",
       },
       {
-        name: "Světové hedge fund strategie",
-        desc: "Akcie, dluhopisy, zlato, Managed Futures a Long Volatility — navrženo k odolnosti v době recese i zvýšené volatility.",
+        name: "Vztah, ne transakce",
+        desc: "Pravidelně se setkáváme, vyhodnocujeme výsledky a plán přizpůsobujeme vašemu životu tak, jak se rozvíjí.",
       },
     ],
   },

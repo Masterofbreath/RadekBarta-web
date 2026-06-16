@@ -88,9 +88,9 @@ export default function InvesticeHero() {
               Klid a kontrola nad svým majetkem — v každé situaci.
             </span>
             <span className="hidden lg:inline">
-              Trhy budou vždy kolísat — naše strategie s tím počítá.
+              Trhy budou vždy kolísat — diverzifikované portfolio s tím počítá.
               Permanentní portfolio od akcií po zlato, prověřené 40 lety.
-              Pro váš absolutní klid v každé situaci.
+              Finanční stabilita bez ohledu na vývoj trhů.
             </span>
           </motion.p>
 

@@ -413,7 +413,7 @@ export default function InvestmentCalculator() {
             <p className="text-[#9b9b9b] text-xs leading-relaxed">
               {withInflation
                 ? "Hodnota portfolia je přepočtena na kupní sílu dnešní koruny (inflace 3,2 % p.a.). Vložená částka je nominální — co skutečně zaplatíte. Výnos je čistý reálný zisk po inflaci."
-                : "Výpočet je orientační a nezohledňuje inflaci, daně ani poplatky. Historická výkonnost není zárukou budoucích výnosů."}
+                : "Výpočet je orientační a nezohledňuje daně ani poplatky. Investování je spojeno s rizikem — minulá výkonnost není zárukou budoucích výnosů. Před investičním rozhodnutím zvažte svou finanční situaci."}
             </p>
           </div>
         </div>
@@ -649,7 +649,7 @@ export default function InvestmentCalculator() {
             )}
 
             <p className="text-[#9b9b9b] text-xs leading-relaxed text-center">
-              Výpočet je orientační. Skutečné výnosy závisí na tržních podmínkách a zvolené strategii.
+              Výpočet je orientační. Investování je spojeno s rizikem — skutečné výnosy závisí na tržních podmínkách. Minulá výkonnost není zárukou výnosů budoucích.
             </p>
           </div>
         </div>

@@ -90,9 +90,7 @@ export default function HeroSection() {
               Průvodce na cestě za finanční i osobní svobodou.
             </span>
             <span className="hidden lg:inline">
-              Jmenuji se Radek Bárta. Jsem průvodce na cestě za finanční i
-              osobní svobodou — od investičního zprostředkování po tvorbu komunit,
-              které inspirují.
+              Jmenuji se Radek Bárta. Jsem průvodce na cestě za finanční i osobní svobodou.
             </span>
           </motion.p>
 
