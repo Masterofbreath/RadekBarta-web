@@ -62,11 +62,11 @@ const services = [
     items: [
       {
         name: "Znám každého klienta osobně",
-        desc: "Zakládám si na tom, že s každým klientem buduji dlouhodobý a transparentní vztah. Každého klienta znám osobně a pravidelně se setkáváme — svět financí a budování majetku není o jednorázových rozhodnutích, ale o průběžné a promyšlené péči.",
+        desc: "Zakládám si na tom, že s každým klientem buduji dlouhodobý a transparentní vztah. Každého klienta znám osobně a pravidelně se setkáváme. Svět financí a budování majetku není o jednorázových rozhodnutích, ale o průběžné a promyšlené péči.",
       },
       {
-        name: "Portfolio a pravidelný přehled",
-        desc: "Investice musí odpovídat vašemu profilu. Než společně kamkoliv vložíme první korunu, detailně se podíváme na vaši situaci — vyjasnění rizik, investiční dotazník a pojmenování dlouhodobých cílů.",
+        name: "Investice na míru vašim cílům",
+        desc: "Než společně kamkoliv vložíme první korunu, detailně se podíváme na vaši situaci. Investice je potřeba brát v potaz podle vašeho investičního profilu, vyjasnění rizik a pojmenování dlouhodobých cílů.",
       },
     ],
   },
