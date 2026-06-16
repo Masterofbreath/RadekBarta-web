@@ -22,9 +22,9 @@ const steps = [
   },
   {
     number: "02",
-    title: "Analýza a strategie",
+    title: "Investiční profil",
     description:
-      "Na základě konzultace připravím personalizovanou strategii — od alokace aktiv po konkrétní kroky.",
+      "Prostřednictvím investičního dotazníku společně zmapujeme vaši finanční situaci, cíle a ochotu podstupovat riziko — a já vám představím konkrétní nástroje, které by mohly odpovídat vašemu profilu.",
   },
   {
     number: "03",

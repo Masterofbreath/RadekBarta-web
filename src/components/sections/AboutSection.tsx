@@ -30,7 +30,7 @@ export default function AboutSection() {
             </Reveal>
             <Reveal delay={0.2}>
               <h2 className="font-heading font-700 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] tracking-tight text-dark mb-6">
-                Investiční stratég.
+                Investor.
                 <br />
                 Podcaster.
                 <br />
@@ -46,8 +46,8 @@ export default function AboutSection() {
               <div className="space-y-4 mb-10">
                 {[
                   {
-                    label: "Investiční strategie",
-                    text: "Buduji s klienty investiční portfolia a dělám z nich investory. Vedu tým investičních poradců a spolupracuji s nejlepšími finančníky na trhu.",
+                    label: "Investiční zprostředkování",
+                    text: "Jako vázaný zástupce Golden Gate CZ pomáhám klientům budovat diverzifikovaná portfolia — od fyzických drahých kovů přes investiční fondy až po nemovitosti. Spolupracuji s nejlepšími finančníky na trhu.",
                   },
                   {
                     label: "Tvorba obsahu",

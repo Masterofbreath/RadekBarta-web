@@ -111,8 +111,15 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        {/* ČNB Compliance disclaimer */}
+        <div className="border-t border-white/10 pt-8 mb-6">
+          <p className="text-[11px] text-white/25 leading-relaxed max-w-4xl">
+            Radek Bárta působí jako vázaný zástupce společnosti Golden Gate CZ a.s., zapsané v seznamu vázaných zástupců České národní banky (ČNB). V oblasti hypotečního financování a pojištění vystupuje výhradně ve spolupráci s licencovanými partnery — nevystupuje v těchto oblastech jako zprostředkovatel s vlastní licencí. Veškeré informace a obsah na tomto webu mají výhradně informativní a vzdělávací charakter a nepředstavují investiční poradenství, veřejné investiční doporučení ani nabídku investičních služeb ve smyslu zákona č. 256/2004 Sb. (ZPKT). Investování je spojeno s rizikem ztráty části nebo celé investované částky. Minulá výkonnost není zárukou výnosů budoucích.
+          </p>
+        </div>
+
+        {/* Copyright */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/30">
             © {currentYear} {SITE.name}. Všechna práva vyhrazena.
           </p>

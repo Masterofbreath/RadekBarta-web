@@ -62,11 +62,11 @@ const services = [
     items: [
       {
         name: "Fond kvalifikovaných investorů",
-        desc: "Strategie světových hedge fondů: akcie, dluhopisy, zlato, Managed Futures a Long Volatility. Vstup od 1\u00a0mil.\u00a0Kč.",
+        desc: "Přístup k tomuto nástroji předchází ověření investičního profilu a splnění zákonných podmínek pro kvalifikovaného investora dle ZPKT. Vstup od 1\u00a0mil.\u00a0Kč.",
       },
       {
-        name: "Navržen pro nestabilní trhy",
-        desc: "Obstojí v různých podmínkách včetně krizí, recese i zvýšené volatility — navržen právě pro náročné období.",
+        name: "Světové hedge fund strategie",
+        desc: "Akcie, dluhopisy, zlato, Managed Futures a Long Volatility — navrženo k odolnosti v době recese i zvýšené volatility.",
       },
     ],
   },
