@@ -58,6 +58,7 @@ body {
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
   }
 
   .snap-section {
