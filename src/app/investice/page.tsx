@@ -7,9 +7,23 @@ import InvestmentCalculator from "@/components/ui/InvestmentCalculator";
 import ServicesDonut from "@/components/sections/ServicesDonut";
 
 export const metadata: Metadata = {
-  title: "Investice · Tvorba bohatství — Radek Bárta",
+  title: "Investice · Tvorba bohatství",
   description:
-    "Permanentní portfolio s neochvějnými základy. Od akcií, nemovitostí až po zlato. Investiční systém prověřen 40+ lety. Sjednejte bezplatnou konzultaci s Radkem Bártou.",
+    "Fyzické zlato a stříbro, permanentní portfolio, investiční nemovitosti. Radek Bárta — vázaný zástupce Golden Gate CZ — vám pomůže najít správný nástroj. Bezplatná konzultace.",
+  openGraph: {
+    title: "Investice & Tvorba bohatství — Radek Bárta",
+    description:
+      "Fyzické drahé kovy, permanentní strategie, financování nemovitostí. Pomáhám rodinám i podnikatelům najít klid v nejisté době — investice prověřené časem.",
+    url: "/investice",
+    images: [{ url: "/images/investice-bg.png", width: 1200, height: 630, alt: "Radek Bárta — investice" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Investice — Radek Bárta",
+    description: "Fyzické zlato, permanentní portfolio, nemovitosti. Bezplatná konzultace.",
+    images: ["/images/investice-bg.png"],
+  },
+  alternates: { canonical: "/investice" },
 };
 
 

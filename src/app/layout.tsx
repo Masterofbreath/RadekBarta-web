@@ -22,6 +22,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.radekbarta.cz"),
   title: {
     default: "Radek Bárta — Investor, Podcaster, Průvodce za finanční svobodou",
     template: "%s — Radek Bárta",
@@ -83,9 +84,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  alternates: {
-    canonical: "https://www.radekbarta.cz",
   },
   verification: {
     // google: "váš-google-verification-code", // přidat po ověření GSC
