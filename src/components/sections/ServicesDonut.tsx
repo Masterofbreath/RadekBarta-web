@@ -62,11 +62,11 @@ const services = [
     items: [
       {
         name: "Znám každého klienta osobně",
-        desc: "Každého klienta znám osobně — pravidelně se setkáváme, probíráme vaši situaci a pracujeme společně na tom, aby vaše investice plnily, co od nich čekáte.",
+        desc: "Zakládám si na tom, že s každým klientem buduji dlouhodobý a transparentní vztah. Každého klienta znám osobně a pravidelně se setkáváme — svět financí a budování majetku není o jednorázových rozhodnutích, ale o průběžné a promyšlené péči.",
       },
       {
         name: "Portfolio a pravidelný přehled",
-        desc: "Zmapuji vaši aktuální situaci, průběžně sdílím přehled vývoje a poskytuji doporučení přizpůsobená tomu, jak se váš život rozvíjí.",
+        desc: "Investice musí odpovídat vašemu profilu. Než společně kamkoliv vložíme první korunu, detailně se podíváme na vaši situaci — vyjasnění rizik, investiční dotazník a pojmenování dlouhodobých cílů.",
       },
     ],
   },
