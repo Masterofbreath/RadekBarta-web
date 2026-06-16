@@ -139,7 +139,7 @@ export async function POST(req: NextRequest) {
           <!-- Main card -->
           <div style="background: white; border-radius: 20px; padding: 48px 40px 40px; text-align: center; border: 1px solid #e8e5e2; margin-bottom: 0;">
             <p style="color: #c5a889; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin: 0 0 20px;">Radek Bárta</p>
-            <h2 style="color: #111; font-size: 26px; font-weight: 700; margin: 0 0 16px; line-height: 1.3;">Děkuji za zprávu, ${name}.</h2>
+            <h2 style="color: #111; font-size: 26px; font-weight: 700; margin: 0 0 16px; line-height: 1.3;">Děkuji za zprávu.</h2>
             <p style="color: #6b6b6b; line-height: 1.8; margin: 0 0 8px; font-size: 15px;">
               Vaši zprávu jsem přijal a ozvu se vám<br>co nejdříve, zpravidla do 48 hodin.
             </p>
