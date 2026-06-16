@@ -62,11 +62,11 @@ const services = [
     items: [
       {
         name: "Znám každého klienta osobně",
-        desc: "Pravidelně se setkáváme, probíráme vaši situaci a společně naplňujeme vaše investiční cíle — žádný call centrum, jen přímý kontakt.",
+        desc: "Každého klienta znám osobně — pravidelně se setkáváme, probíráme vaši situaci a pracujeme společně na tom, aby vaše investice plnily, co od nich čekáte.",
       },
       {
         name: "Portfolio a pravidelný přehled",
-        desc: "Zpracuji vám investiční portfolio na míru a průběžně vás informuji o vývoji — reporty, tipy z trhu a přizpůsobení plánu podle vašeho života.",
+        desc: "Zmapuji vaši aktuální situaci, průběžně sdílím přehled vývoje a poskytuji doporučení přizpůsobená tomu, jak se váš život rozvíjí.",
       },
     ],
   },
