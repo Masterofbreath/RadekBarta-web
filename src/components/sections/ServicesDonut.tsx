@@ -56,17 +56,17 @@ const services = [
   },
   {
     // karta 3 — vpravo dole
-    title: "Průvodce na vaší straně",
-    shortLabel: "Průvodce",
+    title: "Spolupráce s Radkem Bártou",
+    shortLabel: "Spolupráce",
     color: "#6b5548",
     items: [
       {
-        name: "Osobní přístup",
-        desc: "Ke každému klientovi přistupuji individuálně. Nesjednáváte sami — jsem s vámi od první konzultace po průběžný přehled o vašich investicích.",
+        name: "Znám každého klienta osobně",
+        desc: "Pravidelně se setkáváme, probíráme vaši situaci a společně naplňujeme vaše investiční cíle — žádný call centrum, jen přímý kontakt.",
       },
       {
-        name: "Vztah, ne transakce",
-        desc: "Pravidelně se setkáváme, vyhodnocujeme výsledky a plán přizpůsobujeme vašemu životu tak, jak se rozvíjí.",
+        name: "Portfolio a pravidelný přehled",
+        desc: "Zpracuji vám investiční portfolio na míru a průběžně vás informuji o vývoji — reporty, tipy z trhu a přizpůsobení plánu podle vašeho života.",
       },
     ],
   },
@@ -279,13 +279,6 @@ export default function ServicesDonut() {
               <br />
               k vašemu bohatství
             </h2>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p className="text-[#6b6b6b] text-lg leading-relaxed">
-              Pomáhám rodinám i podnikatelům najít klid v nejisté době —
-              nabízím jedinečnou kombinaci investic, které jsou prověřeny
-              časem.
-            </p>
           </Reveal>
         </div>
 

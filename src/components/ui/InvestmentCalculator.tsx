@@ -328,7 +328,7 @@ export default function InvestmentCalculator() {
               Zohlednit inflaci
               <span className="opacity-60 font-normal">(3,2 %)</span>
             </button>
-            <InfoTooltip text="Inflace dlouhodobě snižuje kupní sílu peněz. Po zapnutí přepočítáme hodnotu portfolia do dnešních cen — uvidíte, kolik by daná suma dnes skutečně koupila. Vložená částka zůstává nominální, protože to jsou reálné koruny, které jste zaplatili." />
+            <InfoTooltip text="Inflace dlouhodobě snižuje kupní sílu peněz. Po zapnutí přepočítáme hodnotu portfolia do dnešních cen — uvidíte, kolik by daná suma dnes skutečně koupila. Vložená částka zůstává nominální, protože to jsou reálné koruny, které jste zaplatili. Použitá sazba 3,2 % p.a. odpovídá průměrné inflaci v ČR za posledních 30 let (zdroj: ČSÚ)." />
           </div>
         </div>
 
